@@ -3,7 +3,7 @@ from server.main_ import app, orm, c
 
 @app.route('/')
 def hello_world():
-    return c.redirect(c.url_for('_dashboard'))
+    return c.redirect(c.url_for('_window'))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -17,7 +17,7 @@ def _login():
             id = c.data_POST('user')
             pw = c.data_POST('password')
 
-            account = ss.query(orm.account) \
+            account = ss.query(orm.계정) \
                 .filter_by(아이디=id) \
                 .first()
 

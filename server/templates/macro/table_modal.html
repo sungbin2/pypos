@@ -63,10 +63,10 @@
                     $("input[name='ip']").val(regexp_ip);
                     $("input[name='port']").val(regexp_port);
 
-                    if ($("input[name='i']").val() == '')
+                    if ($("input[name='no']").val() == '')
                         onAdd("{{ url }}");
                     else
-                        onModify("{{ url }}", $("input[name='i']").val());
+                        onModify("{{ url }}", $("input[name='no']").val());
                 }
             });
 

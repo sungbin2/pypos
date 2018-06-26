@@ -2,7 +2,6 @@ from shared.pyside_pyqt import *
 
 from shared.qtw.label import Label
 from shared.qtw.button import Button
-from shared.qtw.togglebutton import ToggleButton
 from shared.qtw.textbox import TextBox
 from shared.qtw.intbox import IntBox
 from shared.qtw.genderbox import GenderBox

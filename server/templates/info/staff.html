@@ -3,34 +3,191 @@
     {% from 'macro/form.html' import input,radio,select with context %}
 
     <div class="ui grid">
-        <div class="four wide column">
-            <div class="ui huge header">
-                기업정보
-            </div>
-        </div>
+                사원정보조회
         <div class="twelve wide column">
-            <table id="table_1" class="table classic" style="position: relative;">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Location</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <script data-jui="#table_1" data-tpl="row" type="text/template">
-                <tr>
-                    <td><!= isdel !></td>
-                    <td><!= isdel !></td>
-                    <td><!= isdel !></td>
-                </tr>
-            </script>
+            <!--<table id="table_1" class="table classic" style="position: relative;">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th>사원번호</th>-->
+                    <!--<th>사원명</th>-->
+                    <!--<th>직무</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--</tbody>-->
+            <!--</table>-->
+            <!--<script data-jui="#table_1" data-tpl="row" type="text/template">-->
+                <!--<tr>-->
+                    <!--<td><!= 직원번호 !></td>-->
+                    <!--<td><!= 직원명 !></td>-->
+                    <!--<td><!= 직무 !></td>-->
+                <!--</tr>-->
+            <!--</script>-->
         </div>
     </div>
     <br/>
     <br/>
+
+    <table width="100%" border='0' cellpadding='0' cellspacing='0'>
+        <tr height='25'>
+            <td>
+                <table border='0' cellpadding='0' cellspacing='0'>
+                    <tr>
+                        <td><img src='{{ url_for('static', filename='image/s_icon.gif') }}'></td>
+                        <td width='5'></td>
+                        <td><select name='TERM_FG'  >
+                            <option value='A'>기간미사용</option>
+                            <option value='R'>등록일자</option>
+                        </select> <input type='text'       id='date1_1' name='date1_1' value='2018-05-15' size='8' class='read1hc' onclick="fnShowCal2(1);" readonly style='cursor:hand;' > - <input type='text'    id='date1_2' name='date1_2' value='2018-05-15' size='8' class='read1hc' onclick="fnShowCal2(1);" readonly style='cursor:hand;' > <img src='{{ url_for('static', filename='image/calendar/calendar_btn.gif') }}' onclick="fnShowCal2(1);" style='cursor:hand;'><input type='hidden'     id='date_period1' name='date_period1' value='366'></td>
+                        <td id="cust_no" style='display:inline;'><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 사원번호 <input type='text' name='EMP_NO' value='' size='5'  maxlength='5' class='input1hc' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }"></td>
+                        <td id="cust_nm" style='display:inline;'><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 사원명   <input type='text' name='EMP_NM' value='' size='5' maxlength='8' class='input1h imeHan' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }"></td>
+                        <td id="cust_nm" style='display:inline;'><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 사원아이디   <input type='text' name='EMP_ID' value='' size='5' maxlength='8' class='input1h imeHan' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }"></td>
+                        <td><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 검색줄수 <input type='text' name='page_size' size='5' value='500' class='input1hr' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }"></td>
+                        <td align="right"><table border='0' cellpadding='0' cellspacing='0' style='cursor:pointer;' onclick="document.form1.page_no.value='1'; doAction('search','1');fnResize();">
+                            <tr valign='middle'>
+                                <td><img id='btn_l_bg' src='{{ url_for('static', filename='image/btn_black_l_bg.gif') }}') }}'></td>
+                                <td background='{{ url_for('static', filename='image/btn_black_c_bg.gif') }}'><img src='/image/blank.gif' width='4' height='13'><font color='#ffffff'>조회</font><img src='/image/blank.gif' width='4' height='13'></td>
+                                <td><img id='btn_r_bg' src='{{ url_for('static', filename='image/btn_black_r_bg.gif') }}'></td>
+                            </tr>
+                        </table></td>
+                    </tr>
+                </table>
+            </td>
+            <td align="right">
+                <table border='0' cellpadding='0' cellspacing='0'>
+                    <tr>
+                        <td><table border='0' cellpadding='0' cellspacing='0' style='cursor:pointer;' onclick="doAction('down2Excel','1');">
+                            <tr valign='middle'>
+                                <td><img id='btn_l_bg' src='{{ url_for('static', filename='image/btn_black_l_bg.gif') }}'></td>
+                                <td background='{{ url_for('static', filename='image/btn_black_c_bg.gif') }}'><img src='/image/blank.gif' width='4' height='13'><font color='#ffffff'>엑셀</font><img src='/image/blank.gif' width='4' height='13'></td>
+                                <td><img id='btn_r_bg' src='{{ url_for('static', filename='image/btn_black_r_bg.gif') }}'></td>
+                            </tr>
+                        </table></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table width="100%" border='0' cellpadding='0' cellspacing='0'>
+        <tr height='25'>
+            <td align="left">
+                <table border='0' cellpadding='0' cellspacing='0'>
+                    <tr>
+                        <td><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 사원구분 <script>
+    select_name[0] = new Array();
+    select_value[0] = new Array();
+    select_option[0] = new Array();
+    select_query[0] = new Array();
+    select_title[0] = new Array();
+    select_change[0] = new Array();
+    select_etc[0] = new Array();
+    </script>
+                            <span id='divAjax_0_EMP_FG' style='display:;overflow-y:scroll;'> </span>
+                            <script>
+    select_name[0][0] = "EMP_FG";
+    select_title[0][0] = "";
+    select_value[0][0] = "";
+    select_option[0][0] = "전체";
+    select_query[0][0] = "SP_CCD_CODEM_T_S01♪C1♪008";
+    select_change[0][0] = "";
+    select_etc[0][0] = "";
+    </script>
+                            <script>
+    select_step2(0,0);
+    </script></td>
+                        <td width='5'></td>
+                        <td><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 직책 <script>
+    select_name[1] = new Array();
+    select_value[1] = new Array();
+    select_option[1] = new Array();
+    select_query[1] = new Array();
+    select_title[1] = new Array();
+    select_change[1] = new Array();
+    select_etc[1] = new Array();
+    </script>
+                            <span id='divAjax_1_EMP_CLASS_CD' style='display:;overflow-y:scroll;'> </span>
+                            <script>
+    select_name[1][0] = "EMP_CLASS_CD";
+    select_title[1][0] = "";
+    select_value[1][0] = "";
+    select_option[1][0] = "전체";
+    select_query[1][0] = "SP_SCD_CODEM_T_S01♪C1♪S92694⊥203";
+    select_change[1][0] = "";
+    select_etc[1][0] = "";
+    </script>
+                            <script>
+    select_step2(1,0);
+    </script></td>
+                        <td width='5'></td>
+                        <td><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 퇴직구분   <select name='RETIRE_FG'  >
+                            <option value='' selected>전체</option>
+                            <option value='0'>재직</option>
+                            <option value='1'>퇴직</option>
+                            <option value='2'>휴식</option>
+                        </select></td>
+                        <td width='10'></td>
+                        <td>
+                            <img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 전화번호
+                            <input type='text' name='TEL_NO1' value='' class='input1c' size='3' maxlength='3' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }">-
+                            <input type='text' name='TEL_NO2' value='' class='input1c' size='4' maxlength='4' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }">-
+                            <input type='text' name='TEL_NO3' value='' class='input1c' size='4' maxlength='4' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }">
+                        </td>
+                        <td width='5'></td>
+                        <td>
+                            <img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 핸드폰번호
+                            <input type='text' name='HP_NO1' value='' class='input1c' size='3' maxlength='3' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }">-
+                            <input type='text' name='HP_NO2' value='' class='input1c' size='4' maxlength='4' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }">-
+                            <input type='text' name='HP_NO3' value='' class='input1c' size='4' maxlength='4' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }">
+                        </td>
+                </table>
+            </td>
+            <td align="right"><table border='0' cellpadding='0' cellspacing='0' style='cursor:pointer;' onclick="setSmsParam();">
+                <tr valign='middle'>
+                    <td><img id='btn_l_bg' src='{{ url_for('static', filename='image/btn_black_l_bg.gif') }}'></td>
+                    <td background='{{ url_for('static', filename='image/btn_black_c_bg.gif') }}'><img src='/image/blank.gif' width='4' height='13'><font color='#ffffff'>SMS전송</font><img src='/image/blank.gif' width='4' height='13'></td>
+                    <td><img id='btn_r_bg' src='{{ url_for('static', filename='image/btn_black_r_bg.gif') }}'></td>
+                </tr>
+            </table></td>
+        </tr>
+    </table>
+
+    <table width="100%" border='0' cellpadding='0' cellspacing='0' style='margin-top: 2px; margin-bottom: 2px;'>
+        <tr height='25'>
+            <td align="left">
+                <table border='0' cellpadding='0' cellspacing='0'>
+                    <tr>
+                        <td><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 사원카드번호   <input type='text' name='EMP_CARD_NO' value='' size='12' maxlength='20' class='input1hc' onkeydown="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1');fnResize(); }"></td>
+                        <td width='10'></td>
+                        <td><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> 웹사용여부   <select name='WEB_USE_YN'  >
+                            <option value='' selected>전체</option>
+                            <option value='N'>미수신</option>
+                            <option value='Y'>수신</option>
+                        </select></td>
+                        <td width='10'></td>
+                        <td><img src='{{ url_for('static', filename='image/s_icon.gif') }}'> SMS수신    <select name='SMS_RECV_YN'  >
+                            <option value='' selected>전체</option>
+                            <option value='N'>미수신</option>
+                            <option value='Y'>수신</option>
+                        </select></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    </td>
+    </td><td width='10'></td></tr>
+    <tr height='2'><td colspan='3'></td></tr>
+    <tr height='1' bgcolor='d6d6d6'><td colspan='3'></td></tr>
+    </table>
+
+
+    <table width='100%' height='6' border='0' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>
+
+    <table id='TableNm1' name='TableNm1' width='100%' height='30' border='0' cellpadding='4' cellspacing='1' bgcolor='#aaaaaa'>
+        <tr bgcolor='#ffffff' valign='top'><td width='100%' height='100%'><script>makeIBSheet('mySheet1');</script></td></tr>
+    </table>
 
 
     <script>

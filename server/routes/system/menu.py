@@ -24,7 +24,7 @@ def menu_query(ss, sid, group_id):
 
 @app.route('/system/menu', methods=['GET', ])
 def _system_menu_():
-    sid = c.session['shop_id']
+    sid = c.session['store']
 
     with orm.session_scope() as ss:  # type:c.typeof_Session
         if c.is_GET():
@@ -34,7 +34,7 @@ def _system_menu_():
 
 @app.route('/system/menu/<int:group_id>', methods=['GET', 'PUT', ])
 def _system_menu(group_id):
-    sid = c.session['shop_id']
+    sid = c.session['store']
     id = c.dict_item(orm, sid)
     il = list(id.values())
     # print(id, il)
@@ -81,10 +81,10 @@ def _system_menu(group_id):
 
 @app.route('/system/menu2', methods=['GET', 'POST'])
 def _system_menu2():
-    shop_id = c.session['shop_id']
-    only = c.get_settings(orm, shop_id)
+    store_id = c.session['store']
+    only = c.get_settings(orm, store_id)
 
-    id = c.dict_item(orm, shop_id)
+    id = c.dict_item(orm, store_id)
     il = list(id.values())
     # print(id, il)
     form_types[0]['l'] = il
@@ -93,11 +93,11 @@ def _system_menu2():
         if c.is_json():
             with orm.session_scope() as ss:  # type:c.typeof_Session
                 menu2 = ss.query(orm.상품_품목) \
-                    .filter_by(s=shop_id) \
+                    .filter_by(s=store_id) \
                     .filter_by(isdel=c.X) \
                     .all()
                 menu2 = c.for_json_l(menu2)
-                menu2 = {i['i']: i for i in menu2}
+                menu2 = {i['no']: i for i in menu2}
                 menu2[0] = {'품목명': '미지정', '단가': 0}
                 return c.jsonify(d=only.j['메뉴'], l=menu2)
         else:
@@ -106,9 +106,10 @@ def _system_menu2():
                                      MENUBORDER_WIDTH=c.MENUBORDER_WIDTH, MENUBORDER_HEIGHT=c.MENUBORDER_HEIGHT, )
     elif c.is_POST():
         with orm.session_scope() as ss:  # type:c.typeof_Session
-            next_one = c.newitem_web(orm.setting, c.session)
+            next_one = c.newitem_web(orm.settings, c.session)
             next_one.j = only.j.copy()
             for each in c.data_POST():
                 next_one.j['메뉴'] = c.json.loads(each)
             ss.add(next_one)
             return 'modified'
+

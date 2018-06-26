@@ -20,7 +20,7 @@ def tablegroup_query(ss, sid):
 
 @app.route('/system/tablegroup', methods=['GET', ])
 def _system_tablegroup():
-    sid = c.session['shop_id']
+    sid = c.session['store']
 
     if c.is_GET():
         if c.is_json():
@@ -33,7 +33,7 @@ def _system_tablegroup():
 
 @app.route('/system/tablegroup/<int:_id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def _system_tablegroup_(_id):
-    sid = c.session['shop_id']
+    sid = c.session['store']
 
     if c.is_json():
         if c.is_GET():
@@ -54,7 +54,7 @@ def _system_tablegroup_(_id):
         elif c.is_PUT():
             with orm.session_scope() as ss:  # type:c.typeof_Session
                 r = c.simple_query(ss, orm.설정_테이블그룹, id=_id)
-                if r.sid == c.session['shop_id']:
+                if r.sid == c.session['store']:
                     for k, v in c.data_POST().items():
                         if hasattr(r, k) and k != 'id':
                             if getattr(r, k) != v:
@@ -67,7 +67,7 @@ def _system_tablegroup_(_id):
         elif c.is_DELETE():
             with orm.session_scope() as ss:  # type:c.typeof_Session
                 r = c.simple_query(ss, orm.설정_테이블그룹, id=_id)
-                if r.sid == c.session['shop_id']:
+                if r.sid == c.session['store']:
                     r.isdel = c.O
                     l = tablegroup_query(ss, sid).all()
                     for i in range(len(l)):
@@ -81,14 +81,14 @@ def _system_tablegroup_(_id):
 
 @app.route('/system/tablegroup/<int:_id>/moveup', methods=['PUT', ])
 def _system_tablegroup_moveup(_id):
-    sid = c.session['shop_id']
+    sid = c.session['store']
 
     if c.is_json():
         if c.is_PUT():
             with orm.session_scope() as ss:  # type:c.typeof_Session
                 r = c.simple_query(ss, orm.설정_테이블그룹, id=_id).번호
                 l = tablegroup_query(ss, sid).all()
-                if sid == c.session['shop_id']:
+                if sid == c.session['store']:
                     if r <= 1:
                         return 'modified'
                     else:
@@ -106,14 +106,14 @@ def _system_tablegroup_moveup(_id):
 
 @app.route('/system/tablegroup/<int:_id>/movedown', methods=['PUT', ])
 def _system_tablegroup_movedown(_id):
-    sid = c.session['shop_id']
+    sid = c.session['store']
 
     if c.is_json():
         if c.is_PUT():
             with orm.session_scope() as ss:  # type:c.typeof_Session
                 r = c.simple_query(ss, orm.설정_테이블그룹, id=_id).번호
                 l = tablegroup_query(ss, sid).all()
-                if sid == c.session['shop_id']:
+                if sid == c.session['store']:
                     if r >= len(l):
                         return 'modified'
                     else:

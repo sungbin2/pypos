@@ -70,10 +70,9 @@ class ORM(object):
         try:
             yield session
             session.commit()
-        except Exception as err:
-            print(str(err.args))
-            print(str(err))
+        except:
             session.rollback()
+            raise
         finally:
             session.close()
 
@@ -83,11 +82,18 @@ class ORM(object):
 #         ThingOne().go(session)
 #         ThingTwo().go(session)
 
+#
+# def newitem_web(obj_type, sess):
+#     o = obj_type()
+#     o.s = sess['store']
+#     o.isdel = X
+#     o.issync = None
+#     return o
 
 def newitem_web(obj_type, sess):
     _now = now_()
     o = obj_type()
-    o.s = sess['shop_id']
+    o.s = sess['store']
     o.ct = _now
     o.et = _now
     o.j = {}
@@ -96,24 +102,36 @@ def newitem_web(obj_type, sess):
     return o
 
 
+def newitem_web1(obj_type, sess):
+    _now = now_()
+    o = obj_type()
+    o.s = sess['store']
+    o.isdel = X
+    o.issync = _now
+    o.func = {}
+    return o
+
 # def newitem_pos(obj_type, sess):
 #     o = newitem_web(obj_type, sess)
-#     o.app_id = sess['app_id']
+#     o.eid = sess['eid']
 #     return o
 
 
-def simple_query(ss, obj_type, i=None, s=None, order_by_asc=None, order_by_desc=None, ):
+def simple_query(ss, obj_type, no=None, s=None, order_by_asc=None, order_by_desc=None, ):
     o = ss.query(obj_type)
-    if i:
-        o = o.filter_by(i=i).filter_by(isdel=X).one()
+    if no:
+        o = o.filter_by(no=no).filter_by(isdel=X).one()
     else:
         if s:
             o = o.filter_by(s=s)
-        if order_by_asc == 'i':
-            o = o.order_by(ss.asc(obj_type.i))
+        if order_by_asc == 'no':
+            o = o.order_by(ss.asc(obj_type.no))
         o = o.filter_by(isdel=X).all()
 
     return o
+
+
+
 
 
 def for_json(query_one):

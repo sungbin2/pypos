@@ -31,33 +31,6 @@
 
     <script>
         $(function () {
-            _log('indivisual start');
-
-            function 연결기기change() {
-
-                var 연결기기명 = $("input[name='연결기기명']").val();
-                $.getJSON("{{ url_for('_system_networkinformation') }}", function (json) {
-                    if (json[연결기기명]['계산'] == 'O') {
-                        $("input[name='영수증']").parent()
-                            .checkbox('check')
-                            .checkbox('set enabled');
-                    }
-                    else {
-                        $("input[name='영수증']").parent()
-                            .checkbox('uncheck')
-                            .checkbox('set disabled');
-                    }
-                });
-
-            }
-
-            $($("input[name='연결기기명']").parent())
-                .dropdown({
-                    onChange: function () {
-                        연결기기change();
-                    }
-                });
-
             $('#btn_add').click(function () {
                 ichae_net.juitbl_data.push({
                     'idx': null,
@@ -115,7 +88,6 @@
 
                 }
                 $("#extra").val(_idx);
-
                 $('#modal_modify')
                     .modal('setting', {autofocus: false})
                     .modal('show');

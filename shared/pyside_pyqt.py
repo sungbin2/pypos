@@ -10,22 +10,6 @@ if True:
     from PyQt5.QtCore import *
     from PyQt5.QtGui import *
     from PyQt5.QtWidgets import *
-    import platform
-
-    # if platform.release() == 'XP':
-    if True:
-        from PyQt5 import QtWebKit, QtWebKitWidgets
-
-        webView = QtWebKitWidgets.QWebView
-        QWebEnginePage_Back = QtWebKitWidgets.QWebPage.Back
-        QWebEnginePage_Forward = QtWebKitWidgets.QWebPage.Forward
-
-    # else:
-    #     from PyQt5 import QtWebEngineWidgets
-    #
-    #     webView = QtWebEngineWidgets.QWebEngineView
-    #     QWebEnginePage_Back = QtWebEngineWidgets.QWebEnginePage.Back
-    #     QWebEnginePage_Forward = QtWebEngineWidgets.QWebEnginePage.Forward
 
     QTLIBRARY = 'PyQt5'
 

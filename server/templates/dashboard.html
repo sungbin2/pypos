@@ -1,16 +1,392 @@
 {% extends "layout.html" %}
+
+
+
 {% block body %}
-        <h4 class="ui header">
-            대시보드란?
-        </h4>
-    <div class="ui pink  segment">
-        <p>Analytics 대시보드는 함께 작동하여 여러 관점에서의 데이터 정보를 제공하는 위젯의 모음입니다. 대시보드에 표시할 항목 또는 작동하는 방식에 따라 핵심 성과 지표, 차트 테이블, 필터 및
-            이미지와 같은 여러 위젯을 추가할 수 있습니다.</p>
-        <p>대시보드를 통해 Analytics 데이터를 공유할 때 전체 데이터 집합을 표시하지 않고 보유한 내용을 탐색하도록 대상 구성원을 설정합니다.</p>
-        <p>대시보드의 용도 중 하나는 대상에 초점을 제공하는 것입니다. 데이터 집합 하나에 많은 양의 데이터를 포함할 수 있습니다. 해당 데이터 중 일부는 대상이 질문하는 특정 내용과 관련이 있으며, 일부는
-            관련이 없는 내용입니다. 하나의 질문 세트에 중요한 데이터가 다른 질문 세트와 관련해서는 의미 없는 내용일 경우도 있습니다.</p>
-        <p>이를 대시보드라고 하지만 자동차에 있는 전형적인 대시보드를 사용하는 경우보다 실제로 이 인터페이스를 통해 훨씬 더 많은 작업을 수행한다는 점에 유의하십시오. 이 대시보드는 단순히 변경 사항을
-            알려주기만 하는 것이 아니라, 기본 데이터를 더 세부적으로 살펴볼 수 있도록 해줍니다. 이는 차량의 속도계를 사용하여 주행 속도뿐만 아니라 여행 지점에 따른 다양한 이동 속도 변화, 교통 상황
-            변화 및 도착 시각에 미치는 영향을 파악할 수 있는 것과 같습니다.</p>
-    </div>
+
+
+<link rel="stylesheet" href="{{ url_for('static',filename='jui-master/dist/ui.min.css') }}  "/>
+<link rel="stylesheet" href="{{ url_for('static',filename='jui-master/dist/ui-jennifer.min.css') }}" />
+
+<!-- Grid style components -->
+<link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid.min.css') }}  " />
+<link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid-jennifer.min.css') }}  " />
+
+
+
+    <!--<div class="ui two column doubling stackable grid container">-->
+      <!--<div class="column">-->
+         <!--<p>공지사항</p>-->
+         <!--<p></p>-->
+      <!--</div>-->
+      <!--<div class="column">-->
+           <!--<p>날씨</p>-->
+           <!--<p></p>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="ui one column doubling stackable grid container">-->
+      <!--<div class="column">-->
+         <!--<p>매출분석</p>-->
+         <!--<p></p>-->
+      <!--</div>-->
+      <!--<div class="column">-->
+         <!--<p>기타정보</p>-->
+         <!--<p></p>-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+<table width='100%' height='1' border='0' cellpadding='0' cellspacing='0'><tr valign='top'><td width='20'  nowrap></td><td width='55%' nowrap><table width='100%' border='0' cellpadding='0' cellspacing='0' background='' >
+    <tr>
+        <td><table border='0' cellpadding='0' cellspacing='0'>
+            <tr>
+                <td><img src=''></td>
+                <td background='' valign='middle'><img src='' width='1' height='15'><b>공지사항</b><img src='' width='1' height='15'></td>
+                <td><img src=''></td>
+            </tr>
+        </table></td><td align='right'><a src='' onclick="" style='cursor:hand;'>more</a></td>
+    </tr>
+</table><table width='100%' height='1' border='0' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>
+    <table width='100%' height='2' border='0' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>
+    <td width='20'  nowrap></td><td width='45%' nowrap><table width='100%' border='0' cellpadding='0' cellspacing='0' background='' >
+    <tr>
+        <td><table border='0' cellpadding='0' cellspacing='0'>
+            <tr>
+                <td><img src=''></td>
+                <td background='' valign='middle'><img src='/image/blank.gif' width='1' height='15'><font color='black'><b>서울 날씨</b></font><img src='' width='1' height='15'></td>
+                <td><img src=''></td>
+            </tr>
+        </table></td><td align='right'><a href="{{ url_for('_weather') }}" style='cursor:hand;'>more</a></td>
+    </tr>
+</table>
+
+
+    <table width='100%' height='2' border='0' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>
+    <table><tr><td>   <table border='0' cellpadding='4' cellspacing='1' bgcolor='#cecece'>   <tr bgcolor='#ffffff' align='center'>   <td width='34%' nowrap><b>오늘</b> (<span id="wtm"> </span>)</td>   <td width='33%' nowrap><b>내일</b> (<span id="wtm1"> </span>)</td>   </tr>   <tr bgcolor='#ffffff' align='center'>   <td width='34%' nowrap><table border='0' cellpadding='0' cellspacing='0'><tr><td><img id='wimg' src='' width='70' height='70'></td><td width='10'></td><td><span id="wdesc" ></span></td></tr></table></td>   <td width='33%' nowrap><table border='0' cellpadding='0' cellspacing='0'><tr><td><img id='wimg1' src='' width='70' height='70'></td><td width='10'></td><td><span id="wdesc1" ></span></td></tr></table></td>   </tr><tr bgcolor='#ffffff' align='center'><td width='34%' nowrap>최저 <font color='#6CA6E5'><b><span id="wmin" ></span></b></font>℃ / 최고 <font color='#F65E08'><b><span id="wmax" ></span></b></font>℃</td><td width='33%' nowrap>최저 <font color='#6CA6E5'><b><span id="wmin1" ></span></b></font>℃ / 최고 <font color='#F65E08'><b><span id="wmax1" ></span></b></font>℃</td></tr>   </table></td><td>
+
+
+
+        <table border='0' cellpadding='' cellspacing='' bgcolor='#cecece'>   <tr bgcolor='#ffffff' align='center'>   <td nowrap></td>   </tr>   </table></td></tr></table></td><td width='20'  nowrap></td></tr></table>
+<table width='100%' height='6' border='0' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>
+<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr valign='top'><td width='20'   nowrap></td><td width='100%' nowrap><table width='100%' height='28' border='0' cellpadding='0' cellspacing='0' background=''>
+    <tr>
+        <td width='8'></td>
+        <td align='left'><img src='' align='absmiddle'><img src='' width='1' height='13'> <font color='black'><b>매출분석</b></font></td>
+        <td align='right'><table border='0' cellpadding='0' cellspacing='0'><tr><td><input type='hidden' id='sale_op'><input type='hidden' id='auto_call'></td><td><input type='radio' name='graph_type' value='B' onclick="fnLoadChart('');" checked><font color='black'>막대</font> <input type='radio' name='graph_type' value='D' onclick="fnLoadChart('');"><font color='black'>도우넛</font> </td><td width='6'></td><td><table border='0' cellpadding='0' cellspacing='0' style='cursor:pointer;' onclick="fnLoadChart('day_week');">
+            <tr valign='middle'>
+                <td><img id='btn_l_bg' src=''></td>
+                <td background=''><img src='' width='0' height='13'><font color='#000000'>일자별(1주)</font><img src='/image/blank.gif' width='0' height='13'></td>
+                <td><img id='btn_r_bg' src=''></td>
+            </tr>
+        </table></td><td width='6'></td><td><table border='0' cellpadding='0' cellspacing='0' style='cursor:pointer;' onclick="fnLoadChart('prod_week');">
+            <tr valign='middle'>
+                <td><img id='btn_l_bg' src=''></td>
+                <td background=''><img src='' width='0' height='13'><font color='#000000'>상품별(1주)</font><img src='' width='0' height='13'></td>
+                <td><img id='btn_r_bg' src=''></td>
+            </tr>
+        </table></td><td width='6'></td><td><table border='0' cellpadding='0' cellspacing='0' style='cursor:pointer;' onclick="fnLoadChart('week_month');">
+            <tr valign='middle'>
+                <td><img id='btn_l_bg' src=''></td>
+                <td background=''><img src='' width='0' height='13'><font color='#000000'>요일별(4주)</font><img src='' width='0' height='13'></td>
+                <td><img id='btn_r_bg' src=''></td>
+            </tr>
+        </table></td><td width='6'></td><td><table border='0' cellpadding='0' cellspacing='0' style='cursor:pointer;' onclick="fnLoadChart('month_year');">
+            <tr valign='middle'>
+                <td><img id='btn_l_bg' src=''></td>
+                <td background=''><img src='' width='0' height='13'><font color='#000000'>월별(1년)</font><img src='' width='0' height='13'></td>
+                <td><img id='btn_r_bg' src=''></td>
+            </tr>
+        </table></td></tr></table></td>
+        <td width='8'></td>
+    </tr>
+</table><table width='100%' border='0' cellpadding='4' cellspacing='1' bgcolor='#cecece'><tr bgcolor='#ffffff'><td><table width='100%' height='209' border='0' cellpadding='0' cellspacing='0'><tr valign='top'><td height="100%" width='60%' nowrap id='result1'                      ></div></td><td height="100%" width='60%' nowrap id='result2' style='display:none;'><div id='span_chart2' style='width:100%;height:100%;'></div></td><td width='20'  nowrap></td><td width='40%' nowrap>
+
+
+
+<table id="table_4" class="ui celled table" >
+    <thead>
+    <tr>
+        <th>No.</th>
+        <th>일자</th>
+        <th>매출액</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script id="tpl_row" type="text/template">
+    <tr>
+        <td><!= no !></td>
+        <td><!= day !></td>
+        <td><!= total !></td>
+    </tr>
+</script>
+
+
+
+</td></tr></table></td></tr></table></td><td width='20'   nowrap>
+
+
+</td></tr></table>
+<table width='100%' height='6' border='0' cellpadding='0' cellspacing='0'><tr><td>
+
+</td></tr></table>
+
+
+<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr valign='top'><td width='20' nowrap></td><td width='100%' nowrap><table width='100%' border='0' cellpadding='0' cellspacing='0' background='' >
+    <tr>
+        <td><table border='0' cellpadding='0' cellspacing='0'>
+            <tr>
+                <td><img src=''></td>
+                <td background='' valign='middle'><img src='' width='1' height='15'><font color='black'><b>기타정보</b></font><img src='' width='1' height='15'></td>
+                <td><img src=''></td>
+            </tr>
+        </table></td><td align='right'></td>
+    </tr>
+</table><table width='100%' height='1' border='0' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>
+    <table width='100%' border='0' cellpadding='2' cellspacing='1' bgcolor='#c0c0c0'><tr align='center' height='22' bgcolor='#e0e0e0' align='center'><td width='15%'>입고 미확정</td><td width='15%'>반품 미확정</td><td width='15%'>전체 회원수</td><td width='15%'>정보 미입력 회원수</td><td>관리업체명</td><td width='20%'>관리업체전화번호</td></tr><tr align='center' height='22' bgcolor='#ffffff' align='center'><td>0</td><td>0</td><td>0</td><td>0</td><td>현대포스</td><td>031-877-6787</td></tr></table></td><td width='20' nowrap></td></tr></table>
+
+
+<!--날씨 API-->
+<script>
+        var _data;var a=0 ,b=0;
+         var now = new Date();
+
+         var nowMonth = now.getMonth() + 1;
+         var nowDate = now.getDate();
+         var nowDate1 = now.getDate()+1;
+
+         var week = new Array('일', '월', '화', '수', '목', '금', '토');
+         var nowDay = now.getDay();
+         var nowDay1 = now.getDay()+1;
+
+        document.getElementById('wtm').innerHTML =  nowMonth + '월' + nowDate + '일 ,' + week[nowDay];
+        document.getElementById('wtm1').innerHTML =  nowMonth + '월' + nowDate1 + '일 ,' + week[nowDay1];
+
+        <!--$.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=15e980b9799005d97ba860340b7b85c4",function(json){-->
+           <!--_data = json;_data1 = json;-->
+        <!--}).done(function () {-->
+        <!--var a = _data.main.temp_min - 273.15;-->
+        <!--document.getElementById('wmin').innerHTML =  a.toFixed(1)-->
+        <!--var b = _data.main.temp_max - 273.15;-->
+        <!--document.getElementById('wmax').innerHTML =  b.toFixed(1)-->
+        <!--document.getElementById('wdesc').innerHTML = _data.weather[0].description;-->
+
+        <!--var imgURL = "http://openweathermap.org/img/w/" + _data.weather[0].icon + ".png";-->
+ <!--$("#wimg").attr("src", imgURL);-->
+
+        <!--var c = _data1.main.temp_min - 273.15;-->
+        <!--document.getElementById('wmin1').innerHTML =  c.toFixed(1)-->
+        <!--var d = _data1.main.temp_max - 273.15;-->
+        <!--document.getElementById('wmax1').innerHTML =  d.toFixed(1)-->
+        <!--document.getElementById('wdesc1').innerHTML = _data1.weather[0].description;-->
+
+        <!--var imgURL1 = "http://openweathermap.org/img/w/" + _data1.weather[0].icon + ".png";-->
+         <!--$("#wimg1").attr("src", imgURL1);-->
+         <!--};-->
+
+
+
+
+        <!--console.log('success');-->
+
+        <!--})-->
+
+var callbackFunction = function(data) {
+    var forecast = data.query.results.channel;
+
+    document.getElementById('wmin').innerHTML =  forecast[0].item.forecast.low
+    document.getElementById('wmax').innerHTML =  forecast[0].item.forecast.high
+    document.getElementById('wmin1').innerHTML = forecast[1].item.forecast.low
+    document.getElementById('wmax1').innerHTML = forecast[1].item.forecast.high
+    var names = {};
+    var name1 = "";
+    var names = {"Partly Cloudy": "대체로 맑음" , "Mostly Sunny" : "대체로 맑음" ,"Mostly Cloudy" : "대체로 맑음" ,"Thunderstorms" : "뇌우", "Cloudy" : "흐림" }
+    document.getElementById('wdesc1').innerHTML = forecast[1].item.forecast.text
+    document.getElementById('wdesc').innerHTML = forecast[0].item.forecast.text
+    for( i in names ) {
+        if( forecast[0].item.forecast.text == i || forecast[1].item.forecast.text == i) {
+            document.getElementById('wdesc').innerHTML = names[i]
+
+        }
+        if( forecast[1].item.forecast.text == i ) {
+            document.getElementById('wdesc1').innerHTML = names[i]
+        }
+
+    }
+
+    var img = forecast[0].item.forecast.text.toLowerCase().replace(' ','')
+    var img1 = forecast[1].item.forecast.text.toLowerCase().replace(' ','')
+    var imgURL = "/static/image/weather/"+img+".png"
+    $("#wimg").attr("src", imgURL);
+    var imgURL1 = "/static/image/weather/"+img1+".png"
+    $("#wimg1").attr("src", imgURL1);
+}
+</script>
+<script src="https://query.yahooapis.com/v1/public/yql?q=select item.forecast from weather.forecast where u='c' and woeid in (select woeid from geo.places(1) where text='seoul')&format=json&callback=callbackFunction"></script>
+
+
+<script>
+<!--opener.parent.window.close();-->
+<!--opener.open('about:blank','_self').close();-->
+
+
+var render1_fg = false
+var render2_fg = false
+var data0 =  new Object()
+
+data0.table = [
+        { no: "1", day: "5/12", total: "135000" },
+        { no: "2", day: "5/13", total: "345000" },
+        { no: "3", day: "5/14", total: "205000" },
+        { no: "4", day: "5/15", total: "100000" },
+        { no: "5", day: "5/16", total: "845000" },
+        { no: "6", day: "5/17", total: "295000" },
+        { no: "7", day: "5/18", total: "900000" },
+        { no: "8", day: "5/19", total: "500000" },
+        { no: "9", day: "5/20", total: "345000" },
+        { no: "10", day: "5/21", total: "906500" },
+        { no: "11", day: "5/22", total: "122000" }
+    ];
+
+
+data0.total2 = [];
+data0.day2 = [];
+data0.day2[0] = {};
+data0.domain2 = [];
+
+
+var value=0;   // 데이터 처리
+
+        for(i in data0.table){
+
+
+
+                for(key in data0.table[i]) {
+
+                    if(key == 'total' ) {  data0.total2[i] = {total : + data0.table[i][key] } };
+                    data0.day2[0][data0.table[i].day] =   parseInt(data0.table[i].total)  ;
+                    data0.domain2[i] = data0.table[i].day ;
+
+
+                };
+
+        if( i == 6 ) break ;
+        };
+
+
+
+
+function fnLoadChart(){
+
+
+    if(document.getElementsByName("graph_type")[0].checked == true)
+        {
+        document.getElementById("result1").style.display='inline';
+        document.getElementById("result2").style.display='none';
+
+        if(render1_fg == false)
+            {
+
+                    var chart = jui.include("chart.builder");
+
+                    chart("#result1", {
+                        axis : {
+                            x : {
+                                type : "block",
+                                domain : data0.domain2
+                            },
+                            y : {
+                                type : "range",
+                                domain : "total"
+                            },
+                            c : {
+                                type : "grid3d"
+                            },
+                            data : data0.total2,
+                            depth : 20,
+                            degree : 30
+                        },
+                        brush : {
+                            type : "column3d",
+                            outerPadding : 10,
+                            innerPadding : 5
+                        },
+                        widget : [{
+                            type : "tooltip"
+                        }, {
+                            type : "title",
+                            text : "일자별 매출내역"
+                        }]
+                    });
+                    render1_fg=true
+             }
+         else{}
+
+         }
+
+    else if(document.getElementsByName("graph_type")[1].checked == true)
+        {
+         document.getElementById("result2").style.display='inline';
+         document.getElementById("result1").style.display='none';
+
+        if(render2_fg == false)
+            {
+
+    var chart = jui.include("chart.builder");
+
+
+        chart("#result2", {
+            padding : 10,
+            axis : [ {
+
+                area : {
+                    width : "70%",
+                    height : "70%",
+                    x : "20%",
+                    y : "20%"
+                },
+                data : data0.day2
+            }],
+            brush : [ {
+                type : "pie",
+                axis : 0,
+                showText : true
+            }],
+            widget : [ {
+                type : "title",
+                text : "Pie Chart",
+                axis : 0
+            }],
+            style : {
+
+                axisBorderWidth : 1.5,
+                axisBorderRadius : 5,
+                titleFontSize : 12,
+                titleFontWeight : 700
+            }
+        });
+
+
+                render2_fg=true
+            }
+
+            else{}
+         }
+}
+
+window.onload = function() { setTimeout("fnLoadChart('')",0); }
+
+jui.ready([ "grid.table" ], function(table) {
+    table_4 = table("#table_4", {
+        scroll: true,
+        scrollHeight: 150,
+        tpl: {
+            row: $("#tpl_row").html()
+        }
+    });
+
+    table_4.update(data0.table);
+});
+</script>
+
 {% endblock %}

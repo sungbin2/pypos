@@ -32,10 +32,6 @@
 
     <script>
         $(function () {
-
-            $('button.삭제[data-idx="0"]').prop("disabled", true);
-
-
             $('#btn_add').click(function () {
                 ichae_net.juitbl_data.push({
                     'idx': null,
@@ -46,6 +42,7 @@
                     'DB': 'X',
                     '계산': 'X',
                     '주문': 'X',
+                    '프린터': 'X'
                 });
                 juitbl_update();
             });
@@ -64,13 +61,8 @@
             });
             $(document).on('click', 'button.삭제', function () {
                 var _idx = $(this).data('idx');
-                if (_idx == 0) {
-                    alert("DB가 설치된 장치는 삭제할 수 없습니다.");
-                }
-                else {
-                    ichae_net.juitbl_data[_idx].enabled = false;
-                    juitbl_update();
-                }
+                ichae_net.juitbl_data[_idx].enabled = false;
+                juitbl_update();
             });
 
 
@@ -124,7 +116,6 @@
                         if (!itera[each]['name'].includes('checkbox_'))
                             trgt[itera[each]['name']] = itera[each]['value'];
                     }
-                    _log(itera);
                     juitbl_update();
                 }
             });

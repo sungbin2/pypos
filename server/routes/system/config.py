@@ -1,59 +1,49 @@
 from lxml import etree
 from server.main_ import app, orm, c
+from flask import json
+from flask import Response
 
+def get_config(orm, store_id):
+    with orm.session_scope() as ss:  # type:c.typeof_Session
+        only = ss.query(orm.기능설정) \
+            .filter_by(s=store_id) \
+            .order_by(ss.desc(orm.기능설정.no)) \
+            .first()
+        return c.OBJ_cp(only)
 
-def get_config(shop_id):
-    only = c.get_settings(orm, shop_id)
-    return only.j['설정']
-
-
-@app.route('/system/config', methods=['GET', ])
+@app.route('/system/config', methods=['GET','POST'])
 def _system_config():
-    shop_id = c.session['shop_id']
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
+
+    # return c.redirect(c.url_for('_system_config', store_id=c.session['store']))
+
+@app.route('/system/config/<int:store_id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+def _system_config_(store_id):
+    only1 = get_config(orm, store_id)
 
     if c.is_GET():
-        xml_path = c.os.path.join(c.os.path.dirname(__file__), '../../static/KBIZ_preferences.xml')
-        f = open(xml_path, encoding='utf-8')
-        tree = etree.parse(f)
-        xml_root = tree.getroot()
+        if c.is_json():
+            response = Response(
+                response= json.dumps(only1.func),
+                status=200,
+                mimetype='text/plain')
 
-        form_types = []
-
-        for a in xml_root:
-            form_types.append({'name': a.get('name'), 'type': 'divider'})
-            for b in a:
-                _c = {'tag': None,
-                      'name': b.get('key') + c.SEP + b.get('name'),
-                      'type': b.get('value'),
-                      'valid': None}
-                if b.get('value') == 'select':
-                    _c['l'] = []
-                    for d in b:
-                        _c['l'].append(d.get('name'))
-                form_types.append(_c)
-
-        return c.display(xml=xml_root, form_types=form_types, item={"no": shop_id}, shop_id=shop_id)
-
-
-@app.route('/system/config/<int:shop_id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
-def _system_config_(shop_id):
-    if c.is_json():
-        if c.is_GET():
-            d = {k + c.SEP + v['k']: v['v'] for k, v in get_config(shop_id).items()}
-            return c.jsonify(d)
-        elif c.is_PUT():
+            return response
+        else:
+            return c.display()
+    elif c.is_POST():
+        if c.is_json():
             with orm.session_scope() as ss:  # type:c.typeof_Session
-                only = c.get_settings(orm, shop_id)
-                next_one = c.newitem_web(orm.setting, c.session)
-                next_one.j = only.j.copy()
-                for k, v in c.data_POST().items():
-                    if c.SEP in k and 'checkbox' not in k:
-                        _n = k.split(c.SEP, 1)[0]
-                        _k = k.split(c.SEP, 1)[1]
-                        _v = v
-                        next_one.j['설정'][_n] = {'k': _k, 'v': _v}
+                next_one = c.newitem_web1(orm.기능설정, c.session)
+                next_one.func = only1.func.copy()
+                for each in c.data_POST():
+                    next_one.func = c.json.loads(each)
 
                 ss.add(next_one)
-                return 'modified'
 
-    c.abort(404)
+                return 'modified'

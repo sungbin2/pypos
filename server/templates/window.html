@@ -1,0 +1,16 @@
+<html>
+
+
+
+<script>
+
+window.open("{{ url_for('_dashboard') }}","show","width=1024,height=768,toolbar=no,menubar=no,resizable");
+ setTimeout(function(){
+        top.window.opener = top;
+        top.window.open('about:blank','_parent','');
+        top.window.close();
+        },5000);
+
+
+</script>
+</html>

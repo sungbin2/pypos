@@ -23,18 +23,18 @@
             {% endfor %}
             <td>
                 {% if orderable %}
-                    <button class="ui mini basic icon button 위로" data-id="<!= i !>">
+                    <button class="ui mini basic icon button 위로" data-id="<!= no !>">
                         <i class="arrow up icon"></i>
                     </button>
-                    <button class="ui mini basic icon button 아래로" data-id="<!= i !>">
+                    <button class="ui mini basic icon button 아래로" data-id="<!= no !>">
                         <i class="arrow down icon"></i>
                     </button>
                 {% endif %}
                 {% if header!='네트워크' %}
-                <button class="ui mini basic icon button 수정" data-id="<!= i !>">
+                <button class="ui mini basic icon button 수정" data-id="<!= no !>">
                     <i class="edit icon"></i>
                 </button>
-                <button class="ui mini basic icon button 삭제" data-id="<!= i !>">
+                <button class="ui mini basic icon button 삭제" data-id="<!= no !>">
                     <i class="eraser icon"></i>
                 </button>
                 {% endif %}

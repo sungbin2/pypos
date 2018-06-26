@@ -25,8 +25,8 @@ form_types = [
 
 @app.route('/system/printer', methods=['GET', 'POST'])
 def _system_printer():
-    shop_id = c.session['shop_id']
-    only = c.get_settings(orm, shop_id)
+    store_id = c.session['store']
+    only = c.get_settings(orm, store_id)
     available_networks = []
     networks = only.j['네트워크']
     adjusted = only.j['프린터']
@@ -49,7 +49,7 @@ def _system_printer():
                              else '')
     elif c.is_POST():
         with orm.session_scope() as ss:  # type:c.typeof_Session
-            next_one = c.newitem_web(orm.setting, c.session)
+            next_one = c.newitem_web(orm.settings, c.session)
             next_one.j = only.j.copy()
             for each in c.data_POST():
                 next_one.j['프린터'] = c.json.loads(each)
@@ -59,20 +59,3 @@ def _system_printer():
                         each['network_id'] = i
             ss.add(next_one)
             return 'modified'
-
-
-@app.route('/system/networkinformation', methods=['GET'])
-def _system_networkinformation():
-    shop_id = c.session['shop_id']
-    only = c.get_settings(orm, shop_id)
-    networks = only.j['네트워크']
-    adjusted = {}
-    for each in networks:
-        if each['enabled']:
-            adjusted[each['기기명']] = {'계산': each['계산'], '주문': each['주문']}
-
-    if c.is_GET():
-        if c.is_json():
-            return c.jsonify(adjusted)
-        else:
-            return c.abort(405)

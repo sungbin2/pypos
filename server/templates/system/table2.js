@@ -62,6 +62,7 @@ function redraw() {
         $('#modal_save')
             .modal({
                 onApprove: function () {
+                    alert(JSON.stringify(table2))
                     $.ajax({
                         method: "POST",
                         url: _url,

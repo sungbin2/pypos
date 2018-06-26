@@ -2,7 +2,6 @@ import datetime
 import os
 import socket
 import sys
-from ctypes import windll
 from pyblake2 import blake2b
 
 TABLEBORDER_WIDTH = 880
@@ -17,6 +16,7 @@ DEFPORT_HTTPD = 8521
 # EOL = '\r\n'
 EOL = '\n'
 
+
 VAT = 0.1
 O = 'O'
 X = 'X'
@@ -26,7 +26,6 @@ COM_PORT = ['COM01', 'COM02', 'COM03', 'COM04', 'COM05', 'COM06', 'COM07', 'COM0
 COM_BAUDRATE = ['4800', '9600', '19200', '38400', '57600', '115200', '230400', ]
 PRINTER_MODEL = ['기본', 'IBM 4610-1NR']
 
-keybd_event = windll.user32.keybd_event
 
 
 class OBJ(object):
@@ -65,12 +64,6 @@ def here(var):
 def nohere(var):
     return var is None
 
-
-def show_desktop():
-    keybd_event(0x5B, 0, 0, 0)
-    keybd_event(0x44, 0, 0, 0)
-    keybd_event(0x44, 0, 0x0002, 0)
-    keybd_event(0x5B, 0, 0x0002, 0)
 
 
 def app_exit():
@@ -111,43 +104,52 @@ def get_fullpath(f, s):
     return os.path.join(os.path.dirname(f), s)
 
 
-def vat_calc(amt, 과세여부, 세포함):
-    rtn = {'합계': 0, '과세': 0, '면세': 0, '공급가': 0, '세': 0, }
-    if 과세여부 == O:
-        if 세포함 == O:
+def vat_calc(amt, 부가세과세, 부가세포함):
+    rtn = {'합계': 0, '공급가': 0, '세금': 0, '과세금액': 0, '면세금액': 0, }
+    if 부가세과세 == O:
+        if 부가세포함 == O:
             rtn['공급가'] = round(amt / (1 + VAT))
-            rtn['세'] = amt - round(amt / (1 + VAT))
-            rtn['과세'] = amt
-        elif 세포함 == X:
+            rtn['세금'] = amt - round(amt / (1 + VAT))
+            rtn['과세금액'] = amt
+        elif 부가세포함 == X:
             rtn['공급가'] = amt
-            rtn['세'] = amt * VAT
-            rtn['과세'] = amt + (amt * VAT)
-    elif 과세여부 == X:
-        rtn['면세'] = amt
+            rtn['세금'] = amt * VAT
+            rtn['과세금액'] = amt + (amt * VAT)
+    elif 부가세과세 == X:
+        rtn['면세금액'] = amt
 
     rtn['공급가'] = int(rtn['공급가'])
-    rtn['세'] = int(rtn['세'])
-    rtn['과세'] = int(rtn['과세'])
-    rtn['합계'] = rtn['과세'] + rtn['면세']
+    rtn['세금'] = int(rtn['세금'])
+    rtn['과세금액'] = int(rtn['과세금액'])
 
+    rtn['합계'] = rtn['과세금액'] + rtn['면세금액']
     return rtn
 
 
-def get_settings(orm, shop_id):
+def get_settings(orm, store_id):
     with orm.session_scope() as ss:  # type:c.typeof_Session
-        only = ss.query(orm.setting) \
-            .filter_by(s=shop_id) \
+        only = ss.query(orm.settings) \
+            .filter_by(s=store_id) \
             .filter_by(isdel=X) \
-            .order_by(ss.desc(orm.setting.i)) \
+            .order_by(ss.desc(orm.settings.no)) \
+            .first()
+        return OBJ_cp(only)
+    
+def get_settings1(orm, store_id):
+    with orm.session_scope() as ss:  # type:c.typeof_Session
+        only = ss.query(orm.기능설정) \
+            .filter_by(s=store_id) \
+            .order_by(ss.desc(orm.기능설정.no)) \
             .first()
         return OBJ_cp(only)
 
 
+
 def get_setting_영수증서식(orm, shop_id):
     with orm.session_scope() as ss:  # type:c.typeof_Session
-        only = ss.query(orm.setting_영수증서식) \
+        only = ss.query(orm.영수증서식) \
             .filter_by(s=shop_id) \
             .filter_by(isdel=X) \
-            .order_by(ss.desc(orm.setting_영수증서식.i)) \
+            .order_by(ss.desc(orm.영수증서식.i)) \
             .first()
         return OBJ_cp(only)
