@@ -14,9 +14,9 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid.min.css') }}  " />
 <link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid-jennifer.min.css') }}  " />
 <style>
-     #table_4  {width : 320px; height : 400px}
-     #table_3  {width : 250px; height : 400px}
-     #table_2  {width : 300px ;}
+     #table_3  {width : 220px; height : 550px}
+     #table_4  {width : 310px; height : 550px}
+     #table_2  {width : 300px ;height : 550px }
 
     <!--#td1 { margin :0 }-->
     pre { margin: 0 0 0.5em;
@@ -26,7 +26,7 @@
     line-height: 1em; }
     th { line-height: 2em; }
     li    {   margin:0px; padding:2px; list-style-position: inside; list-style-type: circle; cursor:hand; height: 20px; color: blue;}
-    textarea { font-family: 'Nanum Gothic', sans-serif; }
+    textarea { font-family: 'Nanum Gothic', sans-serif; font-size:0.5em; }
 
 </style>
 
@@ -74,12 +74,12 @@
                         <table id="table_2" class="table classic borderless stripeless" width='100%'  border='0' cellpadding='4' cellspacing='1' bgcolor='#aaaaaa' >
                         <thead>
                         <tr>
-                            <th>text</th>
+                            <th>VIEW</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr bgcolor='#aaaaaa'>
-                            <td><div id="viewer"></div></td>
+                            <td><div id="viewer" style="overflow-y: scroll; overflow-x: hidden; width:300px; height:505px; padding:0px;" ></div></td>
                         </tr>
                         </tbody>
                         </table>
@@ -343,7 +343,7 @@ function edittext1()
                         _temp = _temp.replace('[_HLINE]=','</pre><pre align = left>==========================================</pre>')
                         _temp = _temp.replace('[_LIST]{/상품명수량구분/}','</pre><pre align = left> 스테이크                  1        주문</pre>')
                         _temp = _temp.replace('[_LIST]{/상품명수량금액/}','</pre><pre align = left> 스테이크                 1        30,000</pre>')
-                        _temp = _temp.replace('[_LIST]{/항목명금액_간이영수증/}','</pre><pre align = left> 단체식대                          30,000</pre>')
+                        _temp = _temp.replace('[_LIST]{/항목명금액_간이영수증/}','</pre><pre align = left> 단체식대                        30,000</pre>')
                         _temp = _temp.replace('[_CNF]','</pre><pre align = left>-----------------절취선-------------------</pre>')
 
                 }

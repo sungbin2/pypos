@@ -24,6 +24,7 @@ import server.routes.info.store1
 import server.routes.info.storepwd
 import server.routes.dashboard.window
 import server.routes.dashboard.weather
+import server.routes.dashboard.mobile
 
 import server.routes.info.staff
 import server.routes.info.staff1

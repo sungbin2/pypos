@@ -238,7 +238,6 @@ function load()
 
         }).done(function () {
 
-            resetdata = "";
             posno = [];
             for ( each in _data) {
                 posno.push(each)
@@ -539,7 +538,6 @@ function save(a) {
                 }
             }
         }
-        console.log(_data)
         $.ajax({
             method: "POST",
             url: (_url + '/' + id ),

@@ -12,28 +12,7 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid.min.css') }}  " />
 <link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid-jennifer.min.css') }}  " />
 
-
-
-    <!--<div class="ui two column doubling stackable grid container">-->
-      <!--<div class="column">-->
-         <!--<p>공지사항</p>-->
-         <!--<p></p>-->
-      <!--</div>-->
-      <!--<div class="column">-->
-           <!--<p>날씨</p>-->
-           <!--<p></p>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="ui one column doubling stackable grid container">-->
-      <!--<div class="column">-->
-         <!--<p>매출분석</p>-->
-         <!--<p></p>-->
-      <!--</div>-->
-      <!--<div class="column">-->
-         <!--<p>기타정보</p>-->
-         <!--<p></p>-->
-      <!--</div>-->
-    <!--</div>-->
+<script src="{{ url_for('static',filename='weather.json') }}"></script>
 
 
 <table width='100%' height='1' border='0' cellpadding='0' cellspacing='0'><tr valign='top'><td width='20'  nowrap></td><td width='55%' nowrap><table width='100%' border='0' cellpadding='0' cellspacing='0' background='' >
@@ -162,34 +141,6 @@
         document.getElementById('wtm').innerHTML =  nowMonth + '월' + nowDate + '일 ,' + week[nowDay];
         document.getElementById('wtm1').innerHTML =  nowMonth + '월' + nowDate1 + '일 ,' + week[nowDay1];
 
-        <!--$.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=15e980b9799005d97ba860340b7b85c4",function(json){-->
-           <!--_data = json;_data1 = json;-->
-        <!--}).done(function () {-->
-        <!--var a = _data.main.temp_min - 273.15;-->
-        <!--document.getElementById('wmin').innerHTML =  a.toFixed(1)-->
-        <!--var b = _data.main.temp_max - 273.15;-->
-        <!--document.getElementById('wmax').innerHTML =  b.toFixed(1)-->
-        <!--document.getElementById('wdesc').innerHTML = _data.weather[0].description;-->
-
-        <!--var imgURL = "http://openweathermap.org/img/w/" + _data.weather[0].icon + ".png";-->
- <!--$("#wimg").attr("src", imgURL);-->
-
-        <!--var c = _data1.main.temp_min - 273.15;-->
-        <!--document.getElementById('wmin1').innerHTML =  c.toFixed(1)-->
-        <!--var d = _data1.main.temp_max - 273.15;-->
-        <!--document.getElementById('wmax1').innerHTML =  d.toFixed(1)-->
-        <!--document.getElementById('wdesc1').innerHTML = _data1.weather[0].description;-->
-
-        <!--var imgURL1 = "http://openweathermap.org/img/w/" + _data1.weather[0].icon + ".png";-->
-         <!--$("#wimg1").attr("src", imgURL1);-->
-         <!--};-->
-
-
-
-
-        <!--console.log('success');-->
-
-        <!--})-->
 
 var callbackFunction = function(data) {
     var forecast = data.query.results.channel;
@@ -198,9 +149,6 @@ var callbackFunction = function(data) {
     document.getElementById('wmax').innerHTML =  forecast[0].item.forecast.high
     document.getElementById('wmin1').innerHTML = forecast[1].item.forecast.low
     document.getElementById('wmax1').innerHTML = forecast[1].item.forecast.high
-    var names = {};
-    var name1 = "";
-    var names = {"Partly Cloudy": "대체로 맑음" , "Mostly Sunny" : "대체로 맑음" ,"Mostly Cloudy" : "대체로 맑음" ,"Thunderstorms" : "뇌우", "Cloudy" : "흐림" }
     document.getElementById('wdesc1').innerHTML = forecast[1].item.forecast.text
     document.getElementById('wdesc').innerHTML = forecast[0].item.forecast.text
     for( i in names ) {
@@ -226,9 +174,6 @@ var callbackFunction = function(data) {
 
 
 <script>
-<!--opener.parent.window.close();-->
-<!--opener.open('about:blank','_self').close();-->
-
 
 var render1_fg = false
 var render2_fg = false
