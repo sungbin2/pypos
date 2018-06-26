@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% from 'macro/form.html' import input,radio,select with context %}
+
+    <div class="ui grid">
+        <div class="four wide column">
+            <div class="ui huge header">
+                기업정보
+            </div>
+        </div>
+        <div class="twelve wide column">
+            <table id="table_1" class="table classic" style="position: relative;">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Location</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <script data-jui="#table_1" data-tpl="row" type="text/template">
+                <tr>
+                    <td><!= isdel !></td>
+                    <td><!= isdel !></td>
+                    <td><!= isdel !></td>
+                </tr>
+            </script>
+        </div>
+    </div>
+    <br/>
+    <br/>
+
+
+    <script>
+        var _data, table_1;
+
+        jui.ready(["grid.table"], function (table) {
+            table_1 = table("#table_1");
+        });
+
+        $.getJSON("{{ url_for('_info_staff_list') }}", function (json) {
+            _data = json;
+        }).done(function () {
+            console.log('success');
+            table_1.update(_data);
+        })
+
+
+    </script>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% from 'macro/form.html' import title_block,modal_modify,listing,listing_edit with context %}
+    {% call title_block(item['가게명'],'가게정보','coffee') %}
+        {{ listing() }}
+        {% if no==sess['store'] %}
+            {{ modal_modify('가게정보 수정: '+item['가게명'], url_for('_info_store', shop_id=sess['store'])) }}
+        {% endif %}
+    {% endcall %}
+{% endblock %}
