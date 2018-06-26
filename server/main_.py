@@ -14,22 +14,32 @@ orm = c.ORM('postgresql',
                 'password': '13a0a8e64e00c2cdd96ee6181b7bbd8627e97b50519320bb7b8ac81ed15957',
                 'host': '175.194.100.73',
                 'port': '55432',
-                'db': 'modernpos',
+                'db': 'moderntest',
             })
 
 import server.routes.login.login
 import server.routes.dashboard.dashboard
 import server.routes.info.store
+import server.routes.info.store1
+import server.routes.info.storepwd
+import server.routes.dashboard.window
+import server.routes.dashboard.weather
+
 import server.routes.info.staff
+import server.routes.info.staff1
+
 
 import server.routes.system.network
 import server.routes.system.printer
 import server.routes.system.config
+import server.routes.system.config1
+import server.routes.system.receiptform
+
+
 import server.routes.system.tablegroup
 import server.routes.system.table
 import server.routes.system.menugroup
 import server.routes.system.menu
-import server.routes.system.receiptform
 
 import server.routes.goods.itemgroup
 import server.routes.goods.item
@@ -37,7 +47,6 @@ import server.routes.goods.item
 free_for_all = [
     '_login',
     '_getsession',
-    '_autosession',
 ]
 
 
@@ -58,31 +67,6 @@ def before_request():
         return c.redirect(c.url_for('_login'))
 
 
-@app.route('/autosession', methods=['GET'])
-def _autosession():
-    if c.is_GET():
-        with orm.session_scope() as ss:  # type:c.typeof_Session
-            rtn = 'SUCCESS'
-            d = c.data_GET()
-            ip = c.request.remote_addr
-            print(ip)
-            print(d)
-            id = d['id']
-            pw = d['pw']
-
-            account = ss.query(orm.account) \
-                .filter_by(아이디=id) \
-                .first()
-            if account is None:
-                rtn = 'FAILED'
-            elif account is None:
-                rtn = 'FAILED'
-            else:
-                c.account_session(orm, account, c.session)
-                return c.redirect(c.url_for('hello_world'))
-            return rtn
-
-
 @app.route('/getsession', methods=['POST'])
 def _getsession():
     if c.is_POST():
@@ -91,7 +75,7 @@ def _getsession():
             id = c.data_POST('id')
             pw = c.data_POST('pw')
 
-            account = ss.query(orm.account) \
+            account = ss.query(orm.계정) \
                 .filter_by(아이디=id) \
                 .filter_by(패스워드=pw) \
                 .first()
@@ -106,9 +90,9 @@ def make_line(tbl, entire):
     with orm.session_scope() as ss:  # type:c.typeof_Session
         l = ss.query(tbl)
         if tbl == orm.정보_가게:
-            l = l.filter_by(i=c.session['shop_id'])
+            l = l.filter_by(no=c.session['store'])
         else:
-            l = l.filter_by(s=c.session['shop_id'])
+            l = l.filter_by(s=c.session['store'])
         l = l.all() if entire else l.filter_by(issync=None).all()
         return c.for_json_l(l)
 
@@ -121,14 +105,15 @@ def _downloaddb():
             d = {}
             for tn in orm.tbln_list_:
                 _l = tn.split('_')
-                if _l[0] in ['setting', '정보', '상품']:
+                if _l[0] in ['settings', '정보', '상품']:
                     d[tn] = make_line(getattr(orm, tn), opt)
             cnt = 0
             for val in d.values():
                 cnt += len(val)
             d['cnt'] = cnt
-            history = c.newitem_web(orm.syncdown_log, c.session)
-            history.j['항목수'] = cnt
+            history = c.newitem_web(orm.히스토리_동기화_설정, c.session)
+            history.발생시점 = c.now_()
+            history.항목수 = cnt
             ss.add(history)
             return c.jsonify(d)
     elif c.is_POST():
@@ -136,17 +121,17 @@ def _downloaddb():
             rtn = 'SUCCESS'
             cnt_ = int(c.data_POST('cnt_'))
 
-            q1 = ss.query(orm.syncdown_log) \
-                .filter_by(s=c.session['shop_id']) \
-                .order_by(ss.desc(orm.syncdown_log.ct)) \
+            q1 = ss.query(orm.히스토리_동기화_설정) \
+                .filter_by(s=c.session['store']) \
+                .order_by(ss.desc(orm.히스토리_동기화_설정.발생시점)) \
                 .first()
-            if q1.j['항목수'] != cnt_:
+            if q1.항목수 != cnt_:
                 rtn = 'FAILED'
             else:
                 d = {}
                 for tn in orm.tbln_list_:
                     _l = tn.split('_')
-                    if _l[0] in ['setting', '정보', '상품']:
+                    if _l[0] in ['settings', '정보', '상품']:
                         d[tn] = make_line(getattr(orm, tn), False)
                 cnt = 0
                 now_ = c.now_()
@@ -194,3 +179,5 @@ def _uploaddb():
                 rtn = 'DIFFERENT'
 
             return rtn
+
+

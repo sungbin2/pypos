@@ -5,7 +5,7 @@ import werkzeug.serving
 
 sys.path.append(os.getcwd())
 
-framework = sys.argv[1]
+framework = 'flask'
 _host = '0.0.0.0'
 _port = 8080
 
