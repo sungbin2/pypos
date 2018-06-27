@@ -1,72 +1,1502 @@
 {% extends "layout.html" %}
 {% block body %}
-    {% from 'macro/form2.html' import TITLE_BLOCK,FORM,FORM_MODAL %}
-    {% from 'macro/table.html' import THEAD,TBODY,GETLIST %}
+<HTML><HEAD><META content="IE=5.0000" http-equiv="X-UA-Compatible">
+<TITLE></TITLE><LINK rel=stylesheet type=text/css href="/common/css/bok.css">
+<SCRIPT src="/common/js/common.js"></SCRIPT>
 
-    {% set HEADER_ = '네트워크' %}
-    {% set URL_ = url_for('_system_network') %}
+<SCRIPT src="/common/js/udfMainFrm.js?ver=20180418"></SCRIPT>
 
+<SCRIPT src="/common/js/IBSheetInfo.js"></SCRIPT>
 
+<SCRIPT src="/common/js/IBSheetConfig.js"></SCRIPT>
 
-    {% from 'macro/form.html'    import title_block %}
-    {% from 'macro/table.html'    import tabling with context %}
-    {% from 'macro/table_list.html' import table_list with context %}
-    {% from 'macro/table_modal.html' import table_modal with context %}
-    {% from 'macro/form.html' import listing_edit with context %}
+<SCRIPT src="/common/js/showitem.js"></SCRIPT>
+<!-- <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script> -->
+<SCRIPT language=javascript> if(top.MainFrm) { set_url('/master/product/prod_jump010.jsp'); }</SCRIPT>
 
+<SCRIPT language=javascript>
+function fnSessionCheck()
+{
+    if(top.SessionForm
+    && top.SessionForm.user_id)
+    {
+        if(top.SessionForm.user_id.value != "s92694")
+        {
+            alert("같은 세션으로 다른 사용자로 로그인 하였습니다.\n다시 로그인 하시기 바랍니다.");
+            top.close();
+        }
+    }
+    else
+    if(opener
+    && opener.closed == false
+    && opener.top.SessionForm
+    && opener.top.SessionForm.user_id)
+    {
+        if(opener.top.SessionForm.user_id.value != "s92694")
+        {
+            alert("같은 세션으로 다른 사용자로 로그인 하였습니다.\n다시 로그인 하시기 바랍니다.");
+            top.close();
+            opener.top.close();
+        }
+    }
+    else
+    if(opener
+    && opener.closed == false
+    && opener.opener
+    && opener.opener.closed == false
+    && opener.opener.top.SessionForm
+    && opener.opener.top.SessionForm.user_id)
+    {
+        if(opener.opener.top.SessionForm.user_id.value != "s92694")
+        {
+            alert("같은 세션으로 다른 사용자로 로그인 하였습니다.\n다시 로그인 하시기 바랍니다.");
+            top.close();
+            opener.top.close();
+            opener.opener.top.close();
+        }
+    }
+}
+setTimeout("fnSessionCheck()",0);
 
-    {% call title_block('상품: 품목','','shopping basket') %}
+if(window.name == 'MainFrm' && parent.SessionForm.pass_ch_option.value == '1')
+{
+    showModalDialog('/master/emp/passwd010.jsp?popup_fg=Y'
+                   ,self
+                   ,'dialogWidth:400px;dialogHeight:340px;dialogTop:100px;dialogLeft:100px;status:no;resizable:yes;scroll:no;');
+}
+</SCRIPT>
 
-        {{ table_list('상품: 품목',url_for('_goods_item'),False) }}
-        {{ table_modal('상품: 품목',url_for('_goods_item'),False) }}
+<SCRIPT language=javascript>
+function fnProdCopyPopup(HD_SHOP_CD, HD_SHOP_NM, SHOP_CD, PGM_TYPE_FG, BRAND_MGR_YN)
+{
+    showModalDialog('/sysadmin/shop/shop012_prod_copy.jsp'
+                   +'?HD_SHOP_CD='+HD_SHOP_CD
+                   +'&HD_SHOP_NM='+HD_SHOP_NM
+                   +'&SHOP_CD='+SHOP_CD
+                   +'&PGM_TYPE_FG='+PGM_TYPE_FG
+                   +'&BRAND_MGR_YN='+BRAND_MGR_YN
+                   ,self
+                   ,'dialogWidth:500px;dialogHeight:350px;dialogTop:400px;dialogLeft:400px;status:no;resizable:no;scroll:no;');
+}
+</SCRIPT>
 
+<SCRIPT src="/common/js/udfPage.js"></SCRIPT>
+</HEAD>
+<BODY><LINK rel=stylesheet type=text/css href="/common/css/bok.css">
+<SCRIPT src="/common/js/common.js"></SCRIPT>
 
+<SCRIPT src="/common/js/udfMainFrm.js?ver=20180418"></SCRIPT>
 
+<SCRIPT src="/common/js/IBSheetInfo.js"></SCRIPT>
 
-    {% endcall %}
-{% endblock %}
+<SCRIPT src="/common/js/IBSheetConfig.js"></SCRIPT>
 
+<SCRIPT src="/common/js/showitem.js"></SCRIPT>
+<!-- <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script> -->
+<SCRIPT language=javascript> if(top.MainFrm) { set_url('/master/product/prod_jump010.jsp'); }</SCRIPT>
 
-{#{% if each['name']=='분류' %}#}
-{% if 'name'=='분류' %}
-    <div class="ui fluid selection dropdown" id="dropdown_gl">
-        <i class="dropdown icon"></i>
-        <div class="default text">전체</div>
-        <div class="menu">
-            <div class="item" data-value="전체">전체</div>
-            {% for each_l in gl %}
-                <div class="item" data-value="{{ each_l }}">{{ each_l }}</div>
-            {% endfor %}
-        </div>
-    </div>
-{% else %}
-    {{ each['tag'] if each['tag'] else each['name'] }}
-{% endif %}
+<SCRIPT language=javascript>
+function fnSessionCheck()
+{
+    if(top.SessionForm
+    && top.SessionForm.user_id)
+    {
+        if(top.SessionForm.user_id.value != "s92694")
+        {
+            alert("같은 세션으로 다른 사용자로 로그인 하였습니다.\n다시 로그인 하시기 바랍니다.");
+            top.close();
+        }
+    }
+    else
+    if(opener
+    && opener.closed == false
+    && opener.top.SessionForm
+    && opener.top.SessionForm.user_id)
+    {
+        if(opener.top.SessionForm.user_id.value != "s92694")
+        {
+            alert("같은 세션으로 다른 사용자로 로그인 하였습니다.\n다시 로그인 하시기 바랍니다.");
+            top.close();
+            opener.top.close();
+        }
+    }
+    else
+    if(opener
+    && opener.closed == false
+    && opener.opener
+    && opener.opener.closed == false
+    && opener.opener.top.SessionForm
+    && opener.opener.top.SessionForm.user_id)
+    {
+        if(opener.opener.top.SessionForm.user_id.value != "s92694")
+        {
+            alert("같은 세션으로 다른 사용자로 로그인 하였습니다.\n다시 로그인 하시기 바랍니다.");
+            top.close();
+            opener.top.close();
+            opener.opener.top.close();
+        }
+    }
+}
+setTimeout("fnSessionCheck()",0);
 
+if(window.name == 'MainFrm' && parent.SessionForm.pass_ch_option.value == '1')
+{
+    showModalDialog('/master/emp/passwd010.jsp?popup_fg=Y'
+                   ,self
+                   ,'dialogWidth:400px;dialogHeight:340px;dialogTop:100px;dialogLeft:100px;status:no;resizable:yes;scroll:no;');
+}
+</SCRIPT>
 
-<script>
-    function juitbl_update2(value) {
-        var for_show = [];
-        for (var i = 0; i < ichae_net.juitbl_data.length; i++) {
-            if (ichae_net.juitbl_data[i].enabled) {
-                if (value == '전체' || ichae_net.juitbl_data[i].분류 == value) {
-                    ichae_net.juitbl_data[i].idx = i;
-                    for_show.push(ichae_net.juitbl_data[i]);
+<SCRIPT>if(parent && parent.HistoryFrm && parent.HistoryFrm.MainFrmPage && parent.HistoryFrm.MainFrmPage.pgm_nm && parent.HistoryFrm.MainFrmPage.pgm_nm.value != '') {document.write("<table width='100%' border='0' cellpadding='0' cellspacing='0' background='/image/title_bg.gif'><tr height='30'><td width='10'></td><td>  <table border='0' cellpadding='0' cellspacing='0'>  <tr>  <td><img src='/image/title_icon.gif'></td>  <td width='10'></td>  <td>    <table border='0' cellpadding='0' cellspacing='0'><tr><td height='3'></td></tr><tr>    <td><font color='#FFFFFF' style='font-size:14px;'><b>"+parent.HistoryFrm.MainFrmPage.pgm_nm.value+"</b></font></td>    </tr></table>  </td>  <td width='40'></td>  <td><span id='span_mymenu'></span></td>  <td width='10'></td>  <td><img src='/image/icon01/btn_column.gif'  onclick='parent.set_menu_item();' style='cursor:hand;'></td>  </tr>  </table></td><td align='right'><font color='#FFFFFF'>"+parent.HistoryFrm.MainFrmPage.pgm_lcls_nm.value+((parent.HistoryFrm.MainFrmPage.pgm_mcls_nm.value == '') ? '' : ' &gt; '+parent.HistoryFrm.MainFrmPage.pgm_mcls_nm.value)+' &gt; '+parent.HistoryFrm.MainFrmPage.pgm_nm.value+"</font></td><td width='10'></td></tr></table>");fnSetPgmId(parent.HistoryFrm.MainFrmPage.pgm_id.value);document.getElementById('span_mymenu').innerHTML = parent.HistoryFrm.getMyMenuStr(parent.HistoryFrm.MainFrmPage.pgm_id.value);}</SCRIPT>
+
+<TABLE cellSpacing=0 cellPadding=0 width="100%" background=/image/title_bg.gif border=0>
+<TBODY>
+<TR height=30>
+<TD width=10></TD>
+<TD>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR>
+<TD><IMG src="/image/title_icon.gif"></TD>
+<TD width=10></TD>
+<TD>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR>
+<TD height=3></TD></TR>
+<TR>
+<TD><FONT style="FONT-SIZE: 14px" color=#ffffff><B>상품등록</B></FONT></TD></TR></TBODY></TABLE></TD>
+<TD width=40></TD>
+<TD><SPAN id=span_mymenu><IMG onclick="top.HistoryFrm.fnEditMyMenu('Y','000179')" style="CURSOR: hand" src="https://asp.netusys.com/image/icon01/mymenu_plus.gif"></SPAN></TD>
+<TD width=10></TD>
+<TD><IMG onclick=parent.set_menu_item(); style="CURSOR: hand" src="/image/icon01/btn_column.gif"></TD></TR></TBODY></TABLE></TD>
+<TD align=right><FONT color=#ffffff>기초관리 &gt; 상품관리 &gt; 상품등록</FONT></TD>
+<TD width=10></TD></TR></TBODY></TABLE>
+<SCRIPT src="/common/js/select_box.js"></SCRIPT>
+
+<FORM name=formAJAX action=/common/jsp/select_qry.jsp><INPUT id=select_source type=hidden value=/master/product/prod_jump010.jsp name=select_source> <INPUT id=select_idx size=100 type=hidden value=0 name=select_idx> <INPUT id=select_objidx size=100 type=hidden value=0 name=select_objidx> <INPUT id=select_name size=100 type=hidden value=s_VENDOR_CD name=select_name> <INPUT id=select_value size=100 type=hidden name=select_value> <INPUT id=select_option size=100 type=hidden value=% name=select_option> <INPUT id=select_query size=100 type=hidden value=SP_SCD_VENDR_T_S01♪C2♪S92694⊥0 name=select_query> <INPUT id=select_title size=100 type=hidden name=select_title> <INPUT id=select_change size=100 type=hidden name=select_change> <INPUT id=select_etc size=100 type=hidden name=select_etc> </FORM>
+<SCRIPT src="/common/js/calendar2.js"></SCRIPT>
+
+<DIV id=cal_div2 style="OVERFLOW: hidden; POSITION: absolute; Z-INDEX: 99; DISPLAY: none" name="cal_div2">
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR>
+<TD><IFRAME id=cal_frm1 height=199 marginHeight=0 src="/common/jsp/calendar.html" frameBorder=0 width=162 name=cal_frm1 marginWidth=0 scrolling=no></IFRAME></TD>
+<TD><IFRAME height=197 marginHeight=0 src="/common/jsp/blank.htm" frameBorder=0 width=2 marginWidth=0 scrolling=no></IFRAME></TD>
+<TD><IFRAME id=cal_frm2 height=199 marginHeight=0 src="/common/jsp/calendar.html" frameBorder=0 width=162 name=cal_frm2 marginWidth=0 scrolling=no></IFRAME></TD></TR>
+<TR>
+<TD colSpan=3><IFRAME id=cal_close_frm height=28 marginHeight=0 src="/common/jsp/calendar_close.jsp?target=2" frameBorder=0 width=326 name=cal_close_frm marginWidth=0 scrolling=no></IFRAME></TD></TR></TBODY></TABLE></DIV>
+<SCRIPT language=javascript>
+
+function init_sheet()
+{
+    //mySheet1 = fnGetObjectIdName("mySheet1");
+    with(mySheet1)
+    {
+        //SheetWidth = document.body.clientWidth - 25;
+        InitHostInfo(location.hostname, location.port, "");
+        MergeSheet = msHeaderOnly;
+        Editable = true;
+        InitRowInfo( 1, 1, 10);
+        InitColumnInfo(7, 1, 0, true);
+        InitHeadRow(0,"상태||코드|명|브랜드|세트상품구분|입력구분");
+        //ObjId.InitDataProperty( DataRow, DataCol, [DataType], [Width], [DataAlign], [ColMerge], [SaveName], [KeyField]
+        //                      , [CalcuLogic], [DataFormat],[PointCount], [UpdateEdit], [InsertEdit], [EditLen], [FullInput]
+        //                      , [SortEnable],[ToolTip], [AllCheck], [SaveStatus], [FormatFix])
+        var i = 0;
+        InitDataProperty(0,i++, dtHiddenStatus, 0, daCenter, false,"sStatus");
+        InitDataProperty(0,i++, dtDelCheck    , 0, daCenter, false,"sDelete");
+        InitDataProperty(0,i++, dtData        , 0, daCenter, false,"PROD_CD"       , false , "", dfEngKey, 0, false, false);
+        InitDataProperty(0,i++, dtData        , 0, daLeft  , false,"PROD_NM"       , false , "", dfHanKey, 0, false, false);
+        InitDataProperty(0,i++, dtHidden      , 0, daLeft  , false,"BRAND_CD"      , false , "", dfHanKey, 0, false, false);
+        InitDataProperty(0,i++, dtHidden      , 0, daLeft  , false,"SET_PROD_FG"   , false , "", dfHanKey, 0, false, false);
+        InitDataProperty(0,i++, dtHidden      , 0, daLeft  , false,"INS_FG"        , false , "", dfHanKey, 0, false, false);
+        Visible = true;
+    }
+}
+
+function doAction(str, idx)
+{
+    document.form1.S_METHOD.value = str;
+    document.form1.SHEETSEQ.value = idx;
+    sheet_obj = fnGetObjectIdName("mySheet"+idx);
+    switch(str)
+    {
+        case "search":
+            if(!valueCheck(document.form1.s_PROD_CD, '상품코드', 'Char'  ,  0,  26)) { return false; }
+            if(!valueCheck(document.form1.s_PROD_NM, '상품명'  , 'Char'  ,  0,  50)) { return false; }
+            if(!valueCheck(document.form1.s_BAR_CD,  '바코드'  , 'Char'  ,  0,  26)) { return false; }
+            if(!jsSaveName(form1, sheet_obj)) { return false; }
+            var param = FormQueryStringEnc(document.form1, sheet_obj);
+            sheet_obj.ShowDebugMsg = false;
+            sheet_obj.DoSearch4Post("ddd.sheetAction",param);
+            fn_ResizeColWidth(sheet_obj,[0, 25, 80, 150, 0, 0, 0]);
+
+            if(document.form1.p_PROD_CD.value != '')
+            {
+                var matchingOk = 'N';
+                var p_PROD_CD = document.form1.p_PROD_CD.value
+                for(var i = sheet_obj.HeaderRows; i < sheet_obj.HeaderRows+sheet_obj.RowCount; i++)
+                {
+                    if(sheet_obj.CellValue(i,'PROD_CD') == p_PROD_CD)
+                    {
+                        sheet_obj.SelectCell(i,'PROD_CD');
+                        iframe1.location.href='prod011.jsp?PROD_CD='+sheet_obj.CellValue(i,'PROD_CD');
+                        matchingOk = 'Y';
+                        break;
+                    }
+                }
+                if(matchingOk == 'N')
+                {
+                    document.form1.p_PROD_CD.value = '';
+                    iframe1.location.href='prod011.jsp?PROD_CD=';
                 }
             }
+            else
+            {
+                if((iframe1)
+                && (iframe1.iframe2)
+                && (iframe1.iframe2.form1)
+                && (iframe1.iframe2.form1.PROD_CD)
+                && (iframe1.iframe2.form1.PROD_CD.value == '')) {}
+                else
+                {
+                    iframe1.location.href='prod011.jsp?PROD_CD=';
+                }
+            }
+            sheet_obj.ColFontColor('PROD_CD') = sheet_obj.RgbColor(0,0,255);
+
+
+            for(var i = sheet_obj.HeaderRows; i < sheet_obj.HeaderRows+sheet_obj.RowCount; i++)
+            {
+                if(sheet_obj.CellValue(i,"INS_FG") != 'S')
+                {
+                    sheet_obj.RowEditable(i) = false;
+                }
+            }
+
+
+            //조회 끝나고 나서 페이지 인덱스를 생성
+            var sTD = MakePageButton("document.form1.page_no"        // 페이징 인덱스를 관리할 OBJ
+                                    ,"5"                             // 페이지 목록 나열 갯수
+                                    ,document.form1.page_size.value  // 한 페이지당 레코드 겟수
+                                    ,document.form1.page_no.value    // 현재 페이지의 인덱스
+                                    ,sheet_obj.EtcData("total_rows") // 총레코드갯수
+                                    );
+            fnGetObjectIdName('PAGEBUTTON').innerHTML = sTD;
+
+            sheet_obj.CheckAll("sDelete") = 0;
+            break;
+
+        case "delete":
+            if(sheet_obj.CheckedRows("sDelete") < 1) { return alert('처리할 내역이 없습니다.'), false; }
+            else
+            {
+                // 일괄삭제 모달창 띄움
+                showModalDialog('prod010_delForm.jsp',self,'dialogWidth:800px;dialogHeight:400px;status:no;resizable:no;scroll:no;help:no;edge:sunken;');
+                // 모달창 닫히면 페이지번호를 1로 셋팅 후 재조회
+                document.form1.page_no.value='1';
+                doAction('search','1');
+            }
+            break;
+    }
+
+    if(sheet_obj.EtcData("retMsg") && sheet_obj.EtcData("retMsg") != '' && sheet_obj.EtcData("retMsg") != '0000')
+    {
+        ErrorShow(sheet_obj.EtcData("retMsg")+"╋"+'https://asp.netusys.com/master/product/prod_jump010.jsp', "popup", "");
+    }
+}
+
+function fnRegDateOption()
+{
+    if(document.form1.op_regdate.value == 'Y')  fnGetObjectIdName('span_regdate').style.display = 'inline';
+    else                                        fnGetObjectIdName('span_regdate').style.display = 'none';
+}
+function fnOpenClsWin()
+{
+    showModalDialog('baseinfo013.jsp?PopFg=Y',self,'dialogWidth:320px;dialogHeight:450px;status:no;resizable:no;scroll:no;help:no;edge:sunken;');
+}
+/////////////////////////////////////// window.onload ///////////////////////////////////////
+window.onload = function() { setTimeout("onloadFunctions()",0); }; function onloadFunctions()
+{
+    init_sheet(); set_item();
+    fnResize();
+    //doAction('search',1);
+    iframe1.location.href='prod011.jsp?PROD_CD=';
+}
+/////////////////////////////////////// window.onresize ///////////////////////////////////////
+window.onresize = function()
+{
+    fnResize();
+}
+/////////////////////////////////////// fnResize ///////////////////////////////////////
+function fnResize()
+{
+    setObjHeight('mySheet1', 40);
+    setObjHeight('iframe1' , 40);
+    fn_ResizeColWidth(mySheet1,[0, 25, 80, 150, 0, 0, 0]);
+}
+</SCRIPT>
+
+<SCRIPT language=javascript for=mySheet1 event="OnMouseMove(Button, Shift, X, Y)">
+if(MouseRow >= HeaderRows && MouseRow < HeaderRows+RowCount)
+{
+    if(MouseCol == SaveNameCol('PROD_CD'))   MousePointer = "Hand";
+}
+</SCRIPT>
+
+<SCRIPT language=javascript for=mySheet1 event=OnClick(Row,Col,Value)>
+if(MouseCol == SaveNameCol('PROD_CD'))   iframe1.location.href='prod011.jsp?PROD_CD='+CellValue(Row,'PROD_CD');
+</SCRIPT>
+
+<FORM name=form1><!-- IBFrame 을 위한 변수 선언 (필수)--><INPUT type=hidden value=master.product.prod010 name=S_CONTROLLER> <INPUT type=hidden name=S_METHOD> <INPUT type=hidden name=S_SAVENAME> <!-- IBFrame 을 위한 변수 선언 (선택)--><INPUT type=hidden name=S_FORWARD> <INPUT type=hidden name=S_TREECOL> <INPUT type=hidden name=SHEETSEQ> <INPUT type=hidden name=p_PROD_CD> <INPUT type=hidden value=1 name=page_no>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#e9e9e9 border=0>
+<TBODY>
+<TR height=2>
+<TD colSpan=3></TD></TR>
+<TR height=27>
+<TD width=10></TD>
+<TD>
+<TABLE height=2 cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR>
+<TD><IMG src="/image/s_icon.gif"> <SELECT onchange=fnRegDateOption(); name=op_regdate> <OPTION selected value=N>조건없음</OPTION> <OPTION value=Y>등록일자</OPTION></SELECT> <SPAN id=span_regdate style="DISPLAY: none"><INPUT onclick=fnShowCal2(1); id=date1_1 class=read1hc style="CURSOR: hand" readOnly size=10 value=2018-06-27 name=date1_1> - <INPUT onclick=fnShowCal2(1); id=date1_2 class=read1hc style="CURSOR: hand" readOnly size=10 value=2018-06-27 name=date1_2> <IMG onclick=fnShowCal2(1); style="CURSOR: hand" src="/image/calendar/calendar_btn.gif"><INPUT id=date_period1 type=hidden value=366 name=date_period1></SPAN></TD>
+<TD width=10></TD>
+<TD><IMG src="/image/s_icon.gif"> 코드 <INPUT class=input1hc onkeydown="if(event.keyCode == 13) { document.form1.p_PROD_CD.value = ''; document.form1.page_no.value='1'; doAction('search','1'); }" size=12 name=s_PROD_CD></TD>
+<TD width=10></TD>
+<TD><IMG src="/image/s_icon.gif"> 명 <INPUT class="input1h imeHan" onkeydown="if(event.keyCode == 13) { document.form1.p_PROD_CD.value = ''; document.form1.page_no.value='1'; doAction('search','1'); }" size=12 name=s_PROD_NM></TD>
+<TD width=10></TD>
+<TD><IMG src="/image/s_icon.gif"> 바코드 <INPUT onkeypress="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1'); }" onblur="" class="input1hc imeEng" maxLength=26 size=13 name=s_BAR_CD></TD>
+<TD width=10></TD>
+<TD><IMG src="/image/s_icon.gif"> 검색줄수 <INPUT onkeypress="if(event.keyCode == 13) { document.form1.page_no.value='1'; doAction('search','1'); }" class=input1hr size=5 value=500 name=page_size></TD>
+<TD width=10></TD>
+<TD>
+<TABLE onclick="document.form1.p_PROD_CD.value = ''; document.form1.page_no.value='1'; doAction('search','1');" style="CURSOR: pointer" cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR vAlign=middle>
+<TD><IMG id=btn_l_bg src="/image/btn_black_l_bg.gif"></TD>
+<TD background=/image/btn_black_c_bg.gif><IMG src="/image/blank.gif" width=4 height=13><FONT color=#ffffff>조회</FONT><IMG src="/image/blank.gif" width=4 height=13></TD>
+<TD><IMG id=btn_r_bg src="/image/btn_black_r_bg.gif"></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<TD align=right>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR>
+<TD>
+<TABLE onclick="doAction('delete','1');" style="CURSOR: pointer" cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR vAlign=middle>
+<TD><IMG id=btn_l_bg src="/image/btn_red_l_bg.gif"></TD>
+<TD background=/image/btn_red_c_bg.gif><IMG src="/image/blank.gif" width=4 height=13><FONT color=#ffffff>일괄삭제</FONT><IMG src="/image/blank.gif" width=4 height=13></TD>
+<TD><IMG id=btn_r_bg src="/image/btn_red_r_bg.gif"></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE height=2 cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD align=left>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR>
+<TD><IMG src="/image/s_icon.gif"> 분류조회
+<DIV style="DISPLAY: none"><INPUT type=hidden name=LCLS_CD><INPUT type=hidden name=MCLS_CD><INPUT type=hidden name=SCLS_CD><INPUT type=hidden name=SIZE_CLS_CD></DIV><INPUT onclick="prod_cls_tree_win('0','S','S92694')" id=cls_text class=read1h style="CURSOR: hand" readOnly size=30 value=전체 name=cls_text>
+<DIV id=span_cls style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; Z-INDEX: 99; DISPLAY: none"></DIV></TD>
+<TD style="DISPLAY: none"><INPUT type=hidden name=BrandCD></TD>
+<TD width=10></TD>
+<TD><IMG src="/image/s_icon.gif"> 거래처
+<SCRIPT>
+select_name[0] = new Array();
+select_value[0] = new Array();
+select_option[0] = new Array();
+select_query[0] = new Array();
+select_title[0] = new Array();
+select_change[0] = new Array();
+select_etc[0] = new Array();
+</SCRIPT>
+ <SPAN id=divAjax_0_s_VENDOR_CD style="OVERFLOW-Y: scroll"><SELECT onchange="ajax_nextload(0,0); " id=SelectObj_0_0 name=s_VENDOR_CD> <OPTION selected value="">-전체-</OPTION> <OPTION value=0001>테스트거래처</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[0][0] = "s_VENDOR_CD";
+select_title[0][0] = "";
+select_value[0][0] = "";
+select_option[0][0] = "%";
+select_query[0][0] = "SP_SCD_VENDR_T_S01♪C2♪S92694⊥0";
+select_change[0][0] = "";
+select_etc[0][0] = "";
+</SCRIPT>
+
+<SCRIPT>
+select_step2(0,0);
+</SCRIPT>
+</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE height=2 cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD></TD></TR></TBODY></TABLE></TD></TD>
+<TD width=10></TD></TR>
+<TR height=2>
+<TD colSpan=3></TD></TR>
+<TR height=1 bgColor=#d6d6d6>
+<TD colSpan=3></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#e9e9e9 border=0>
+<TBODY>
+<TR height=2>
+<TD colSpan=3></TD></TR>
+<TR height=27>
+<TD width=10></TD>
+<TD><IMG src="/image/s_icon.gif"> 상품등록(수정)한 역순으로 조회됩니다. </TD></TD>
+<TD width=10></TD></TR>
+<TR height=2>
+<TD colSpan=3></TD></TR>
+<TR height=1 bgColor=#d6d6d6>
+<TD colSpan=3></TD></TR></TBODY></TABLE></FORM>
+<TABLE height=6 cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR vAlign=top>
+<TD width="25%" noWrap>
+<TABLE height=30 cellSpacing=1 cellPadding=4 width="100%" bgColor=#aaaaaa border=0 name="">
+<TBODY>
+<TR bgColor=#ffffff vAlign=top>
+<TD height="100%" width="100%">
+<SCRIPT>makeIBSheet('mySheet1');</SCRIPT>
+
+<OBJECT id=mySheet1 style="HEIGHT: 417px" name=mySheet1 codeBase="/common/object/IBSheet3.CAB#version=3,4,0,387" classid=CLSID:341FBC5F-2AE4-41B8-BFE5-A03170569A27 width="100%" height="100%"><PARAM NAME="_ExtentX" VALUE="6297"><PARAM NAME="_ExtentY" VALUE="11033"><PARAM NAME="ConfigXml" VALUE="/common/gridstyle/GridConfig.xml"><PARAM NAME="Version" VALUE="3.4.0.387"></OBJECT>
+<SCRIPT>document.getElementById('mySheet1').SetExcelColDialog(0);</SCRIPT>
+</TD></TR></TBODY></TABLE>
+<DIV id=PAGEBUTTON></DIV></TD>
+<TD width=6 noWrap></TD>
+<TD vAlign=top noWrap>
+<TABLE id=TableNm1 cellSpacing=1 cellPadding=4 width="100%" bgColor=#aaaaaa border=0>
+<TBODY>
+<TR bgColor=white>
+<TD >
+
+
+
+
+<div style="HEIGHT: 417px; WIDTH: 100% marginHeight=0 marginWidth=0 overflow:scroll;">
+
+<FORM name=formAJAX action=/common/jsp/select_qry.jsp><INPUT id=select_source type=hidden value=/master/product/prod012.jsp name=select_source> <INPUT id=select_idx size=100 type=hidden value=8 name=select_idx> <INPUT id=select_objidx size=100 type=hidden value=0 name=select_objidx> <INPUT id=select_name size=100 type=hidden value=SDS_GRP_CD name=select_name> <INPUT id=select_value size=100 type=hidden name=select_value> <INPUT id=select_option size=100 type=hidden value=# name=select_option> <INPUT id=select_query size=100 type=hidden value=SP_SCD_SDSGR_T_S01♪C1♪S92694 name=select_query> <INPUT id=select_title size=100 type=hidden name=select_title> <INPUT id=select_change size=100 type=hidden name=select_change> <INPUT id=select_etc size=100 type=hidden name=select_etc> </FORM>
+<SCRIPT src="/common/js/calendar1.js"></SCRIPT>
+
+<DIV id=cal_div1 style="OVERFLOW: hidden; POSITION: absolute; Z-INDEX: 99; DISPLAY: none">
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR>
+<TD><IFRAME id=cal_frm height=199 marginHeight=0 src="/common/jsp/calendar.html" frameBorder=0 width=162 name=cal_frm marginWidth=0 scrolling=no></IFRAME></TD></TR>
+<TR>
+<TD><IFRAME id=cal_close_frm height=28 marginHeight=0 src="/common/jsp/calendar_close.jsp?target=1" frameBorder=0 width=162 name=cal_close_frm marginWidth=0 scrolling=no></IFRAME></TD></TR></TBODY></TABLE></DIV><!-- 입력 값 특수문자 체크 -->
+<SCRIPT src="/common/js/textRegexCheck.js"></SCRIPT>
+
+<SCRIPT language=javascript>
+var isSave = false;
+function fnIsSave(tf)
+{
+    if(tf == true)
+    {
+        isSave = true;
+        fnGetObjectIdName('divSaving').style.display = 'inline';
+    }
+    else
+    {
+        isSave = false;
+        fnGetObjectIdName('divSaving').style.display = 'none';
+    }
+}
+function doSave()
+{
+    if(isSave)
+    {
+        alert('저장이 진행중입니다.');
+        return false;
+    }
+
+    if(document.form1.i_BRAND_CD)
+    {
+        if(!valueCheck(document.form1.i_BRAND_CD      , '브랜드'      , 'EngNum'  , 1, 1)) { return false; }
+        document.form1.BRAND_CD.value = document.form1.i_BRAND_CD.value;
+    }
+
+
+    if(document.form1.PRICE_MGR_FG.value == '0' || document.form1.PRICE_MGR_FG.value == '1') // 정가상품 또는 싯가상품
+    {
+        if(document.form1.PROC_FG.value == 'I' && document.form1.direct_PROD_CD.value == 'Y')
+        {
+            if(!valueCheck(document.form1.PROD_CD  , '상품코드', 'EngNum',  6, 6)) { return false; }
+
+            //본사 또는 단독매장에서 상품코드를 직접입력으로 해두고 영문과숫자를 섞어서 상품코드를 등록하는 경우가 발생.
+            //프리픽스가 있는 경우에만 상품코드 범위를 체크하도록 수정.
+            //20170901 해당내용삭제
+
+            if('9' != '*' && '9' != '9')
+            {
+                if(document.form1.PROD_CD.value < '' || document.form1.PROD_CD.value > '')
+                {
+                    alert('상품코드가 범위를 벗어났습니다.');
+                    document.form1.PROD_CD.select();
+                    return false;
+                }
+            }
+
         }
-        ichae_net.juitbl.update(for_show);
-        var juitbl_td = $("#juitbl td");
-        for (var i = 0; i < juitbl_td.length; i++) {
-            if (juitbl_td[i].innerHTML == "O")
-                juitbl_td[i].innerHTML = '<i class="green check circle icon"></i>';
-            else if (juitbl_td[i].innerHTML == "X")
-                juitbl_td[i].innerHTML = '<i class="red ban icon"></i>';
+    }
+    else if(document.form1.PRICE_MGR_FG.value == '2') // 저울상품
+    {
+        if(document.form1.scale_prod_len.value == '0')
+        {
+            alert('저울상품 관련 환경이 저장되어 있지 않습니다.');
+            return false;
+        }
+        else if(document.form1.PROC_FG.value == 'I')
+        {
+            if(!valueCheck(document.form1.PROD_CD  , '상품코드', 'EngNum',  4, 4)) { return false; }
+            if(document.form1.PROD_CD.value < '0001' || document.form1.PROD_CD.value > '9999')
+            {
+                alert('상품코드가 범위를 벗어났습니다.');
+                document.form1.PROD_CD.select();
+                return false;
+            }
         }
     }
 
 
-    function change_dropdown_gl(value) {
-        juitbl_update2(value);
+    if(!valueCheck(document.form1.PROD_NM       , '상품명'      , 'Char'  ,                 1,                  49)) { return false; }
+    //특수문자 체크
+    if(typeof validtionText == 'function'){
+    	if(!validtionText(document.form1.PROD_NM.value, '상품명')) return false;
     }
-</script>
+
+/*     if(document.form1.PROD_NM.value.indexOf('^') >= 0)
+    {
+        alert('상품명에 꺽쇠(^)를 입력하실 수 없습니다.');
+        return false;
+    } */
+
+    if(document.form1.LCLS_CD.value == '')    { alert("분류를 선택해 주십시오"); return false; }
+    if('1' == '2' && document.form1.MCLS_CD.value == '')    { alert("분류 선택이 잘못되었습니다.\n최하단 분류를 선택해 주세요."); return false; }
+    if('1' == '3' && document.form1.SCLS_CD.value == '')    { alert("분류 선택이 잘못되었습니다.\n최하단 분류를 선택해 주세요."); return false; }
+
+    if(!valueCheck(document.form1.LCLS_CD       , '상품대분류'  , 'EngNum',  2,    2)) { return false; }
+    if(('1' == '2' || '1' == '3') && !valueCheck(document.form1.MCLS_CD, '상품중분류', 'EngNum', 2, 2)) { return false; }
+    if(('1' == '3'                                                          ) && !valueCheck(document.form1.SCLS_CD, '상품소분류', 'EngNum', 2, 2)) { return false; }
+    //if(document.form1.VENDOR_CDS.value == '') { alert('거래처를 선택해 주시기 바랍니다'); return; }
+
+    //if(!valueCheck(document.form1.ORG_PLACE_CD  , '원산지'      , 'EngNum',                  1,                  3)) { return false; }
+    if(!valueCheck(document.form1.SALE_UPRC     , '최초판매단가', 'Int'   ,                  0,           99999999)) { return false; }
+    if(!valueCheck(document.form1.COST_UPRC     , '원가단가'    , 'Real'  ,                  0,           99999999)) { return false; }
+    if(document.form1.BAR_CD.value != '자동생성')
+    {
+        if(!valueCheck(document.form1.BAR_CD        , '바코드'      , 'Char',                  0,                 26)) { return false; }
+    }
+
+    if(document.form1.ORD_UNIT_FG.value == '0' && parseInt(RmComma(document.form1.ORD_UNIT_QTY.value)) != 1)
+    {
+        alert('주문단위를 낱개로 선택하신경우 입수량이 1이 되어야 합니다.');
+        document.form1.ORD_UNIT_QTY.select();
+        return false;
+    }
+
+
+    if(parseInt(RmComma(document.form1.ORD_UNIT_QTY.value)) == 1)
+    {
+        if(document.form1.ORD_UNIT_FG.value != document.form1.STOCK_UNIT_FG.value)
+        {
+            alert('입수량이 1인경우 주문단위와 재고단위를 동일하게 세팅하십시오.');
+            document.form1.STOCK_UNIT_FG.focus();
+            return false;
+        }
+    }
+    else
+    {
+        if(document.form1.ORD_UNIT_FG.value == document.form1.STOCK_UNIT_FG.value)
+        {
+            alert('입수량이 1이 아닌경우 주문단위와 재고단위를 다르게 세팅하십시오.');
+            document.form1.STOCK_UNIT_FG.focus();
+            return false;
+        }
+    }
+    if(parseInt(RmComma(document.form1.ORD_UNIT_QTY.value)) != 1)
+    {
+        if(!confirm('<<<<< 알림 >>>>>\n입수량을 1로 입력하시길 권장합니다.\n저장을 계속 진행하시려면 확인을, 수정후 저장하시려면 취소를 클릭하십시오.'))
+        {
+            document.form1.ORD_UNIT_QTY.select();
+            return false;
+        }
+    }
+
+
+    if(!valueCheck(document.form1.ORD_UNIT_QTY  , '입수량'      , 'Int'   ,                  1,           99999999)) { return false; }
+    if(!valueCheck(document.form1.ORD_MIN_QTY   , '최소주문수량', 'Int'   ,                  1,           99999999)) { return false; }
+    if(!valueCheck(document.form1.SPLY_UPRC     , '공급단가'    , 'Int'   ,                  0,           99999999)) { return false; }
+    if(!valueCheck(document.form1.DEPOSIT_UPRC  , '보증금단가'  , 'Int'   ,                  0,           99999999)) { return false; }
+    if(!valueCheck(document.form1.SAFE_STOCK_QTY, '안전재고'    , 'Int'   ,                  0,         9999999999)) { return false; }
+
+    // 상품초기재고 필수조건(재고관리여부: Y, 사용여부: Y), 확인사항(원가단가 맞는지 확인)
+    if(!valueCheck(document.form1.START_STOCK_QTY     , '초기재고'    , 'Int'  ,                  0,           99999)) { return false; }
+
+    if(RmComma(document.form1.START_STOCK_QTY.value) > 0)
+    {
+        if(document.form1.COST_UPRC.value == 0 && !confirm("원가단가가 0으로 초기재고 생성하게 됩니다. 진행하시겠습니까?"))
+        {
+            document.form1.COST_UPRC.select();
+            return false;
+        }
+        else if(document.form1.STOCK_MGR_YN.value == 'N')
+        {
+            alert("재고관리여부가 No인 경우 입력하신 초기재고(수량: "+document.form1.START_STOCK_QTY.value+")를 만들 수 없습니다.");
+            document.form1.STOCK_MGR_YN.select();
+            return false;
+        }
+        else if(document.form1.USE_YN.value == 'N')
+        {
+            alert("사용여부가 No인 경우 입력하신 초기재고(수량: "+document.form1.START_STOCK_QTY.value+")를 만들 수 없습니다.");
+            document.form1.USE_YN.select();
+            return false;
+        }
+    }
+
+
+    //if('I' == 'U' && document.form1.SPLY_UPRC_YN.value == 'Y' && document.form1.b_SPLY_UPRC.value != RmComma(document.form1.SPLY_UPRC.value))
+    //{
+    //    alert('매장공급단가는 수정되지 않습니다.\n\n매장별 공급가를 수정하시려면\n매장공급가 관리를 이용하시기 바랍니다.');
+    //}
+
+    if(document.form1.SIDE_MENU_YN.value == 'Y')
+    {
+        if(document.form1.SDA_CLS_CD.value == '' && document.form1.SDS_GRP_CD.value == '')
+        {
+            alert('사이드메뉴의 속성 또는 선택메뉴중 적어도 하나는 설정하셔야 합니다.');
+            return false;
+        }
+
+    }
+    else
+    {
+        document.form1.SDA_CLS_CD.value = '';
+        document.form1.SDS_GRP_CD.value = '';
+    }
+
+    if(document.form1.SIDE_MENU_YN.value == 'Y')
+    {
+       if(0 == "1")
+       {
+           alert('사이드메뉴로 등록되어 있는 상품은 사이드메뉴사용이 불가능 합니다');
+           return false;
+       }
+    }
+
+    if(document.form1.SELL_AUTO_ORDER_YN.value == 'Y')
+    {
+        if(!valueCheck(document.form1.SELL_AUTO_ORDER_RATE, '수수료'    , 'Int'   , 0, 999)) { return false; }
+    }
+
+    //상품할인여부 2016-10-14 허지선 추가
+    if(0=="1") {
+        document.form1.DC_RULE_FG.value = document.form1.DC_RULE_FG_01.value+document.form1.DC_RULE_FG_02.value
+                                                         + document.form1.DC_RULE_FG_03.value+'1111111';
+        document.form1.PROD_DC_FG.value = document.form1.DC_RULE_FG_03.value;
+    }
+    //alert(document.form1.DC_RULE_FG.value);
+    //alert(document.form1.PROD_DC_FG.value);
+
+
+    document.form1.i_ORD_PROD_YN.value = document.form1.ORD_PROD_YN.value;
+
+    document.form1.action = 'prod012_save.jsp';
+    document.form1.method = 'post';
+    document.form1.target = 'BlankFrm';
+    document.form1.submit();
+    fnIsSave(true);
+}
+function doDelete()
+{
+    if(confirm('정말로 삭제하시겠습니까?'))
+    {
+        document.form1.action = 'prod012_save.jsp';
+        document.form1.method = 'post';
+        document.form1.target = 'BlankFrm';
+        document.form1.PROC_FG.value = 'D';
+        document.form1.submit();
+    }
+}
+function fnImgSave(prod_cd)
+{
+    myFile.UploadProgramPath = "/master/product/prod012_upload.jsp?PROD_CD="+prod_cd; // 절대경로
+    if(myFile.FileCount > 0) { myFile.DoUpload(true); }
+}
+
+function fn_DEPOSIT_FG()
+{
+    if(document.form1.DEPOSIT_FG.value == '0')
+    {
+        fnGetObjectIdName("span_DEPOSIT_FG").style.display  = 'none';
+        fnGetObjectIdName("span_DEPOSIT_FG1").style.display = 'none';
+        fnGetObjectIdName("span_DEPOSIT_FG2").style.display = 'none';
+        document.form1.DEPOSIT_UPRC.value = '0';
+    }
+    else if(document.form1.DEPOSIT_FG.value == '1')
+    {
+        fnGetObjectIdName("span_DEPOSIT_FG").style.display  = 'inline';
+        fnGetObjectIdName("span_DEPOSIT_FG1").style.display = 'inline';
+        fnGetObjectIdName("span_DEPOSIT_FG2").style.display = 'none';
+    }
+    else if(document.form1.DEPOSIT_FG.value == '2')
+    {
+        fnGetObjectIdName("span_DEPOSIT_FG").style.display  = 'inline';
+        fnGetObjectIdName("span_DEPOSIT_FG1").style.display = 'none';
+        fnGetObjectIdName("span_DEPOSIT_FG2").style.display = 'inline';
+    }
+}
+function fn_PRICE_CTRL_FG()
+{
+    if(document.form1.PRICE_CTRL_FG.value == 'H')
+    {
+        fnGetObjectIdName("span_PRICE_CTRL_FG_H").style.display = 'inline';
+        fnGetObjectIdName("span_PRICE_CTRL_FG_S").style.display = 'none';
+    }
+    else if(document.form1.PRICE_CTRL_FG.value == 'S')
+    {
+        fnGetObjectIdName("span_PRICE_CTRL_FG_H").style.display = 'none';
+        fnGetObjectIdName("span_PRICE_CTRL_FG_S").style.display = 'inline';
+    }
+}
+
+function fn_SIDE_MENU_YN()
+{
+    if(document.form1.SIDE_MENU_YN.value == 'N')
+    {
+        fnGetObjectIdName("span_SIDE_MENU").style.display = 'none';
+    }
+    else if(document.form1.SIDE_MENU_YN.value == 'Y')
+    {
+        fnGetObjectIdName("span_SIDE_MENU").style.display = 'inline';
+    }
+}
+function fn_SELL_AUTO_ORDER_YN()
+{
+    if(document.form1.SELL_AUTO_ORDER_YN.value == 'N')
+    {
+        fnGetObjectIdName("span_SELL_AUTO_ORDER").style.display = 'none';
+        document.form1.SELL_AUTO_ORDER_RATE.value = '';
+    }
+    else if(document.form1.SELL_AUTO_ORDER_YN.value == 'Y')
+    {
+        fnGetObjectIdName("span_SELL_AUTO_ORDER").style.display = 'inline';
+    }
+}
+function fn_PRICE_MGR_FG()
+{
+    if(document.form1.PROC_FG.value == 'I' && document.form1.PRICE_MGR_FG.value == '2' && document.form1.scale_prod_len.value == '0')
+    {
+        alert('저울상품 관련 환경이 저장되어 있지 않습니다.');
+        document.form1.PRICE_MGR_FG.value = (document.form1.B_PRICE_MGR_FG.value == '' ? '0' : document.form1.B_PRICE_MGR_FG.value);
+        return false;
+    }
+
+    if(document.form1.PROC_FG.value == 'I') // 입력
+    {
+        if(document.form1.PRICE_MGR_FG.value == '2')
+        {
+            document.form1.PROD_CD.className = 'input1c imeEng';
+            document.form1.PROD_CD.readOnly  = false;
+            fnGetObjectIdName('span_disp_PROD_CD').innerHTML = '( 0001 - 9999 )';
+        }
+        else
+        {
+            if(document.form1.direct_PROD_CD.value == 'Y')
+            {
+                document.form1.PROD_CD.className = 'input1c imeEng';
+                document.form1.PROD_CD.readOnly  = false;
+                fnGetObjectIdName('span_disp_PROD_CD').innerHTML = '(  -  )';
+            }
+            else
+            {
+                document.form1.PROD_CD.className = 'read1c';
+                document.form1.PROD_CD.value     = '';
+                document.form1.PROD_CD.readOnly  = true;
+                fnGetObjectIdName('span_disp_PROD_CD').innerHTML = '( 자동생성 )';
+            }
+        }
+    }
+    else if(document.form1.B_PRICE_MGR_FG.value != document.form1.PRICE_MGR_FG.value) // 수정
+    {
+        if(document.form1.B_PRICE_MGR_FG.value == '2')
+        {
+            alert('저울상품에서 다른 상품으로 변경이 불가합니다.');
+            document.form1.PRICE_MGR_FG.value = document.form1.B_PRICE_MGR_FG.value;
+            return false;
+        }
+        else if(document.form1.PRICE_MGR_FG.value == '2')
+        {
+            alert('저울상품으로 변경이 불가합니다.');
+            document.form1.PRICE_MGR_FG.value = document.form1.B_PRICE_MGR_FG.value;
+            return false;
+        }
+    }
+
+    if(document.form1.PRICE_MGR_FG.value == '0')
+    {
+        document.form1.SALE_UPRC.readOnly = false;
+        document.form1.SALE_UPRC.className = 'input1hr';
+    }
+    else
+    {
+        document.form1.SALE_UPRC.value = '0';
+        document.form1.SALE_UPRC.readOnly = true;
+        document.form1.SALE_UPRC.className = 'read1hr';
+    }
+
+}
+var show_vendor_fg = 'N';
+function vendor_win()
+{
+    if(show_vendor_fg == 'N')
+    {
+        fnGetObjectIdName("span_vendor").style.display = 'none';
+
+        var url = 'url=/master/product/prod012_vendor.jsp'
+                + '?STYLE_PROD_CD='+document.form1.PROD_CD.value
+                + '&width=500&height=270';
+
+        new ajax.echoAjaxPage('/common/jsp/load_iframe.jsp', url, null, 'span_vendor', 'POST');
+        fnGetObjectIdName("span_vendor").style.pixelLeft = getObjPosition(fnGetObjectIdName("vendor_text"), 'L');
+        fnGetObjectIdName("span_vendor").style.pixelTop  = getObjPosition(fnGetObjectIdName("vendor_text"), 'B') + 2;
+        show_vendor_fg = 'Y';
+    }
+    else
+    {
+        fnGetObjectIdName("span_vendor").style.display = 'inline';
+    }
+}
+var show_kitchen_prt_fg = 'N';
+function kitchen_prt_win()
+{
+    if(show_kitchen_prt_fg == 'N')
+    {
+        fnGetObjectIdName("span_kitchen_prt").style.display = 'none';
+
+        var url = 'url=/master/product/prod012_kitchen.jsp'
+                + '?PROD_CD='+document.form1.PROD_CD.value
+                + '&width=550&height=270';
+
+        new ajax.echoAjaxPage('/common/jsp/load_iframe.jsp', url, null, 'span_kitchen_prt', 'POST');
+        fnGetObjectIdName("span_kitchen_prt").style.pixelLeft = getObjPosition(fnGetObjectIdName("kitchen_prt_text"), 'L');
+        fnGetObjectIdName("span_kitchen_prt").style.pixelTop  = getObjPosition(fnGetObjectIdName("kitchen_prt_text"), 'B') + 2;
+        show_kitchen_prt_fg = 'Y';
+    }
+    else
+    {
+        fnGetObjectIdName("span_kitchen_prt").style.display = 'inline';
+    }
+}
+function fnOrderYn()
+{
+    if(document.form1.ORD_PROD_YN.value == 'C' || document.form1.ORD_PROD_YN.value == 'Y')
+    {
+        fnGetObjectIdName("tr_ord_prod_yn1").style.display = 'inline';
+        fnGetObjectIdName("tr_ord_prod_yn2").style.display = 'inline';
+    }
+    else if(document.form1.ORD_PROD_YN.value == 'B' || document.form1.ORD_PROD_YN.value == 'S')
+    {
+        fnGetObjectIdName("tr_ord_prod_yn1").style.display = 'inline';
+        fnGetObjectIdName("tr_ord_prod_yn2").style.display = 'none';
+        document.form1.ORD_MIN_QTY.value = '1';                     // 최소주문수량
+        document.form1.SPLY_UPRC.value = '0';                       // 공급단가
+        document.form1.SPLY_UPRC_YN.value = 'Y';    // 공급단가출고여부
+        fnSplyUprcYn();
+    }
+    else
+    {
+        fnGetObjectIdName("tr_ord_prod_yn1").style.display = 'none';
+        document.form1.ORD_UNIT_FG.value = '0';                     // 주문단위 = 낱개
+        document.form1.ORD_UNIT_QTY.value = '1';                    // 입수량
+        fnGetObjectIdName("tr_ord_prod_yn2").style.display = 'none';
+        document.form1.ORD_MIN_QTY.value = '1';                     // 최소주문수량
+        document.form1.SPLY_UPRC.value = '0';                       // 공급단가
+        document.form1.SPLY_UPRC_YN.value = 'Y';    // 공급단가출고여부
+        fnSplyUprcYn();
+    }
+
+    // 사입의 경우에만 원가를 입력하게 되었었는데 모든 상품에 대하여 원가를 입력 할 수 있도록 변경 20091126 최준호
+    //if(document.form1.ORD_PROD_YN.value == 'C' || document.form1.ORD_PROD_YN.value == 'B' || document.form1.ORD_PROD_YN.value == 'S')
+    //{
+    //    if(document.form1.PROC_FG.value == 'I') document.form1.COST_UPRC.value = '0';
+    //    else                                    document.form1.COST_UPRC.value = AddComma(document.form1.b_COST_UPRC.value);
+    //    document.form1.COST_UPRC.readOnly  = true;
+    //    document.form1.COST_UPRC.className = 'read1r';
+    //}
+    //else
+    //{
+    //    document.form1.COST_UPRC.readOnly  = false;
+    //    document.form1.COST_UPRC.className = 'input1r';
+    //}
+}
+function fnSplyUprcYn()
+{
+    if(document.form1.SPLY_UPRC_YN.value == 'Y')
+    {
+        fnGetObjectIdName("span_SPLY_UPRC").style.display = 'inline';
+        //document.form1.SPLY_UPRC.readOnly = false;
+        //document.form1.SPLY_UPRC.className = 'input1hr';
+    }
+    else
+    {
+        fnGetObjectIdName("span_SPLY_UPRC").style.display = 'none';
+        document.form1.SPLY_UPRC.value = '0';
+        //document.form1.SPLY_UPRC.readOnly = true;
+        //document.form1.SPLY_UPRC.className = 'read1hr';
+    }
+}
+function fnSaleYn(obj)
+{
+    //if(document.form1.SALE_PROD_YN.value == 'Y')
+    //{
+    //    fn_PRICE_MGR_FG();
+    //}
+    //else
+    //{
+    //    document.form1.PRICE_MGR_FG.value = '0';
+    //    fn_PRICE_MGR_FG();
+    //}
+}
+function CaluateCost(obj)
+{
+    document.form1.COST_UPRC.value = AddComma(document.form1.b_COST_UPRC.value * obj.value / document.form1.b_ORD_UNIT_QTY.value);
+}
+
+
+function showDesc()
+{
+    showModalDialog('prod012_desc.jsp'
+                   ,self
+                   ,'dialogWidth:600px;dialogHeight:280px;dialogTop:100px;dialogLeft:100px;status:no;resizable:yes;scroll:no;');
+}
+function fnMakeBarcode()
+{
+    if(parseInt(document.form1.len_PROD_CD.value) > 10)
+    {
+        alert('상품코드 자릿수가 10자리 이하의 경우에만 바코드를 자동생성합니다.');
+        return false;
+    }
+
+    if(document.form1.PROD_CD.value == '')
+    {
+        if(document.form1.direct_PROD_CD.value == 'Y') // 직접입력
+        {
+            alert('상품코드를 입력해 주십시오.\n상품코드는 모두 숫자로 구성되어야 합니다.');
+        }
+        else
+        {
+            document.form1.BAR_CD.value = '자동생성';
+        }
+    }
+    else if(document.form1.PROD_CD.value != '' && document.form1.BAR_CD.value != '')
+    {
+        alert('바코드가 등록되어 있는경우 자동생성하지 않습니다.\n자동생성하시려면 등록된 바코드를 지우신 후 클릭하십시오.');
+        return false;
+    }
+    else
+    {
+        var code12 = "29" + document.form1.PROD_CD.value;
+        code12 = code12.Rpad(12,'0');
+        var code13 = fnMakeEanCode(code12);
+        if(code13)  document.form1.BAR_CD.value = code13;
+    }
+}
+function fnMakeEanCode(source_str)
+{
+    var len = source_str.length;
+    if(len == 7 || len == 12)
+    {
+        var factor = 3;
+        var sum = 0;
+        for(var index = len; index > 0; --index)
+        {
+            var char_at = source_str.charAt(index-1);
+            if(char_at >= '0' && char_at <= '9')
+            {
+                sum = sum + char_at * factor;
+                factor = 4 - factor;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        var check_digit = ((1000 - sum) % 10);
+        return (source_str + check_digit);
+    }
+    else
+    {
+        return false;
+    }
+}
+function fnSetval(obj)
+{
+    if(obj.value == 'Y')
+    {
+        document.form1.STAMP_ACC_QTY.value = '1';
+    }
+    else if(obj.value == 'N')
+    {
+        document.form1.STAMP_ACC_QTY.value = '0';
+    }
+}
+/////////////////////////////////////// window.onload ///////////////////////////////////////
+window.onload = function() { setTimeout("onloadFunctions()",0); }; function onloadFunctions()
+{
+    fn_DEPOSIT_FG();
+    fn_PRICE_CTRL_FG();
+    fn_PRICE_MGR_FG();
+
+    fn_SIDE_MENU_YN();
+}
+</SCRIPT>
+
+<DIV id=divSaving style="OVERFLOW: hidden; POSITION: absolute; LEFT: 264px; ; LEFT: expression((document.body.clientWidth-200)/2); Z-INDEX: 99; DISPLAY: none; TOP: 126px; ; TOP: expression((document.body.clientHeight-100)/2)">
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR>
+<TD><</TD></TR></TBODY></TABLE></DIV>
+<FORM method=post name=form1><INPUT type=hidden value=I name=PROC_FG> <INPUT type=hidden value=6 name=len_PROD_CD> <INPUT type=hidden value=N name=direct_PROD_CD> <INPUT type=hidden value=* name=STYLE_CD> <INPUT type=hidden value=0 name=BRAND_CD> <INPUT type=hidden value=* name=YEAR_CD> <INPUT type=hidden value=* name=SEASON_CD> <INPUT type=hidden value=* name=COLOR_CD> <INPUT type=hidden value=* name=SIZE_CD> <INPUT type=hidden name=ST_CD> <INPUT type=hidden name=ED_CD> <INPUT type=hidden value=4 name=scale_prod_len> <INPUT type=hidden value=0001 name=scale_ST_CD> <INPUT type=hidden value=9999 name=scale_ED_CD> <!-- <input type="hidden" name="CST_ACCDC_YN" value="Y" /> --><INPUT type=hidden name=i_ORD_PROD_YN>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR vAlign=top>
+<TD>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#e9e9e9 border=0>
+<TBODY>
+<TR height=1 bgColor=#aaaaaa>
+<TD colSpan=6></TD></TR>
+<TR height=25>
+<TD bgColor=#aaaaaa width=1></TD>
+<TD width=8></TD>
+<TD align=left>&nbsp;◈ 상품 기본 정보</TD>
+<TD width=8></TD>
+<TD bgColor=#aaaaaa width=1></TD></TR>
+<TR height=1 bgColor=#aaaaaa>
+<TD colSpan=6></TD></TR></TBODY></TABLE>
+<TABLE height="100%" cellSpacing=1 cellPadding=1 width="100%" bgColor=#ccd6bc border=0>
+<TBODY>
+<TR>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>단가구분</TD>
+<TD bgColor=#e6ebde colSpan=3><INPUT type=hidden value=0 name=B_PRICE_MGR_FG>
+<SCRIPT>
+select_name[0] = new Array();
+select_value[0] = new Array();
+select_option[0] = new Array();
+select_query[0] = new Array();
+select_title[0] = new Array();
+select_change[0] = new Array();
+select_etc[0] = new Array();
+</SCRIPT>
+ <SPAN id=divAjax_0_PRICE_MGR_FG style="OVERFLOW-Y: scroll"><SELECT onchange="ajax_nextload(0,0); fn_PRICE_MGR_FG()" id=SelectObj_0_0 name=PRICE_MGR_FG> <OPTION selected value=0>정가상품</OPTION> <OPTION value=1>싯가상품</OPTION> <OPTION value=2>저울상품</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[0][0] = "PRICE_MGR_FG";
+select_title[0][0] = "";
+select_value[0][0] = "0";
+select_option[0][0] = "";
+select_query[0][0] = "SP_CCD_CODEM_T_S01♪C6♪011⊥1";
+select_change[0][0] = "fn_PRICE_MGR_FG()";
+select_etc[0][0] = "";
+</SCRIPT>
+
+<SCRIPT>
+select_step2(0,0);
+</SCRIPT>
+&nbsp; 저장 후 저울상품으로 또는 저울상품은 변경불가 </TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>상품코드</TD>
+<TD bgColor=#e6ebde colSpan=3><INPUT class=read1c readOnly maxLength=6 size=6 name=PROD_CD> <SPAN id=span_disp_PROD_CD>( 자동생성 )</SPAN></TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>상품명</TD>
+<TD bgColor=#e6ebde colSpan=3><INPUT type=hidden name=b_PROD_NM><INPUT class="input1 imeHan" maxLength=49 size=50 name=PROD_NM></TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>상품분류</TD>
+<TD bgColor=#e6ebde colSpan=3>
+<DIV style="DISPLAY: none"><INPUT type=hidden value=02 name=LCLS_CD><INPUT type=hidden name=MCLS_CD><INPUT type=hidden name=SCLS_CD><INPUT type=hidden value=* name=SIZE_CLS_CD></DIV><INPUT onclick="prod_cls_tree_win('1','S','S92694')" id=cls_text class=read1h style="CURSOR: hand" readOnly size=50 value=포스 name=cls_text>
+<DIV id=span_cls style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; Z-INDEX: 99; DISPLAY: none"></DIV></TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right>거래처</TD>
+<TD bgColor=#e6ebde colSpan=3><INPUT type=hidden name=b_VENDOR_CDS> <INPUT type=hidden name=VENDOR_CDS> <INPUT onclick=vendor_win(); id=vendor_text class=read1h readOnly size=50 name=VENDOR_NMS> <INPUT onclick=vendor_win(); class=button1 type=button value=거래처선택>
+<DIV id=span_vendor style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; Z-INDEX: 99; DISPLAY: none"></DIV></TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right>주방프린터</TD>
+<TD bgColor=#e6ebde colSpan=3><INPUT type=hidden name=b_KITCHEN_PRT_CDS> <INPUT type=hidden name=KITCHEN_PRT_CDS> <INPUT onclick=kitchen_prt_win(); id=kitchen_prt_text class=read1h readOnly size=50 name=KITCHEN_PRT_NMS> <INPUT onclick=kitchen_prt_win(); class=button1 style="WIDTH: 100px" type=button value=주방프린터선택>
+<DIV id=span_kitchen_prt style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; Z-INDEX: 99; DISPLAY: none"></DIV></TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>판매상품여부</TD>
+<TD bgColor=#e6ebde><SELECT onchange=fnSaleYn() name=SALE_PROD_YN> <OPTION selected value=Y>Yes</OPTION> <OPTION value=N>No</OPTION></SELECT></TD>
+<TD bgColor=#eef1e8 align=right>원산지</TD>
+<TD bgColor=#e6ebde>
+<SCRIPT>
+select_name[1] = new Array();
+select_value[1] = new Array();
+select_option[1] = new Array();
+select_query[1] = new Array();
+select_title[1] = new Array();
+select_change[1] = new Array();
+select_etc[1] = new Array();
+</SCRIPT>
+<SPAN id=divAjax_1_ORG_PLACE_CD style="OVERFLOW-Y: scroll"><SELECT onchange="" name=ORG_PLACE_CD><OPTION selected value="">-선택-</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[1][0] = "ORG_PLACE_CD";
+select_title[1][0] = "";
+select_value[1][0] = "";
+select_option[1][0] = "#";
+select_query[1][0] = "SP_SCD_CODEM_T_S01♪C1♪'S92694⊥003'";
+select_change[1][0] = "";
+select_etc[1][0] = "";
+</SCRIPT>
+
+<SCRIPT>document.getElementById('divAjax_1_ORG_PLACE_CD').innerHTML = "<select name='ORG_PLACE_CD' onchange= ><option value=''>-선택-</option></select>"</SCRIPT>
+<INPUT onclick="fnCodeRegWin('003','ORG_PLACE_CD');" class=button1 style="WIDTH: 70px" type=button value=원산지관리></TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>최초판매단가</TD>
+<TD bgColor=#e6ebde><INPUT type=hidden value=0 name=b_SALE_UPRC><INPUT onfocus="RmComma(this); select();" onblur=AddComma(this) class=input1hr maxLength=10 size=10 value=0 name=SALE_UPRC> (VAT포함)</TD>
+<TD bgColor=#eef1e8 align=right>매핑상품코드</TD>
+<TD bgColor=#e6ebde><INPUT class="input1 imeEng" maxLength=26 size=26 name=MAP_PROD_CD></TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>원가단가</TD>
+<TD bgColor=#e6ebde><INPUT type=hidden value=0 name=b_COST_UPRC><INPUT onfocus="RmComma(this); select();" onblur=AddComma(this); class=input1hr maxLength=10 size=10 value=0 name=COST_UPRC> (VAT별도)</TD>
+<TD bgColor=#eef1e8 align=right>바코드</TD>
+<TD bgColor=#e6ebde><INPUT type=hidden name=b_BAR_CD><INPUT class="input1h imeEng" maxLength=26 size=18 name=BAR_CD> <INPUT onclick=fnMakeBarcode(); class=button1 style="WIDTH: 60px" type=button value=자동생성> </TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>주문상품구분</TD>
+<TD bgColor=#e6ebde colSpan=3><SELECT onchange=fnOrderYn() name=ORD_PROD_YN> <OPTION selected value=S>사입상품</OPTION> <OPTION value=N>주문불가</OPTION></SELECT> &nbsp; <FONT onclick=showDesc(); style="CURSOR: hand; COLOR: blue">주문상품설명</FONT> </TD></TR>
+<TR id=tr_ord_prod_yn1>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>주문단위</TD>
+<TD bgColor=#e6ebde colSpan=3>
+<SCRIPT>
+select_name[2] = new Array();
+select_value[2] = new Array();
+select_option[2] = new Array();
+select_query[2] = new Array();
+select_title[2] = new Array();
+select_change[2] = new Array();
+select_etc[2] = new Array();
+</SCRIPT>
+<SPAN id=divAjax_2_ORD_UNIT_FG style="OVERFLOW-Y: scroll"><SELECT onchange="" name=ORD_UNIT_FG><OPTION selected value=0>낱개</OPTION><OPTION value=1>박스</OPTION><OPTION value=2>kg</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[2][0] = "ORD_UNIT_FG";
+select_title[2][0] = "";
+select_value[2][0] = "";
+select_option[2][0] = "";
+select_query[2][0] = "SP_SCD_CODEM_T_S01♪C1♪S92694⊥013";
+select_change[2][0] = "";
+select_etc[2][0] = "";
+</SCRIPT>
+
+<SCRIPT>document.getElementById('divAjax_2_ORD_UNIT_FG').innerHTML = "<select name='ORD_UNIT_FG' onchange= ><option value='0'>낱개</option><option value='1'>박스</option><option value='2'>kg</option></select>"</SCRIPT>
+<INPUT onclick="fnCodeRegWin('013','ORD_UNIT_FG'); select_step2(fnGetSelectIdx('STOCK_UNIT_FG'),0);" class=button1 style="WIDTH: 70px" type=button value=단위관리> <SPAN id=span_ORD_UNIT_QTY style="DISPLAY: inline">입수 <INPUT type=hidden value=1 name=b_ORD_UNIT_QTY><INPUT onfocus="RmComma(this); select();" onblur="CaluateCost(this); AddComma(this);" class=input1hr maxLength=8 size=4 value=1 name=ORD_UNIT_QTY> 재고단위
+<SCRIPT>
+select_name[3] = new Array();
+select_value[3] = new Array();
+select_option[3] = new Array();
+select_query[3] = new Array();
+select_title[3] = new Array();
+select_change[3] = new Array();
+select_etc[3] = new Array();
+</SCRIPT>
+ <SPAN id=divAjax_3_STOCK_UNIT_FG style="OVERFLOW-Y: scroll"><SELECT onchange="" name=STOCK_UNIT_FG><OPTION selected value=0>낱개</OPTION><OPTION value=1>박스</OPTION><OPTION value=2>kg</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[3][0] = "STOCK_UNIT_FG";
+select_title[3][0] = "";
+select_value[3][0] = "";
+select_option[3][0] = "";
+select_query[3][0] = "SP_SCD_CODEM_T_S01♪C1♪S92694⊥013";
+select_change[3][0] = "";
+select_etc[3][0] = "";
+</SCRIPT>
+
+<SCRIPT>document.getElementById('divAjax_3_STOCK_UNIT_FG').innerHTML = "<select name='STOCK_UNIT_FG' onchange= ><option value='0'>낱개</option><option value='1'>박스</option><option value='2'>kg</option></select>"</SCRIPT>
+<BR></SPAN>최소주문 <INPUT onfocus="RmComma(this); select();" onblur=AddComma(this) class=input1hr maxLength=8 size=4 value=1 name=ORD_MIN_QTY> &nbsp; <SPAN id=span_ORD_UNIT_ALLOW style="DISPLAY: inline"><INPUT type=checkbox value=E name=ORD_UNIT_ALLOW_A>낱개주문 <INPUT type=checkbox value=E name=ORD_UNIT_ALLOW_R>낱개반품 </SPAN></TD></TR>
+<TR id=tr_ord_prod_yn2 style="DISPLAY: none">
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>공급단가</TD>
+<TD bgColor=#e6ebde colSpan=3><INPUT type=hidden value=Y name=SPLY_UPRC_YN> <SPAN id=span_SPLY_UPRC><INPUT type=hidden value=0 name=b_SPLY_UPRC><INPUT onfocus="RmComma(this); select();" onblur=AddComma(this); class=input1hr maxLength=10 size=10 value=0 name=SPLY_UPRC> () &nbsp; <INPUT onclick=fnSplyUprcDesc() type=checkbox value=Y name=SPLY_UPRC_SYNC_YN>매장공급단가 일괄적용 </SPAN></TD></TR></TBODY></TABLE></TD>
+<TD width=6></TD>
+<TD width=170>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#e9e9e9 border=0>
+<TBODY>
+<TR height=1 bgColor=#aaaaaa>
+<TD colSpan=6></TD></TR>
+<TR height=25>
+<TD bgColor=#aaaaaa width=1></TD>
+<TD width=8></TD>
+<TD align=left>&nbsp;◈ 상품 이미지</TD>
+<TD width=8></TD>
+<TD bgColor=#aaaaaa width=1></TD></TR>
+<TR height=1 bgColor=#aaaaaa>
+<TD colSpan=6></TD></TR></TBODY></TABLE>
+<TABLE height="100%" cellSpacing=1 cellPadding=2 width="100%" bgColor=#ccd6bc border=0>
+<TBODY>
+<TR>
+<TD bgColor=#eef1e8 align=center>
+<TABLE height=6 cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD></TD></TR></TBODY></TABLE><IMG id=prod_img style="BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid" src="/image/no_image.jpg" width=150 height=150>
+<TABLE height=6 cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD></TD></TR></TBODY></TABLE><INPUT onclick=AddFile(); class=button1 type=button value=이미지변경>
+<TABLE height=6 cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- 파일 업로드 시작 ------------------------------------------------------------------>
+<SCRIPT>
+function AddFile()
+{
+    myFile.DeleteFile();
+    myFile.AddFile();
+    fnGetObjectIdName('prod_img').src=myFile.LocalFiles;
+
+}
+</SCRIPT>
+
+<OBJECT id=myFile style="DISPLAY: none" codeBase="/common/object/IBUpload.CAB#version=1,5,0,88" classid=CLSID:E41AFA97-E088-402D-85FA-49AF477F007D width="99%" height=144><PARAM NAME="_ExtentX" VALUE="15875"><PARAM NAME="_ExtentY" VALUE="10213"></OBJECT>
+<SCRIPT>
+myFile = fnGetObjectIdName("myFile");
+myFile.UploadProgramPath = "/master/product/prod012_upload.jsp"; // 절대경로
+myFile.UploadServerIP    = location.hostname;
+myFile.UploadServerPort  = ((location.port == null || location.port == '') ? "80" : location.port);
+myFile.UploadServerProtocol = location.protocol.replace(":","");
+myFile.ModeRW            = "W"; // R : 다운로드만 가능하며 업로드 및 삭제는 불가능, W : 다운로드, 업로드, 삭제등이 모두 가능
+myFile.EncodingType      = 1;
+myFile.AutoConfirm       = "DELETE_YES";
+myFile.AutoUpload        = false;
+myFile.SetFilter(true, "JPG,jpg,GIF,gif");
+myFile.SetLimit(1); // 업로드 가능한 파일의 개수, 1개 파일 용량(default 100MB, KB단위), 전체 파일 용량(default 1GB, KB단위)을 제한한다.
+</SCRIPT>
+<!-- 아래는 디버그용 -->
+<SCRIPT language=javascript for=myFile event="OnMessage(Msg, MsgCode, MsgDesc, EventFile)">
+window.status = "[" + MsgCode + "] " + MsgDesc + " FileName=" + EventFile;
+txtUploadMsg.value += "\n ▒▒ ▒▒ ▒▒ ▒▒ ▒▒ ▒▒ ▒▒ ▒▒ ▒▒ ";
+txtUploadMsg.value += "\n ▒▒ State = "     + myFile.State;
+txtUploadMsg.value += "\n ▒▒ Msg = "       + Msg;
+txtUploadMsg.value += "\n ▒▒ MsgCode = "   + MsgCode;
+txtUploadMsg.value += "\n ▒▒ MsgDesc = "   + MsgDesc;
+txtUploadMsg.value += "\n ▒▒ EventFile = " + EventFile;
+txtUploadMsg.value += "\n ▒▒ Files = "     + myFile.Files;
+var codeArr = MsgCode.split("-");
+if(codeArr[0] == 'ERR') { alert(MsgDesc); }
+</SCRIPT>
+<TEXTAREA id=txtUploadMsg style="DISPLAY: none" rows=5 cols=105></TEXTAREA> <!-- 파일 업로드 종료 ------------------------------------------------------------------>
+<TABLE height=6 cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#e9e9e9 border=0>
+<TBODY>
+<TR height=1 bgColor=#aaaaaa>
+<TD colSpan=6></TD></TR>
+<TR height=25>
+<TD bgColor=#aaaaaa width=1></TD>
+<TD width=8></TD>
+<TD align=left>&nbsp;◈ 상품 부가 정보</TD>
+<TD width=8></TD>
+<TD bgColor=#aaaaaa width=1></TD></TR>
+<TR height=1 bgColor=#aaaaaa>
+<TD colSpan=6></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=1 cellPadding=1 width="100%" bgColor=#ccd6bc border=0>
+<TBODY>
+<TR>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>과세여부</TD>
+<TD bgColor=#e6ebde width="10%"><SELECT name=TAX_YN> <OPTION selected value=Y>Yes</OPTION> <OPTION value=N>No</OPTION></SELECT></TD>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>재고관리여부</TD>
+<TD bgColor=#e6ebde width="10%"><SELECT name=STOCK_MGR_YN> <OPTION selected value=Y>Yes</OPTION> <OPTION value=N>No</OPTION></SELECT></TD>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>사용여부</TD>
+<TD bgColor=#e6ebde width="10%"><INPUT type=hidden value=Y name=b_USE_YN><SELECT name=USE_YN> <OPTION selected value=Y>Yes</OPTION> <OPTION value=N>No</OPTION></SELECT></TD>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>안전재고</TD>
+<TD bgColor=#e6ebde width="10%"><INPUT onfocus="RmComma(this); select();" onblur=AddComma(this); class=input1hr maxLength=10 size=6 value=0 name=SAFE_STOCK_QTY></TD></TR>
+<TR>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>봉사료부과여부</TD>
+<TD bgColor=#e6ebde><SELECT name=TIP_MENU_YN> <OPTION value=Y>Yes</OPTION> <OPTION selected value=N>No</OPTION></SELECT></TD>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>포장시할인금액</TD>
+<TD bgColor=#e6ebde><INPUT onfocus="RmComma(this); select();" onblur=AddComma(this) class=input1r maxLength=10 size=8 value=0 name=TOGO_CHARGE></TD><INPUT type=hidden value=0 name=DLV_CHARGE>
+<TD bgColor=#eef1e8 align=right><FONT color=red>*</FONT>코너</TD>
+<TD bgColor=#e6ebde>
+<SCRIPT>
+select_name[4] = new Array();
+select_value[4] = new Array();
+select_option[4] = new Array();
+select_query[4] = new Array();
+select_title[4] = new Array();
+select_change[4] = new Array();
+select_etc[4] = new Array();
+</SCRIPT>
+<SPAN id=divAjax_4_CORNER_CD style="OVERFLOW-Y: scroll"><SELECT onchange="ajax_nextload(4,0); " id=SelectObj_4_0 name=CORNER_CD> <OPTION selected value=00>기본코너</OPTION> <OPTION value=01>현대</OPTION> <OPTION value=02>포스</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[4][0] = "CORNER_CD";
+select_title[4][0] = "";
+select_value[4][0] = "00";
+select_option[4][0] = "";
+select_query[4][0] = "SP_SCD_SHOPS_T_S01♪C1♪'S92694'";
+select_change[4][0] = "";
+select_etc[4][0] = "";
+</SCRIPT>
+
+<SCRIPT>
+select_step2(4,0);
+</SCRIPT>
+</TD><INPUT type=hidden value=1111111111 name=DC_RULE_FG> <INPUT type=hidden value=1 name=PROD_DC_FG>
+<TD bgColor=#eef1e8></TD>
+<TD bgColor=#e6ebde></TD></TR>
+<TR>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>품절여부</TD>
+<TD bgColor=#e6ebde width="85%" colSpan=7><SELECT name=STOCK_OUT_YN> <OPTION value=Y>Yes</OPTION> <OPTION selected value=N>No</OPTION> <OPTION value=H>분배허용</OPTION></SELECT> (Yes : 주문불가, No : 주문가능, 분배허용 : 본사에서만 분배허용)</TD></TR>
+<TR>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>초기재고</TD>
+<TD bgColor=#e6ebde width="85%" colSpan=7><INPUT onfocus="RmComma(this); select();" onblur=AddComma(this); class=input1hr maxLength=5 size=10 value=0 name=START_STOCK_QTY> 상품등록 후 재고조정 형식으로 초기재고가 생성됩니다. </TD></TR>
+<TR>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>보증금상품구분</TD>
+<TD bgColor=#e6ebde width="85%" colSpan=7>
+<SCRIPT>
+select_name[5] = new Array();
+select_value[5] = new Array();
+select_option[5] = new Array();
+select_query[5] = new Array();
+select_title[5] = new Array();
+select_change[5] = new Array();
+select_etc[5] = new Array();
+</SCRIPT>
+<SPAN id=divAjax_5_DEPOSIT_FG style="OVERFLOW-Y: scroll"><SELECT onchange="ajax_nextload(5,0); fn_DEPOSIT_FG();" id=SelectObj_5_0 name=DEPOSIT_FG> <OPTION selected value=0>일반</OPTION> <OPTION value=1>보증금포함</OPTION> <OPTION value=2>보증금회수</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[5][0] = "DEPOSIT_FG";
+select_title[5][0] = "";
+select_value[5][0] = "0";
+select_option[5][0] = "";
+select_query[5][0] = "SP_CCD_CODEM_T_S01♪C1♪055";
+select_change[5][0] = "fn_DEPOSIT_FG();";
+select_etc[5][0] = "";
+</SCRIPT>
+
+<SCRIPT>
+select_step2(5,0);
+</SCRIPT>
+&nbsp;&nbsp; <SPAN id=span_DEPOSIT_FG style="DISPLAY: none"><FONT color=red>*</FONT>보증금단가 <INPUT onfocus="RmComma(this); select();" onblur=AddComma(this) class=input1r maxLength=10 size=6 value=0 name=DEPOSIT_UPRC></SPAN> <SPAN id=span_DEPOSIT_FG1 style="DISPLAY: none">&nbsp;&nbsp; 커피의 경우 처럼 보증금을 포함하고 있는 상품을 등록합니다.</SPAN> <SPAN id=span_DEPOSIT_FG2 style="DISPLAY: none">&nbsp; 커피컵의 경우 처럼 보증금을 반환하는 상품을 등록합니다.</SPAN> </TD></TR>
+<TR style="DISPLAY: none">
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>판매가격통제</TD>
+<TD bgColor=#e6ebde width="85%" colSpan=7><INPUT type=hidden value=S name=b_PRICE_CTRL_FG><SELECT onchange=fn_PRICE_CTRL_FG(); name=PRICE_CTRL_FG> <OPTION value=H>본사</OPTION> <OPTION selected value=S>매장</OPTION></SELECT> <SPAN id=span_PRICE_CTRL_FG_H style="DISPLAY: none">&nbsp;&nbsp; 매장의 판매가를 본사에서 결정하며, 매장에서는 변경 불가 합니다.</SPAN> <SPAN id=span_PRICE_CTRL_FG_S style="DISPLAY: inline">&nbsp; 매장의 판매가를 매장자체에서 결정하며, 본사에서는 변경 불가 합니다.</SPAN> </TD></TR>
+<TR>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>세트상품구분</TD>
+<TD bgColor=#e6ebde width="85%" colSpan=7><INPUT type=hidden value=0 name=b_SET_PROD_FG>
+<SCRIPT>
+select_name[6] = new Array();
+select_value[6] = new Array();
+select_option[6] = new Array();
+select_query[6] = new Array();
+select_title[6] = new Array();
+select_change[6] = new Array();
+select_etc[6] = new Array();
+</SCRIPT>
+ <SPAN id=divAjax_6_SET_PROD_FG style="OVERFLOW-Y: scroll"><SELECT onchange="ajax_nextload(6,0); " id=SelectObj_6_0 name=SET_PROD_FG> <OPTION selected value=0>일반상품</OPTION> <OPTION value=1>세트상품</OPTION> <OPTION value=2>코스요리</OPTION> <OPTION value=3>레시피상품</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[6][0] = "SET_PROD_FG";
+select_title[6][0] = "";
+select_value[6][0] = "0";
+select_option[6][0] = "";
+select_query[6][0] = "SP_CCD_CODEM_T_S01♪C7_ENV♪012⊥S⊥S92694⊥596⊥1";
+select_change[6][0] = "";
+select_etc[6][0] = "";
+</SCRIPT>
+
+<SCRIPT>
+select_step2(6,0);
+</SCRIPT>
+</TD></TR>
+<TR>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>사이드메뉴사용</TD>
+<TD bgColor=#e6ebde width="85%" colSpan=7><SELECT onchange=fn_SIDE_MENU_YN(); name=SIDE_MENU_YN> <OPTION value=Y>Yes</OPTION> <OPTION selected value=N>No</OPTION></SELECT><SPAN id=span_SIDE_MENU style="DISPLAY: none"> &nbsp;&nbsp; 속성 :
+<SCRIPT>
+select_name[7] = new Array();
+select_value[7] = new Array();
+select_option[7] = new Array();
+select_query[7] = new Array();
+select_title[7] = new Array();
+select_change[7] = new Array();
+select_etc[7] = new Array();
+</SCRIPT>
+ <SPAN id=divAjax_7_SDA_CLS_CD style="OVERFLOW-Y: scroll"><SELECT onchange="ajax_nextload(7,0); " id=SelectObj_7_0 name=SDA_CLS_CD> <OPTION selected value="">-선택-</OPTION> <OPTION value=01>1111</OPTION> <OPTION value=02>222</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[7][0] = "SDA_CLS_CD";
+select_title[7][0] = "";
+select_value[7][0] = "";
+select_option[7][0] = "#";
+select_query[7][0] = "SP_SCD_SDACL_T_S01♪C1♪S92694";
+select_change[7][0] = "";
+select_etc[7][0] = "";
+</SCRIPT>
+
+<SCRIPT>
+select_step2(7,0);
+</SCRIPT>
+&nbsp;&nbsp;&nbsp;&nbsp; 선택메뉴 :
+<SCRIPT>
+select_name[8] = new Array();
+select_value[8] = new Array();
+select_option[8] = new Array();
+select_query[8] = new Array();
+select_title[8] = new Array();
+select_change[8] = new Array();
+select_etc[8] = new Array();
+</SCRIPT>
+ <SPAN id=divAjax_8_SDS_GRP_CD style="OVERFLOW-Y: scroll"><SELECT onchange="ajax_nextload(8,0); " id=SelectObj_8_0 name=SDS_GRP_CD> <OPTION selected value="">-선택-</OPTION> <OPTION value=000001>현대포스a세트</OPTION> <OPTION value=000002>현대포스b세트</OPTION> <OPTION value=000003>11</OPTION> <OPTION value=000004>맛선택</OPTION></SELECT></SPAN>
+<SCRIPT>
+select_name[8][0] = "SDS_GRP_CD";
+select_title[8][0] = "";
+select_value[8][0] = "";
+select_option[8][0] = "#";
+select_query[8][0] = "SP_SCD_SDSGR_T_S01♪C1♪S92694";
+select_change[8][0] = "";
+select_etc[8][0] = "";
+</SCRIPT>
+
+<SCRIPT>
+select_step2(8,0);
+</SCRIPT>
+</SPAN></TD></TR><INPUT type=hidden name=SELL_AUTO_ORDER_YN><INPUT type=hidden name=SELL_AUTO_ORDER_RATE>
+<TR>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>포인트적립여부</TD>
+<TD bgColor=#e6ebde width="85%" colSpan=7><SELECT name=CST_ACCDC_YN> <OPTION selected value=Y>Yes</OPTION> <OPTION value=N>No</OPTION></SELECT></TD></TR><INPUT type=hidden name=STAMP_ACC_YN> <INPUT type=hidden name=STAMP_ACC_QTY> <INPUT type=hidden name=STAMP_USE_YN> <INPUT type=hidden name=STAMP_USE_QTY>
+<TR>
+<TD bgColor=#eef1e8 width="15%" align=right><FONT color=red>*</FONT>모바일주문구분</TD>
+<TD bgColor=#e6ebde width="85%" colSpan=7><SELECT name=MOBILE_ORDER_FG> <OPTION selected value=0>일반/POS</OPTION> <OPTION value=1>MOBILE 전용</OPTION> <OPTION value=2>공통</OPTION></SELECT></TD></TR></TBODY></TABLE>
+<TABLE height=6 cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TD></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#e9e9e9 border=0>
+<TBODY>
+<TR height=1 bgColor=#aaaaaa>
+<TD colSpan=6></TD></TR>
+<TR height=25>
+<TD bgColor=#aaaaaa width=1></TD>
+<TD width=8></TD>
+<TD align=left>&nbsp;◈ 비고 (Spec)</TD>
+<TD width=8></TD>
+<TD bgColor=#aaaaaa width=1></TD></TR>
+<TR height=1 bgColor=#aaaaaa>
+<TD colSpan=6></TD></TR></TBODY></TABLE><TEXTAREA style="HEIGHT: 40px; WIDTH: 100%" name=PROD_REMARK></TEXTAREA> </FORM>
+
+</div>
+
+
+
+
+</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>
+
+
+{% endblock %}
+

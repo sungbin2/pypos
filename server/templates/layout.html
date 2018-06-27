@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <style type="text/css">
 
-
         body {
             font-family: 'Nanum Gothic', sans-serif;
             background-color: #FFFFFF;
@@ -103,10 +102,10 @@
               <a class="item" href="#">거래처엑셀업로드</a>
               <a class="item" href="#">거래처조회</a>
               <a class="item" href="{{ url_for('_goods_item') }}">상품등록</a>
-              <a class="item" href="#">상품조회</a>
-              <a class="item" href="#">상품엑셀업로드</a>
-              <a class="item" href="#">상품정보일괄변경</a>
-              <a class="item" href="#">상품바코드등록</a>
+              <a class="item" href="{{ url_for('_goods_item_list') }}">상품조회</a>
+              <a class="item" href="{{ url_for('_goods_item_upload') }}">상품엑셀업로드</a>
+              <a class="item" href="{{ url_for('_goods_item_modify') }}">상품정보일괄변경</a>
+              <a class="item" href="{{ url_for('_goods_item_barcode') }}">상품바코드등록</a>
               <a class="item" href="#">사이드메뉴등록</a>
               <a class="item" href="#" onclick="메뉴()">판매터치키등록</a>
               <a class="item" href="#">상품별코너변경</a>

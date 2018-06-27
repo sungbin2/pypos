@@ -44,6 +44,10 @@ import server.routes.system.menu
 
 import server.routes.goods.itemgroup
 import server.routes.goods.item
+import server.routes.goods.item_list
+import server.routes.goods.item_upload
+import server.routes.goods.item_modify
+import server.routes.goods.item_barcode
 
 free_for_all = [
     '_login',
