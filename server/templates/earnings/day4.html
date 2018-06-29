@@ -5,7 +5,6 @@
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
 
 
-
     <div data-ax5grid="first-grid" data-ax5grid-config="{
                         header: { align: 'center' },
                         frozenColumnIndex: 2,
@@ -18,6 +17,7 @@
 
 <script type="text/javascript" src="{{ url_for('static',filename='gridList.js') }} "></script>
 <script type="text/javascript">
+
 
 var  gridList = [];
     $.getJSON("{{ url_for('_earnings_day' ) }}/"+"{{ store_id }}", function (json) {
@@ -32,12 +32,8 @@ var  gridList = [];
 
     function load() {
 
-
-
-        var firstGrid = new ax5.ui.grid({
-            target: $('[data-ax5grid="first-grid"]'),
-            columns: [
-                {key: "a", label: "일자", width: 80, align: "center"},
+        data = [
+                {key: "a", label: "다섯번째", width: 80, align: "center"},
                 {key: "b", label: "요일", width: 35, align: "center"},
                 {key: "c", label: "영업일수", width: 60, align: "center"},
                 {
@@ -117,7 +113,12 @@ var  gridList = [];
                         {key: "l3", label: "환급수수료" ,align: "right"}
                     ]
                 }
-            ],
+            ]
+
+
+        var firstGrid = new ax5.ui.grid({
+            target: $('[data-ax5grid="first-grid"]'),
+            columns: data,
             footSum: [
                 [
                     {label: "SUMMARY", colspan: 2, align: "center"},

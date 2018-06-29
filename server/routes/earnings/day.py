@@ -2,10 +2,6 @@ from server.main_ import app, orm, c
 
 
 
-
-
-
-
 @app.route('/earnings/day', methods=['GET', ])
 def _earnings_day():
     store_id = c.session['store']
@@ -44,3 +40,92 @@ def _earnings_day_(_id):
 
         return c.jsonify(cnt_days)
     c.abort(404)
+
+
+@app.route('/earnings/day1', methods=['GET', ])
+def _earnings_day1():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
+
+@app.route('/earnings/day2', methods=['GET', ])
+def _earnings_day2():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
+
+
+@app.route('/earnings/day3', methods=['GET', ])
+def _earnings_day3():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
+
+
+@app.route('/earnings/day4', methods=['GET', ])
+def _earnings_day4():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
+
+
+@app.route('/earnings/day5', methods=['GET', ])
+def _earnings_day5():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
+
+
+@app.route('/earnings/day6', methods=['GET', ])
+def _earnings_day6():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
+
+
+@app.route('/earnings/day7', methods=['GET', ])
+def _earnings_day7():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
+
+
+@app.route('/earnings/day8', methods=['GET', ])
+def _earnings_day8():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
+
+
+@app.route('/earnings/day9', methods=['GET', ])
+def _earnings_day9():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)

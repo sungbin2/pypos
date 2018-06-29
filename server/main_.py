@@ -50,6 +50,8 @@ import server.routes.goods.item_modify
 import server.routes.goods.item_barcode
 
 import server.routes.earnings.day
+import server.routes.earnings.dayall
+
 
 free_for_all = [
     '_login',

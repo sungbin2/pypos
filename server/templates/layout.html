@@ -11,11 +11,17 @@
     <title>KBIZPOS</title>
     {% include 'includes.html' %}
 
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
     <style type="text/css">
+        .ui.container {
+            width: auto!important;
+             margin-left: 0!important;
+             margin-right: 0!important;
+        }
 
         body {
-            font-family: 'Nanum Gothic', sans-serif;
+            font-family: "돋움", dotum, "굴림", gulim, arial, helvetica, sans-serif;
+            font-size :13px ;
             background-color: #FFFFFF;
             overflow-y: hidden; overflow-x: hidden;
         }
@@ -25,8 +31,10 @@
         }
 
         .main.container {
-            font-family: 'Nanum Gothic', sans-serif;
+            font-family: "돋움", dotum, "굴림", gulim, arial, helvetica, sans-serif;
+            font-size :13px ;
             margin-top: 4em;
+
         }
 
         .wireframe {
@@ -35,8 +43,8 @@
 
         .ui.footer.segment {
             position:fixed;
+            width:100%;
             bottom:0;
-            margin: 0em 2.5em 0em;
             padding: 0.5em 0em ;
         }
 
@@ -68,10 +76,10 @@
     <!--</a>-->
 
     <div class="ui fixed dropdown item">
-        기초관리 <i class="dropdown icon"></i>
+        기초관리 <i class="dropdown"></i>
         <div class="menu">
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             매장관리
             <div class="menu">
               <a class="item" href="{{ url_for('_info_store_') }}">매장정보관리</a>
@@ -85,7 +93,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             출력물관리
             <div class="menu">
               <a class="item" href="{{ url_for('_system_receiptform') }}">포스출력물관리</a>
@@ -94,7 +102,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             상품관리
             <div class="menu">
               <a class="item" href="{{ url_for('_goods_itemgroup') }}">상품기초정보등록</a>
@@ -115,7 +123,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             가격관리
             <div class="menu">
               <a class="item" href="#">판매가관리</a>
@@ -126,7 +134,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             결제수단
             <div class="menu">
               <a class="item" href="#">제휴카드등록</a>
@@ -137,7 +145,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             기타관리
             <div class="menu">
               <a class="item" href="#">명칭관리</a>
@@ -149,15 +157,15 @@
         </div>
     </div>
     <div class="ui fixed dropdown item">
-        매출관리 <i class="dropdown icon"></i>
+        매출관리 <i class="dropdown "></i>
         <div class="menu">
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             매출현황
             <div class="menu">
               <a class="item" href="#">매출항목표시</a>
-              <a class="item" href="">당일매출종합현황</a>
-              <a class="item" href="#">당일매출상세현황</a>
+              <a class="item" href="{{ url_for('_earnings_dayall') }}">당일매출종합현황</a>
+              <a class="item" href="{{ url_for('_earnings_dayalldetail') }}">당일매출상세현황</a>
               <a class="item" href="#">영상보안</a>
               <a class="item" href="#">영수증별매출상세현황</a>
               <a class="item" href="{{ url_for('_earnings_day') }}">일자별</a>
@@ -180,7 +188,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             매출분석
             <div class="menu">
               <a class="item" href="#">대비기간매출분석</a>
@@ -194,14 +202,14 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             주문분석
             <div class="menu">
               <a class="item" href="#">주문취소</a>
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             승인현황
             <div class="menu">
               <a class="item" href="#">승인현황</a>
@@ -209,14 +217,14 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             배달현황
             <div class="menu">
               <a class="item" href="#">배달현황</a>
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             기타
             <div class="menu">
               <a class="item" href="#">객수매출현황</a>
@@ -226,10 +234,10 @@
         </div>
     </div>
     <div class="ui fixed dropdown item">
-        회원관리 <i class="dropdown icon"></i>
+        회원관리 <i class="dropdown "></i>
         <div class="menu">
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             회원정보
             <div class="menu">
               <a class="item" href="#">회원등급설정</a>
@@ -243,7 +251,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             회원분석
             <div class="menu">
               <a class="item" href="#">일자별회원구매내역</a>
@@ -260,10 +268,10 @@
         </div>
     </div>
     <div class="ui fixed dropdown item">
-        수불관리 <i class="dropdown icon"></i>
+        수불관리 <i class="dropdown "></i>
         <div class="menu">
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             거래처 입출고관리
             <div class="menu">
               <a class="item" href="#">발주등록</a>
@@ -277,10 +285,10 @@
         </div>
     </div>
     <div class="ui fixed dropdown item">
-        재고관리 <i class="dropdown icon"></i>
+        재고관리 <i class="dropdown "></i>
         <div class="menu">
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             재고현황
             <div class="menu">
               <a class="item" href="#">재고항목표시</a>
@@ -293,7 +301,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             실사/조정/폐기
             <div class="menu">
               <a class="item" href="#">실사관리</a>
@@ -303,7 +311,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             세트재고조정
             <div class="menu">
               <a class="item" href="#">세트재고조정</a>
@@ -312,10 +320,10 @@
         </div>
     </div>
     <div class="ui fixed dropdown item">
-        정산관리 <i class="dropdown icon"></i>
+        정산관리 <i class="dropdown"></i>
         <div class="menu">
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             정산관리
             <div class="menu">
               <a class="item" href="#">매출수기등록</a>
@@ -323,7 +331,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             수익관리
             <div class="menu">
               <a class="item" href="#">수익분석</a>
@@ -335,10 +343,10 @@
         </div>
     </div>
     <div class="ui fixed dropdown item">
-        기타관리 <i class="dropdown icon"></i>
+        기타관리 <i class="dropdown"></i>
         <div class="menu">
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             금전처리
             <div class="menu">
               <a class="item" href="#">계정관리</a>
@@ -347,7 +355,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             근태관리
             <div class="menu">
               <a class="item" href="#">근태관리</a>
@@ -356,7 +364,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             SMS관리
             <div class="menu">
               <a class="item" href="#">메세지관리</a>
@@ -368,7 +376,7 @@
             </div>
           </div>
           <div class="item">
-            <i class="dropdown icon"></i>
+            <i class="dropdown "></i>
             기타
             <div class="menu">
               <a class="item" href="{{ url_for('_weather') }}">과거날씨정보</a>
