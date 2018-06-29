@@ -49,6 +49,8 @@ import server.routes.goods.item_upload
 import server.routes.goods.item_modify
 import server.routes.goods.item_barcode
 
+import server.routes.earnings.day
+
 free_for_all = [
     '_login',
     '_getsession',
