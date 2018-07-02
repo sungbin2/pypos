@@ -9,7 +9,7 @@ def account_session(orm, account, session):
         session['logged_in'] = True
         session['아이디'] = account.아이디
         session['store'] = account.s
-        session['가게명'] = ss.query(orm.정보_가게.가게명).filter_by(no=account.s).first()
+        session['가게명'] = ss.query(orm.정보_가게.가게명).filter_by(i=account.s).first()
 
 
 def dict_itemgroup(orm, store_id):
@@ -20,7 +20,7 @@ def dict_itemgroup(orm, store_id):
             .filter_by(isdel=X) \
             .all()
 
-        d = {i.no: '{0}|{1}'.format(i.no, i.분류명) for i in l}
+        d = {i.i: '{0}|{1}'.format(i.i, i.분류명) for i in l}
         return d
 
 
@@ -32,5 +32,5 @@ def dict_item(orm, store_id):
             .filter_by(isdel=X) \
             .all()
 
-        d = {i.no: '{0}|{1}'.format(i.no, i.품목명) for i in l}
+        d = {i.i: '{0}|{1}'.format(i.i, i.품목명) for i in l}
         return d

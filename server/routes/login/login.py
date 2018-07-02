@@ -17,7 +17,7 @@ def _login():
             id = c.data_POST('user')
             pw = c.data_POST('password')
 
-            account = ss.query(orm.계정) \
+            account = ss.query(orm.account) \
                 .filter_by(아이디=id) \
                 .first()
 

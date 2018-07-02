@@ -3,10 +3,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css">
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css">
+
+
 <style>
 
 
@@ -21,7 +19,7 @@
     text-align : left;
     background-color: #e7dfdf;
   }
-  a { color : blue };
+
 </style>
 
 <table class="box" >
@@ -32,17 +30,10 @@
     </tr>
     <tr>
         <td>
-
-
-                 <div data-ax5grid="first-grid" data-ax5grid-config="{
+            <div data-ax5grid="first-grid" data-ax5grid-config="{
                         header: { align: 'center' },
-                        frozenColumnIndex: 2,
-                        <!--frozenRowIndex: 2,-->
-                        showLineNumber: true,
-                        <!--showRowSelector: true,-->
-                        <!--lineNumberColumnWidth: 50,-->
-                        <!--rowSelectorColumnWidth: 40-->
-                    }" style="height: 600px;"></div>
+                        frozenColumnIndex: 1,
+                    }" style="height: 300px;"></div>
 
         </td>
 
@@ -51,23 +42,12 @@
 
 
 
+
 <script type="text/javascript" src="{{ url_for('static',filename='gridList.js') }} "></script>
 <script type="text/javascript">
 
-    var now = new Date();
-    var today = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-    $("#date").val( today);
-    $("#date2").val( today)
-
-
-
-
-    var  gridList = [];
-
-
-
-
-    $.getJSON("{{ url_for('_earnings_day' ) }}/"+"{{ store_id }}", function (json) {
+var  gridList = [];
+    $.getJSON("{{ url_for('_earnings_week' ) }}/"+"{{ store_id }}", function (json) {
         _data = json;
 
     }).done(function () {
@@ -76,46 +56,15 @@
 
     });
 
-    var mask = new ax5.ui.mask();
-    var modal = new ax5.ui.modal();
-    var modalCallBack = function(){
-        modal.close();
-    };
-
-    function modal1() {
-            modal.open({
-                width: 600,
-                iframe: {
-                    method: "get",
-                    url: "{{ url_for('_earnings_modal') }}",
-                    param: "callBack=modalCallBack"
-                },
-                onStateChanged: function () {
-                    // mask
-                    if (this.state === "open") {
-                        mask.open();
-                    }
-                    else if (this.state === "close") {
-                        mask.close();
-                    }
-                }
-            })
-    }
 
     function load() {
 
 
 
-            var firstGrid = new ax5.ui.grid({
+        var firstGrid = new ax5.ui.grid({
             target: $('[data-ax5grid="first-grid"]'),
             columns: [
-                {key: "a", label: "일자", width: 80, align: "center" , formatter: function(){
-                    return '<a onClick=window.open("{{ url_for('_earnings_dayalldetail') }}","_blank","width=800,height=600,toolbars=no,scrollbars=no,resizable=no"); >' + this.value + '</a>';
-                }},
-                {key: "b", label: "요일", width: 35, align: "center" ,formatter: function(){
-                    return '<a onClick=modal1(); >' + this.value + '</a>';
-                }},
-                {key: "c", label: "영업일수", width: 60, align: "center"},
+                {key: "b", label: "요일", width: 35, align: "center"},
                 {
                     label: "매출현황", columns: [ // child columns
                         {key: "d1", label: "총매출" ,width: 80 , formatter: "money",align: "right"},
@@ -125,23 +74,6 @@
                         {key: "d5", label: "부가세" ,width: 80 , formatter: "money",align: "right"},
                         {key: "d6", label: "영수건수" ,width: 60 ,align: "right"},
                         {key: "d7", label: "영수단가" ,width: 80 , formatter: "money",align: "right"}
-                    ]
-                },
-                {
-                    label: "고객", columns: [ // child columns
-                        {key: "e1", label: "고객수" ,width: 50},
-                        {key: "e2", label: "객단가" ,width: 50},
-                        {key: "e3", label: "남" ,width: 50},
-                        {key: "e4", label: "여" ,width: 50},
-                        {key: "e5", label: "11" ,width: 50},
-                        {key: "e6", label: "22" ,width: 50}
-                    ]
-                },
-                {
-                    label: "테이블", columns: [ // child columns
-                        {key: "f1", label: "테이블수" ,width: 50},
-                        {key: "f2", label: "단가" ,width: 50},
-                        {key: "f3", label: "회전율" ,width: 50}
                     ]
                 },
                 {key: "g", label: "봉사료", width: 80 ,align: "right"},
@@ -166,38 +98,14 @@
                 {
                     label: "포장/배달현황", columns: [ // child columns
                         {key: "j1", label: "일반" ,align: "right"},
-                        {key: "j2", label: "점유율(%)"},
                         {key: "j3", label: "포장" ,align: "right"},
-                        {key: "j4", label: "점유율(%)"},
                         {key: "j5", label: "배달" ,align: "right"},
-                        {key: "j6", label: "점유율(%)"}
-
-                    ]
-                },
-                {
-                    label: "할인내역", columns: [ // child columns
-                        {key: "k1", label: "일반" ,align: "right"},
-                        {key: "k2", label: "서비스" ,align: "right"},
-                        {key: "k3", label: "제휴" ,align: "right"},
-                        {key: "k4", label: "쿠폰" ,align: "right"},
-                        {key: "k5", label: "회원" ,align: "right"},
-                        {key: "k6", label: "식권" ,align: "right"},
-                        {key: "k7", label: "포장" ,align: "right"},
-                        {key: "k8", label: "YAP" ,align: "right"}
-                    ]
-                },
-                {
-                    label: "Tax Refund", columns: [ // child columns
-                        {key: "l1", label: "사후환급액" ,align: "right"},
-                        {key: "l2", label: "즉시환급액" ,align: "right"},
-                        {key: "l3", label: "환급수수료" ,align: "right"}
                     ]
                 }
             ],
             footSum: [
                 [
-                    {label: "SUMMARY", colspan: 2, align: "center"},
-                    {key: "c", collector: "sum", formatter: "money", align: "center"},
+                    {label: "합계", colspan: 1, align: "center"},
                     {key: "d1", collector: "sum", formatter: "money", align: "right"},
                     {key: "d2", collector: "sum", formatter: "money", align: "right"},
                     {key: "d3", collector: "sum", formatter: "money", align: "right"},
@@ -224,6 +132,12 @@
 
         firstGrid.setData(gridList);
     }
+
+
+            var now = new Date();
+            var today = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
+            $("#date").val( today)
+            $("#date2").val( today)
 
 
 

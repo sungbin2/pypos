@@ -4,8 +4,34 @@
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
 
+<style>
 
-    <div data-ax5grid="first-grid" data-ax5grid-config="{
+
+  table {
+    width: 100%;
+    border: 0px;
+  }
+  .box{
+    border: 1px solid #a3a2a2; margin :0.5em 0em 0em 0em;
+  }
+  th {
+    text-align : left;
+    background-color: #e7dfdf;
+  }
+  a { color : blue };
+</style>
+
+<table class="box" >
+    <tr>
+        <th>
+         조회일자 <input class="datepickers" id="date" type="date" value=""><input class="datepickers" id="date2" type="date" value="">
+        </th>
+    </tr>
+    <tr>
+        <td>
+
+
+                 <div data-ax5grid="first-grid" data-ax5grid-config="{
                         header: { align: 'center' },
                         frozenColumnIndex: 2,
                         <!--frozenRowIndex: 2,-->
@@ -15,141 +41,62 @@
                         <!--rowSelectorColumnWidth: 40-->
                     }" style="height: 600px;"></div>
 
+        </td>
+
+    </tr>
+</table>
+
+
+
+<script type="text/javascript" src="{{ url_for('static',filename='gridList.js') }} "></script>
 <script type="text/javascript">
 
+    var now = new Date();
+    var today = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
+    $("#date").val( today);
+    $("#date2").val( today)
 
     var  gridList = [];
+
     $.getJSON("{{ url_for('_earnings_day' ) }}/"+"{{ store_id }}", function (json) {
         _data = json;
 
     }).done(function () {
-        data0 = [];
-        var a = 0;
-        var week = new Array('일', '월', '화', '수', '목', '금', '토');
 
-        for( i in _data ) {
-            data0.push(_data[i]);
-        }
+    console.log(_data);
 
-        for( i in data0) {
-
-            a = parseInt(data0[i]['총거래액']) / parseInt(data0[i]['영수건수'])
-            d = new Date(data0[i]['영업일자']).getDay()
-
-            gridList[i] = {};
-            gridList[i].a = data0[i]['영업일자'];
-            gridList[i].b = week[d];
-            gridList[i].c = 1;
-            gridList[i].d1 = data0[i]['총거래액'];
-            gridList[i].d2 = data0[i]['총할인액'];
-            gridList[i].d3 = data0[i]['실거래액'];
-            gridList[i].d4 = data0[i]['판매이익'];
-            gridList[i].d5 = data0[i]['세금'];
-            gridList[i].d6 = data0[i]['영수건수'];
-            gridList[i].d7 = Math.round(a);
-            gridList[i].a = data0[i]['영업일자'];
-            gridList[i].a = data0[i]['영업일자'];
-            gridList[i].a = data0[i]['영업일자'];
-            gridList[i].a = data0[i]['영업일자'];
+    loaddata();
 
 
-        }
 
-        load()
+
+
 
     });
-
-
-
 
     function load() {
 
 
+        data = [
+                {key: "a", label: "일자", width: 80, align: "center"},
+                {key: "b", label: "요일", width: 35, align: "center"},
+                {key: "c", label: "영업일수", width: 60, align: "center"},
+                {key: "d3", label: "실매출합계" ,width: 80 , formatter: "money",align: "right"},
+                {key: "d6", label: "수량합계" ,width: 60 ,align: "right"},
+
+            ]
+
+        for( i in _data['상품분류'] ) {
+            data.push( {label: _data['상품분류'][i] , columns : [
+                { key : 'pt'+i , label : "실매출" ,width: 80 , formatter: "money",align: "right"} ,
+                { key : 'prc'+i,  label : "영수건수" ,width: 60 ,align: "right"} ]}
+                )
+        }
+
 
         var firstGrid = new ax5.ui.grid({
             target: $('[data-ax5grid="first-grid"]'),
-            columns: [
-                {key: "a", label: "다섯번째", width: 80, align: "center"},
-                {key: "b", label: "요일", width: 35, align: "center"},
-                {key: "c", label: "영업일수", width: 60, align: "center"},
-                {
-                    label: "매출현황", columns: [ // child columns
-                        {key: "d1", label: "총매출" ,width: 80 , formatter: "money",align: "right"},
-                        {key: "d2", label: "총할인" ,width: 80 , formatter: "money",align: "right"},
-                        {key: "d3", label: "실매출" ,width: 80 , formatter: "money",align: "right"},
-                        {key: "d4", label: "가액" ,width: 80 , formatter: "money",align: "right"},
-                        {key: "d5", label: "부가세" ,width: 80 , formatter: "money",align: "right"},
-                        {key: "d6", label: "영수건수" ,width: 60 ,align: "right"},
-                        {key: "d7", label: "영수단가" ,width: 80 , formatter: "money",align: "right"}
-                    ]
-                },
-                {
-                    label: "고객", columns: [ // child columns
-                        {key: "e1", label: "고객수" ,width: 50},
-                        {key: "e2", label: "객단가" ,width: 50},
-                        {key: "e3", label: "남" ,width: 50},
-                        {key: "e4", label: "여" ,width: 50},
-                        {key: "e5", label: "11" ,width: 50},
-                        {key: "e6", label: "22" ,width: 50}
-                    ]
-                },
-                {
-                    label: "테이블", columns: [ // child columns
-                        {key: "f1", label: "테이블수" ,width: 50},
-                        {key: "f2", label: "단가" ,width: 50},
-                        {key: "f3", label: "회전율" ,width: 50}
-                    ]
-                },
-                {key: "g", label: "봉사료", width: 80 ,align: "right"},
-                {key: "h", label: "에누리", width: 80 ,align: "right"},
-                {
-                    label: "결제수단", columns: [ // child columns
-                        {key: "i1", label: "결제합계" ,align: "right"},
-                        {key: "i2", label: "단순현금" ,align: "right"},
-                        {key: "i3", label: "현금영수" ,align: "right"},
-                        {key: "i4", label: "신용카드" ,align: "right"},
-                        {key: "i5", label: "외상" ,align: "right"},
-                        {key: "i6", label: "상품권" ,align: "right"},
-                        {key: "i7", label: "식권" ,align: "right"},
-                        {key: "i8", label: "회원포인트" ,align: "right"},
-                        {key: "i9", label: "제휴카드" ,align: "right"},
-                        {key: "i10", label: "사원카드" ,align: "right"},
-                        {key: "i11", label: "모바일쿠폰" ,align: "right"},
-                        {key: "i12", label: "캐시비" ,align: "right"},
-                        {key: "i13", label: "선불카드" ,align: "right"}
-                    ]
-                },
-                {
-                    label: "포장/배달현황", columns: [ // child columns
-                        {key: "j1", label: "일반" ,align: "right"},
-                        {key: "j2", label: "점유율(%)"},
-                        {key: "j3", label: "포장" ,align: "right"},
-                        {key: "j4", label: "점유율(%)"},
-                        {key: "j5", label: "배달" ,align: "right"},
-                        {key: "j6", label: "점유율(%)"}
-
-                    ]
-                },
-                {
-                    label: "할인내역", columns: [ // child columns
-                        {key: "k1", label: "일반" ,align: "right"},
-                        {key: "k2", label: "서비스" ,align: "right"},
-                        {key: "k3", label: "제휴" ,align: "right"},
-                        {key: "k4", label: "쿠폰" ,align: "right"},
-                        {key: "k5", label: "회원" ,align: "right"},
-                        {key: "k6", label: "식권" ,align: "right"},
-                        {key: "k7", label: "포장" ,align: "right"},
-                        {key: "k8", label: "YAP" ,align: "right"}
-                    ]
-                },
-                {
-                    label: "Tax Refund", columns: [ // child columns
-                        {key: "l1", label: "사후환급액" ,align: "right"},
-                        {key: "l2", label: "즉시환급액" ,align: "right"},
-                        {key: "l3", label: "환급수수료" ,align: "right"}
-                    ]
-                }
-            ],
+            columns: data ,
             footSum: [
                 [
                     {label: "SUMMARY", colspan: 2, align: "center"},

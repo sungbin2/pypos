@@ -16,31 +16,96 @@ def _earnings_day():
 def _earnings_day_(_id):
     store_id = c.session['store']
     cnt_days = {}
+    cnt_days['상품목록'] = {}
+    cnt_days['판매현황'] = {}
+    cnt_days['상품분류'] = {}
+    cnt_days['일자별'] = {}
+    cnt_days['분류별'] = {}
+    cnt_days['상품별'] = {}
+
     cnt = 0
     if c.is_GET():
         with orm.session_scope() as ss:  # type:c.typeof_Session
             lst = ss.query(orm.판매_품목) \
+                .filter_by(s=store_id) \
                 .filter_by(isdel='X') \
-                .filter(orm.판매_품목.d >= "2018-01-01") \
-                .filter(orm.판매_품목.d <= "2018-12-31") \
                 .all()
 
+
             for each in lst:
+
                 d = each.d.strftime('%Y-%m-%d')
-                if d not in cnt_days:
-                    cnt_days[d] = {'영업일자': d,
+
+                if d not in cnt_days['일자별']:
+                    cnt_days['일자별'][d] = {'영업일자': d,
                                    '총거래액': 0, '총할인액': 0, '실거래액': 0, '세금': 0, '판매이익': 0, '영수건수' : 0 }
-                cnt_days[d]['총거래액'] += each.단가
-                cnt_days[d]['총할인액'] += each.할인
-                cnt_days[d]['실거래액'] += each.합계
-                cnt_days[d]['세금'] += each.세
-                cnt_days[d]['판매이익'] += (each.공급가 + each.면세)
-                cnt_days[d]['영수건수'] += 1
+                cnt_days['일자별'][d]['총거래액'] += each.단가
+                cnt_days['일자별'][d]['총할인액'] += each.할인
+                cnt_days['일자별'][d]['실거래액'] += each.합계
+                cnt_days['일자별'][d]['세금'] += each.세
+                cnt_days['일자별'][d]['판매이익'] += (each.공급가 + each.면세)
+                cnt_days['일자별'][d]['영수건수'] += 1
+
+                p = each.품목pi
+
+                if p not in cnt_days['분류별']:
+                    cnt_days['분류별'][p] = {'영업일자': d,
+                                   '총거래액': 0, '총할인액': 0, '실거래액': 0, '세금': 0, '판매이익': 0, '영수건수' : 0 }
+
+                cnt_days['분류별'][p]['총거래액'] += each.단가
+                cnt_days['분류별'][p]['총할인액'] += each.할인
+                cnt_days['분류별'][p]['실거래액'] += each.합계
+                cnt_days['분류별'][p]['세금'] += each.세
+                cnt_days['분류별'][p]['판매이익'] += (each.공급가 + each.면세)
+                cnt_days['분류별'][p]['영수건수'] += 1
+
+                s = each.품목i
+
+                if s not in cnt_days['상품별']:
+                    cnt_days['상품별'][s] = {'영업일자': d,
+                                          '총거래액': 0, '총할인액': 0, '실거래액': 0, '세금': 0, '판매이익': 0, '영수건수': 0}
+
+                cnt_days['상품별'][s]['총거래액'] += each.단가
+                cnt_days['상품별'][s]['총할인액'] += each.할인
+                cnt_days['상품별'][s]['실거래액'] += each.합계
+                cnt_days['상품별'][s]['세금'] += each.세
+                cnt_days['상품별'][s]['판매이익'] += (each.공급가 + each.면세)
+                cnt_days['상품별'][s]['영수건수'] += 1
+
+
+
+
+
+            lst1 = ss.query(orm.상품_품목) \
+                .filter_by(s=store_id) \
+                .filter_by(isdel='X') \
+                .all()
+
+            for each in lst1:
+                cnt_days['상품목록'].update({each.i : each.품목명})
+
+            lst2 = ss.query(orm.상품_분류) \
+                .filter_by(s=store_id) \
+                .filter_by(isdel='X') \
+                .all()
+
+            for each in lst2:
+                cnt_days['상품분류'].update({each.i: each.분류명})
+
 
 
         return c.jsonify(cnt_days)
     c.abort(404)
 
+
+@app.route('/earnings/modal', methods=['GET', ])
+def _earnings_modal():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
 
 @app.route('/earnings/day1', methods=['GET', ])
 def _earnings_day1():

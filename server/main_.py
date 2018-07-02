@@ -14,7 +14,7 @@ orm = c.ORM('postgresql',
                 'password': '13a0a8e64e00c2cdd96ee6181b7bbd8627e97b50519320bb7b8ac81ed15957',
                 'host': '175.194.100.73',
                 'port': '55432',
-                'db': 'moderntest',
+                'db': 'modernpos',
             })
 
 import server.routes.login.login
@@ -51,6 +51,8 @@ import server.routes.goods.item_barcode
 
 import server.routes.earnings.day
 import server.routes.earnings.dayall
+
+import server.routes.earnings.week
 
 
 free_for_all = [

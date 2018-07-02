@@ -3,38 +3,9 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css">
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css">
-<style>
 
 
-  table {
-    width: 100%;
-    border: 0px;
-  }
-  .box{
-    border: 1px solid #a3a2a2; margin :0.5em 0em 0em 0em;
-  }
-  th {
-    text-align : left;
-    background-color: #e7dfdf;
-  }
-  a { color : blue };
-</style>
-
-<table class="box" >
-    <tr>
-        <th>
-         조회일자 <input class="datepickers" id="date" type="date" value=""><input class="datepickers" id="date2" type="date" value="">
-        </th>
-    </tr>
-    <tr>
-        <td>
-
-
-                 <div data-ax5grid="first-grid" data-ax5grid-config="{
+    <div data-ax5grid="first-grid" data-ax5grid-config="{
                         header: { align: 'center' },
                         frozenColumnIndex: 2,
                         <!--frozenRowIndex: 2,-->
@@ -44,29 +15,11 @@
                         <!--rowSelectorColumnWidth: 40-->
                     }" style="height: 600px;"></div>
 
-        </td>
-
-    </tr>
-</table>
-
-
-
 <script type="text/javascript" src="{{ url_for('static',filename='gridList.js') }} "></script>
 <script type="text/javascript">
 
-    var now = new Date();
-    var today = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-    $("#date").val( today);
-    $("#date2").val( today)
 
-
-
-
-    var  gridList = [];
-
-
-
-
+var  gridList = [];
     $.getJSON("{{ url_for('_earnings_day' ) }}/"+"{{ store_id }}", function (json) {
         _data = json;
 
@@ -76,45 +29,12 @@
 
     });
 
-    var mask = new ax5.ui.mask();
-    var modal = new ax5.ui.modal();
-    var modalCallBack = function(){
-        modal.close();
-    };
-
-    function modal1() {
-            modal.open({
-                width: 600,
-                iframe: {
-                    method: "get",
-                    url: "{{ url_for('_earnings_modal') }}",
-                    param: "callBack=modalCallBack"
-                },
-                onStateChanged: function () {
-                    // mask
-                    if (this.state === "open") {
-                        mask.open();
-                    }
-                    else if (this.state === "close") {
-                        mask.close();
-                    }
-                }
-            })
-    }
 
     function load() {
 
-
-
-            var firstGrid = new ax5.ui.grid({
-            target: $('[data-ax5grid="first-grid"]'),
-            columns: [
-                {key: "a", label: "일자", width: 80, align: "center" , formatter: function(){
-                    return '<a onClick=window.open("{{ url_for('_earnings_dayalldetail') }}","_blank","width=800,height=600,toolbars=no,scrollbars=no,resizable=no"); >' + this.value + '</a>';
-                }},
-                {key: "b", label: "요일", width: 35, align: "center" ,formatter: function(){
-                    return '<a onClick=modal1(); >' + this.value + '</a>';
-                }},
+        data = [
+                {key: "a", label: "다섯번째", width: 80, align: "center"},
+                {key: "b", label: "요일", width: 35, align: "center"},
                 {key: "c", label: "영업일수", width: 60, align: "center"},
                 {
                     label: "매출현황", columns: [ // child columns
@@ -193,7 +113,12 @@
                         {key: "l3", label: "환급수수료" ,align: "right"}
                     ]
                 }
-            ],
+            ]
+
+
+        var firstGrid = new ax5.ui.grid({
+            target: $('[data-ax5grid="first-grid"]'),
+            columns: data,
             footSum: [
                 [
                     {label: "SUMMARY", colspan: 2, align: "center"},

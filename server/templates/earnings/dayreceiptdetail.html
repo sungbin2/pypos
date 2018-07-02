@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css">
+<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
+
+
+
+<style>
+
+
+  table {
+    width: 100%;
+    border: 0px;
+  }
+  .box{
+    border: 1px solid #a3a2a2; margin :0.5em 0em 0em 0em;
+  }
+  th {
+    text-align : left;
+    background-color: #e7dfdf;
+  }
+
+</style>
+
+<table class="box" >
+    <tr>
+        <th style="color:white; background-color: #347efd;">
+         영수증별매출상세현황
+        </th>
+    </tr>
+    <tr>
+        <td>
+            조회일자 <input class="datepickers" id="date" type="date" value="">
+
+        </td>
+
+    </tr>
+</table>
+<table class="box">
+    <div data-ax5grid="1-grid" data-ax5grid-config="{
+            header: { align: 'center' },
+            frozenColumnIndex: 4,
+            showLineNumber: true,
+            page: { display: false  }
+        }" style="height: 600px;"></div>
+</table>
+
+
+
+<script type="text/javascript">
+
+var  gridList1 = [];var  gridList2 = [];var  gridList3 = [];var  gridList4 = [];
+
+$.getJSON("{{ url_for('_earnings_dayall' ) }}/"+"{{ store_id }}", function (json) {
+_data = json;
+
+}).done(function () {
+
+var Grid1 = new ax5.ui.grid({
+        target: $('[data-ax5grid="1-grid"]'),
+        columns: [
+            {key: "p1", label: "포스번호" ,width: 80 , formatter: "money",align: "center"},
+            {key: "r1", label: "영수증번호" ,width: 80 , formatter: "money",align: "center"},
+            {key: "a", label: "구분" ,width: 80 , formatter: "money",align: "center"},
+            {key: "tb", label: "테이블명" ,width: 80 , formatter: "money",align: "right"},
+            {key: "ft", label: "최초주문" ,width: 80},
+            {key: "t", label: "결제시각" ,width: 80 ,align: "center"},
+            {key: "sc", label: "상품코드" ,width: 80 ,align: "center"},
+            {key: "bc", label: "바코드" ,width: 80 ,align: "center"},
+            {key: "sn", label: "상품명" ,width: 80 ,align: "center"},
+            {key: "sc", label: "수량" ,width: 80 ,align: "center"},
+            {key: "d1", label: "총매출액" ,width: 80 , formatter: "money",align: "right"},
+            {key: "d2", label: "할인액" ,width: 80 , formatter: "money",align: "right"},
+            {key: "k", label: "할인구분" ,align: "right"},
+            {key: "d3", label: "실매출액" ,width: 80 , formatter: "money",align: "right"},
+            {key: "d4", label: "가액" ,width: 80 , formatter: "money",align: "right"},
+            {key: "d5", label: "부가세" ,width: 80 , formatter: "money",align: "right"}
+            ],
+        footSum: [
+            [
+                {label: "합계", colspan: 2, align: "center"},
+                {key: "c", collector: "sum", formatter: "money", align: "center"},
+                {key: "d1", collector: "sum", formatter: "money", align: "right"},
+                {key: "d2", collector: "sum", formatter: "money", align: "right"},
+                {key: "d3", collector: "sum", formatter: "money", align: "right"},
+                {key: "d4", collector: "sum", formatter: "money", align: "right"},
+                {key: "d5", collector: "sum", formatter: "money", align: "right"},
+                {key: "d6", collector: "sum", formatter: "money", align: "right"},
+                <!--{key: "d7", collector: "sum", formatter: "money", align: "right"},-->
+                {key: "e1", collector: "sum", formatter: "money", align: "right"},
+                {key: "e2", collector: "sum", formatter: "money", align: "right"},
+                {key: "e3", collector: "sum", formatter: "money", align: "right"},
+                {key: "e4", collector: "sum", formatter: "money", align: "right"},
+                {key: "e5", collector: "sum", formatter: "money", align: "right"},
+                {key: "e6", collector: "sum", formatter: "money", align: "right"},
+                {key: "f1", collector: "sum", formatter: "money", align: "right"},
+                {key: "f2", collector: "sum", formatter: "money", align: "right"},
+                {key: "f3", collector: "sum", formatter: "money", align: "right"},
+                {key: "g", collector: "sum", formatter: "money", align: "right"},
+                {key: "h", collector: "sum", formatter: "money", align: "right"},
+                {key: "l5", collector: "sum", formatter: "money", align: "right"},
+
+
+            ]
+        ]
+
+    });
+
+    Grid1.setData(gridList1);
+
+
+});
+
+    var now = new Date();
+    var today = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
+    $("#date").val( today);
+
+
+
+
+</script>
+
+{% endblock %}
+

@@ -49,3 +49,13 @@ def _earnings_dayalldetail():
         return c.display(store_id=store_id)
     else:
         return c.display(store_id=store_id)
+
+
+@app.route('/earnings/dayreceiptdetail', methods=['GET', ])
+def _earnings_dayreceiptdetail():
+    store_id = c.session['store']
+    if c.is_GET():
+
+        return c.display(store_id=store_id)
+    else:
+        return c.display(store_id=store_id)
