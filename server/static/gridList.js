@@ -31,15 +31,17 @@ function loaddata() {
 //        gridList[i].a = data0[i]['영업일자'];
 //        gridList[i].a = data0[i]['영업일자'];
 
+        for (j in data0[i]['분류별']) {
+            gridList[i]['pt'+j] = data0[i]['분류별'][j]['실거래액'];
+            gridList[i]['prc'+j] = data0[i]['분류별'][j]['영수건수'];
+        }
 
-        for( j in _data['분류별'] ) {
-            if ( _data['분류별'][j]['영업일자'] == data0[i]['영업일자']) {
-                gridList[i]['pt'+j] = _data['분류별'][j]['실거래액'];
-                gridList[i]['prc'+j] = _data['분류별'][j]['영수건수'];
-            }
-         }
+
 
     }
+
+
+
     load()
 
 }

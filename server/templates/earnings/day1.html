@@ -7,17 +7,29 @@
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-modal/master/dist/ax5modal.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/ax5ui/ax5ui-calendar/master/dist/ax5calendar.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/ax5ui/ax5ui-picker/master/dist/ax5picker.css">
+<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-calendar/master/dist/ax5calendar.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-formatter/master/dist/ax5formatter.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-picker/master/dist/ax5picker.min.js"></script>
+
+
+
+
 <style>
 
 
   table {
     width: 100%;
+    height :95%;
     border: 0px;
   }
   .box{
     border: 1px solid #a3a2a2; margin :0.5em 0em 0em 0em;
   }
   th {
+    height : 40px;
     text-align : left;
     background-color: #e7dfdf;
   }
@@ -26,24 +38,28 @@
 
 <table class="box" >
     <tr>
-        <th>
-         조회일자 <input class="datepickers" id="date" type="date" value=""><input class="datepickers" id="date2" type="date" value="">
+        <th >
+         <div class="row" >
+            <div class="col-md-6">
+                <label style=" margin-top: 8; float:left;">조회일자</label>
+                <div class="input-group" data-ax5picker="basic" style="height:20px;width:300px; float:left;" >
+                    <input id='dates' type="text" class="form-control" placeholder="yyyy/mm/dd" >
+                    <span class="input-group-addon">~</span>
+                    <input id='datee'type="text" class="form-control" placeholder="yyyy/mm/dd">
+                    <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
+                </div>
+                <button class="btn" id="load" style=" margin-top: 8">조회</button>
+            </div>
+        </div>
         </th>
     </tr>
     <tr>
         <td>
-
-
                  <div data-ax5grid="first-grid" data-ax5grid-config="{
                         header: { align: 'center' },
                         frozenColumnIndex: 2,
-                        <!--frozenRowIndex: 2,-->
                         showLineNumber: true,
-                        <!--showRowSelector: true,-->
-                        <!--lineNumberColumnWidth: 50,-->
-                        <!--rowSelectorColumnWidth: 40-->
-                    }" style="height: 600px;"></div>
-
+                    }" style="height: 100%;"></div>
         </td>
 
     </tr>
@@ -52,12 +68,13 @@
 
 
 <script type="text/javascript" src="{{ url_for('static',filename='gridList.js') }} "></script>
+<script type="text/javascript" src="{{ url_for('static',filename='datepicker.js') }} "></script>
+
+
+
 <script type="text/javascript">
 
-    var now = new Date();
-    var today = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-    $("#date").val( today);
-    $("#date2").val( today)
+
 
 
 
@@ -71,6 +88,8 @@
         _data = json;
 
     }).done(function () {
+
+
 
     loaddata();
 
@@ -196,7 +215,7 @@
             ],
             footSum: [
                 [
-                    {label: "SUMMARY", colspan: 2, align: "center"},
+                    {label: "합계", colspan: 2, align: "center"},
                     {key: "c", collector: "sum", formatter: "money", align: "center"},
                     {key: "d1", collector: "sum", formatter: "money", align: "right"},
                     {key: "d2", collector: "sum", formatter: "money", align: "right"},
@@ -204,7 +223,7 @@
                     {key: "d4", collector: "sum", formatter: "money", align: "right"},
                     {key: "d5", collector: "sum", formatter: "money", align: "right"},
                     {key: "d6", collector: "sum", formatter: "money", align: "right"},
-                    <!--{key: "d7", collector: "sum", formatter: "money", align: "right"},-->
+                    {key: "d7"},
                     {key: "e1", collector: "sum", formatter: "money", align: "right"},
                     {key: "e2", collector: "sum", formatter: "money", align: "right"},
                     {key: "e3", collector: "sum", formatter: "money", align: "right"},
@@ -222,7 +241,29 @@
                 ]]
         });
 
-        firstGrid.setData(gridList);
+
+
+    $('#load').click(function () {
+        var dates = $('input[id=dates]').val();
+        var datee = $('input[id=datee]').val();
+        var result = [];
+        var a=0;
+
+        for ( i in gridList ) {
+            if ( dates <= gridList[i].a && datee >= gridList[i].a ) {
+             result.push(gridList[i])
+             a++
+             }
+        }
+
+        console.log(result);
+        console.log(gridList);
+
+
+
+        firstGrid.setData(result);
+        })
+
     }
 
 
