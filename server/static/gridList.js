@@ -26,7 +26,7 @@ function loaddata() {
         gridList[i].d5 = data0[i]['세금'];
         gridList[i].d6 = data0[i]['영수건수'];
         gridList[i].d7 = Math.round(a);
-//        gridList[i].a = data0[i]['영업일자'];
+        gridList[i].k1 = data0[i]['총할인액'];
 //        gridList[i].a = data0[i]['영업일자'];
 //        gridList[i].a = data0[i]['영업일자'];
 //        gridList[i].a = data0[i]['영업일자'];
@@ -37,11 +37,22 @@ function loaddata() {
         }
 
 
-
     }
 
+    for( i in data0) {
+       for (k in data0[i]['상품별']) {
+            gridList1[a] = {};
+            gridList1[a].a = data0[i]['영업일자'];
+            gridList1[a].ppi = _data['상품분류'][data0[i]['상품별'][k]['ppi']]
+            gridList1[a].pi = k
+            gridList1[a].pn = _data['상품목록'][k]
+            gridList1[a].pc = data0[i]['상품별'][k]['영수건수']
+            gridList1[a].pt = data0[i]['상품별'][k]['총거래액']
+            gridList1[a].pe = data0[i]['상품별'][k]['총할인액']
+            gridList1[a].pr = data0[i]['상품별'][k]['실거래액']
 
-
-    load()
+            a++;
+        }
+    }
 
 }

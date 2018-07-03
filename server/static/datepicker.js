@@ -46,6 +46,7 @@
     $("#dates").val( today());
     $("#datee").val( today());
 
+
     var picker = new ax5.ui.picker();
 
     $(document.body).ready(function () {

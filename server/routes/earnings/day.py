@@ -84,8 +84,6 @@ def _earnings_day_(_id):
             for each in lst2:
                 cnt_days['상품분류'].update({each.i: each.분류명})
 
-        print(cnt_days)
-
         return c.jsonify(cnt_days)
     c.abort(404)
 
