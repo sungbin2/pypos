@@ -2,8 +2,7 @@
 
 function loaddata() {
     data0 = [];
-    data1 = [];
-    var a = 0;
+    var a = 0;var n=0;
     var week = new Array('일', '월', '화', '수', '목', '금', '토');
 
     for( i in _data['일자별'] ) {
@@ -12,7 +11,7 @@ function loaddata() {
 
     for( i in data0) {
 
-        a = parseInt(data0[i]['총거래액']) / parseInt(data0[i]['영수건수'])
+        n = parseInt(data0[i]['총거래액']) / parseInt(data0[i]['영수건수'])
         d = new Date(data0[i]['영업일자']).getDay()
 
         gridList[i] = {};
@@ -25,7 +24,7 @@ function loaddata() {
         gridList[i].d4 = data0[i]['판매이익'];
         gridList[i].d5 = data0[i]['세금'];
         gridList[i].d6 = data0[i]['영수건수'];
-        gridList[i].d7 = Math.round(a);
+        gridList[i].d7 = Math.round(n);
         gridList[i].k1 = data0[i]['총할인액'];
 //        gridList[i].a = data0[i]['영업일자'];
 //        gridList[i].a = data0[i]['영업일자'];
@@ -36,11 +35,7 @@ function loaddata() {
             gridList[i]['prc'+j] = data0[i]['분류별'][j]['영수건수'];
         }
 
-
-    }
-
-    for( i in data0) {
-       for (k in data0[i]['상품별']) {
+        for (k in data0[i]['상품별']) {
             gridList1[a] = {};
             gridList1[a].a = data0[i]['영업일자'];
             gridList1[a].ppi = _data['상품분류'][data0[i]['상품별'][k]['ppi']]
@@ -53,6 +48,7 @@ function loaddata() {
 
             a++;
         }
+
     }
 
 }

@@ -4,15 +4,20 @@
     <list default="true" id="4899d7bc-a74c-4d6f-b5e2-feea2b709650" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/earnings/day.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/earnings/day.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/earnings/dayall.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/earnings/dayall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/static/datepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/static/datepicker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/static/gridList.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/static/gridList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/templates/earnings/day.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/earnings/day.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/static/griddata.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/static/griddata.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/templates/earnings/day1.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/earnings/day1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/templates/earnings/day2.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/earnings/day2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/templates/earnings/day3.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/earnings/day3.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/templates/earnings/day4.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/earnings/day4.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/templates/earnings/day5.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/earnings/day5.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/templates/earnings/day6.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/earnings/day6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/templates/earnings/dayall.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/earnings/dayall.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/templates/earnings/dayalldetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/earnings/dayalldetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/templates/includes.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/includes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/layout.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,20 +30,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="day.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/routes/earnings/day.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1691">
-                  <caret line="86" selection-start-line="86" selection-end-line="86" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="day1.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server/templates/earnings/day1.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="798">
-                  <caret line="42" lean-forward="true" selection-start-line="39" selection-end-line="42" />
+                <state relative-caret-position="2220">
+                  <caret line="167" column="86" lean-forward="true" selection-start-line="162" selection-start-column="12" selection-end-line="167" selection-end-column="86" />
                   <folding>
                     <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
@@ -52,17 +48,55 @@
           <file leaf-file-name="day.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server/templates/earnings/day.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="605">
-                  <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+                <state relative-caret-position="-1979">
+                  <caret line="2" selection-start-line="2" selection-end-line="2" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="gridList.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/server/static/gridList.js">
+          <file leaf-file-name="ax5.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/templates/ax5.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1083">
-                  <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+                <state relative-caret-position="361">
+                  <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="dayall.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayall.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="681">
+                  <caret line="259" lean-forward="true" selection-start-line="226" selection-start-column="11" selection-end-line="259" />
+                  <folding>
+                    <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#table#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#1;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#2;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#table#2;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#table#0;n#table#2;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#table#2;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#table#1;n#table#2;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#1;n#table#2;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="dayalldetail.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayalldetail.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="336">
+                  <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+                  <folding>
+                    <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -71,8 +105,40 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="window.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/templates/window.html">
+          <file leaf-file-name="day.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/server/routes/earnings/day.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="551">
+                  <caret line="173" lean-forward="true" selection-start-line="173" selection-end-line="173" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="dayalldetail.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayalldetail.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1770">
+                  <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+                  <folding>
+                    <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="gridList.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/static/gridList.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="57">
+                  <caret line="3" column="15" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="15" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/templates/layout.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="304">
                   <caret line="16" selection-start-line="16" selection-end-line="16" />
@@ -80,92 +146,41 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="includes.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/templates/includes.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="776">
+                  <caret line="51" column="83" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="83" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="griddata.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/static/griddata.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="361">
+                  <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="dayall.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayall.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1881">
-                  <caret line="99" column="8" selection-start-line="99" selection-start-column="8" selection-end-line="99" selection-end-column="8" />
+                <state relative-caret-position="830">
+                  <caret line="162" column="9" lean-forward="true" selection-start-line="131" selection-start-column="8" selection-end-line="162" selection-end-column="9" />
                   <folding>
                     <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#table#1;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#1;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#2;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#table#2;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#table#0;n#table#2;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="day3.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/templates/earnings/day3.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="304">
-                  <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-                  <folding>
-                    <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="day4.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/templates/earnings/day4.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="266">
-                  <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-                  <folding>
-                    <element signature="e#158#193#0" expanded="true" />
-                    <element signature="e#271#315#0" expanded="true" />
-                    <element signature="e#734#756#0" expanded="true" />
-                    <element signature="e#1088#1109#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="day5.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/server/templates/earnings/day5.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1767">
-                  <caret line="93" column="31" lean-forward="true" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
-                  <folding>
-                    <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="day6.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/templates/earnings/day6.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1691">
-                  <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
-                  <folding>
-                    <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="day2.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/templates/earnings/day2.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="472">
-                  <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-                  <folding>
-                    <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#table#2;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#table#1;n#table#2;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#1;n#table#2;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -189,14 +204,19 @@
       <find>},</find>
       <find>addComma(</find>
       <find>width: 50</find>
-      <find>left</find>
       <find>icon</find>
       <find>day</find>
       <find>width=&quot;1000&quot;</find>
-      <find>분류별</find>
       <find>data0</find>
-      <find>p</find>
       <find>gridList1</find>
+      <find>p</find>
+      <find>c</find>
+      <find>분류별</find>
+      <find>a</find>
+      <find>[a]</find>
+      <find>left</find>
+      <find>[b]</find>
+      <find>gridList2[n]</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -214,6 +234,14 @@
       <replace>상품별</replace>
       <replace>s</replace>
       <replace>gridList</replace>
+      <replace>c</replace>
+      <replace>cash</replace>
+      <replace>수단별</replace>
+      <replace>b</replace>
+      <replace>[b]</replace>
+      <replace>right</replace>
+      <replace>[n]</replace>
+      <replace>gridList1[i]</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -222,8 +250,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/routes/goods/item_s.py" />
-        <option value="$PROJECT_DIR$/server/templates/goods/item_s.html" />
         <option value="$PROJECT_DIR$/server/routes/goods/item_upload.py" />
         <option value="$PROJECT_DIR$/server/templates/goods/item_upload.html" />
         <option value="$PROJECT_DIR$/server/routes/goods/item_list.py" />
@@ -247,12 +273,7 @@
         <option value="$PROJECT_DIR$/server/templates/earnings/day8.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/day7.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/dayold.html" />
-        <option value="$PROJECT_DIR$/server/templates/earnings/dayalldetail.html" />
-        <option value="$PROJECT_DIR$/server/routes/earnings/dayall.py" />
-        <option value="$PROJECT_DIR$/server/templates/earnings/dayreceiptdetail.html" />
         <option value="$PROJECT_DIR$/server/routes/earnings/week.py" />
-        <option value="$PROJECT_DIR$/server/templates/layout.html" />
-        <option value="$PROJECT_DIR$/server/templates/earnings/dayall.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/week.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/week2.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/week1.html" />
@@ -261,18 +282,25 @@
         <option value="$PROJECT_DIR$/server/main_.py" />
         <option value="$PROJECT_DIR$/server/routes/login/login.py" />
         <option value="$PROJECT_DIR$/server/shared_lib.py" />
-        <option value="$PROJECT_DIR$/server/static/griddata.css" />
         <option value="$PROJECT_DIR$/server/templates/ax5.html" />
-        <option value="$PROJECT_DIR$/server/routes/earnings/day.py" />
-        <option value="$PROJECT_DIR$/server/static/datepicker.js" />
+        <option value="$PROJECT_DIR$/server/templates/earnings/day.html" />
+        <option value="$PROJECT_DIR$/server/templates/layout.html" />
+        <option value="$PROJECT_DIR$/server/templates/includes.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/day1.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/day2.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/day3.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/day4.html" />
-        <option value="$PROJECT_DIR$/server/templates/earnings/day6.html" />
         <option value="$PROJECT_DIR$/server/templates/earnings/day5.html" />
-        <option value="$PROJECT_DIR$/server/templates/earnings/day.html" />
+        <option value="$PROJECT_DIR$/server/templates/earnings/day6.html" />
+        <option value="$PROJECT_DIR$/server/static/griddata.css" />
+        <option value="$PROJECT_DIR$/server/static/datepicker.js" />
+        <option value="$PROJECT_DIR$/server/static/daypicker.js" />
         <option value="$PROJECT_DIR$/server/static/gridList.js" />
+        <option value="$PROJECT_DIR$/server/templates/earnings/dayall.html" />
+        <option value="$PROJECT_DIR$/server/templates/earnings/dayreceiptdetail.html" />
+        <option value="$PROJECT_DIR$/server/routes/earnings/dayall.py" />
+        <option value="$PROJECT_DIR$/server/templates/earnings/dayalldetail.html" />
+        <option value="$PROJECT_DIR$/server/routes/earnings/day.py" />
       </list>
     </option>
   </component>
@@ -407,17 +435,17 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/pympos" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sb\pypos\server\templates" />
-      <recent name="C:\Users\sb\pypos\server\templates\earnings" />
-      <recent name="C:\Users\sb\pypos\server\routes\earnings" />
-      <recent name="C:\Users\sb\pypos\server\templates\goods" />
-      <recent name="C:\Users\sb\pypos\server\routes\goods" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sb\pypos\server\templates\earnings" />
       <recent name="C:\Users\sb\pypos\server" />
       <recent name="C:\Users\sb\pypos\server\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sb\pypos\server\static" />
+      <recent name="C:\Users\sb\pypos\server\templates" />
+      <recent name="C:\Users\sb\pypos\server\templates\earnings" />
+      <recent name="C:\Users\sb\pypos\server\routes\earnings" />
+      <recent name="C:\Users\sb\pypos\server\templates\goods" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -470,34 +498,27 @@
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14947917" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32978722" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32978722" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/templates/earnings/day9.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="71" column="37" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/templates/earnings/day8.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="779">
@@ -560,13 +581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/includes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/templates/semantic-ui-do.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -578,20 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayalldetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="58" column="19" lean-forward="true" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayreceiptdetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -623,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/earnings/week.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="22" column="60" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/templates/window.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -651,27 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/earnings/week1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="681">
-          <caret line="140" lean-forward="true" selection-start-line="135" selection-end-line="140" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayall.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1881">
-          <caret line="99" column="8" selection-start-line="99" selection-start-column="8" selection-end-line="99" selection-end-column="8" />
-          <folding>
-            <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#table#2;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/templates/earnings/modal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -683,13 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/earnings/dayall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -716,45 +681,38 @@
     <entry file="file://$PROJECT_DIR$/server/templates/dashboard.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/earnings/week.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-209">
+          <caret line="22" column="60" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/earnings/week1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2470">
+          <caret line="129" column="18" lean-forward="true" selection-start-line="129" selection-start-column="18" selection-end-line="129" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="33" />
+        <state relative-caret-position="304">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/static/datepicker.js">
+    <entry file="file://$PROJECT_DIR$/server/templates/includes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2432">
-          <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+        <state relative-caret-position="776">
+          <caret line="51" column="83" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="83" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/static/griddata.css">
+    <entry file="file://$PROJECT_DIR$/server/templates/earnings/day2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/ax5.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/earnings/day.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1691">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/earnings/day1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="42" lean-forward="true" selection-start-line="39" selection-end-line="42" />
+        <state relative-caret-position="57">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
@@ -766,8 +724,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/templates/earnings/day3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="57">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
@@ -779,34 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/templates/earnings/day4.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#158#193#0" expanded="true" />
-            <element signature="e#271#315#0" expanded="true" />
-            <element signature="e#734#756#0" expanded="true" />
-            <element signature="e#1088#1109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/earnings/day6.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1691">
-          <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/templates/earnings/day2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="76">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
@@ -818,8 +750,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/templates/earnings/day5.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1767">
-          <caret line="93" column="31" lean-forward="true" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
+        <state relative-caret-position="76">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/ax5.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/earnings/day6.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/static/datepicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/static/griddata.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/static/daypicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="49" column="37" lean-forward="true" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/earnings/day1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2220">
+          <caret line="167" column="86" lean-forward="true" selection-start-line="162" selection-start-column="12" selection-end-line="167" selection-end-column="86" />
           <folding>
             <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
@@ -831,15 +817,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/templates/earnings/day.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+        <state relative-caret-position="-1979">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayreceiptdetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="63" column="21" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#table#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/static/gridList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1083">
-          <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+        <state relative-caret-position="57">
+          <caret line="3" column="15" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayall.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="830">
+          <caret line="162" column="9" lean-forward="true" selection-start-line="131" selection-start-column="8" selection-end-line="162" selection-end-column="9" />
+          <folding>
+            <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#1;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#2;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#table#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#0;n#table#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#1;n#table#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#1;n#table#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/earnings/dayall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/templates/earnings/dayalldetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1770">
+          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+          <folding>
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#th#0;n#tr#1;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/earnings/day.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="173" lean-forward="true" selection-start-line="173" selection-end-line="173" />
         </state>
       </provider>
     </entry>

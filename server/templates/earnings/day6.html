@@ -2,7 +2,7 @@
 {% include 'ax5.html' %}
 
 
-<table class="box" >
+<table class="box day" >
     <tr>
         <th >
          <div class="row" >
@@ -25,16 +25,14 @@
                         header: { align: 'center' },
                         frozenColumnIndex: 2,
                         showLineNumber: true,
+                        page: { display: false  }
                     }" style="height: 100%;"></div>
         </td>
 
     </tr>
 </table>
 
-
-<script type="text/javascript" src="{{ url_for('static',filename='gridList.js') }} "></script>
 <script type="text/javascript" src="{{ url_for('static',filename='datepicker.js') }} "></script>
-
 <script type="text/javascript">
 
 
