@@ -155,20 +155,21 @@ def _earnings_day_(_id):
                 
                 r = each.i
                 if r not in cnt_days['일자별'][d]['영수증별']:
-                    cnt_days['일자별'][d]['영수증별'][r] = { '총거래액': 0, '총할인액': 0, '실거래액': 0, '세금': 0, '판매이익': 0, '주문일시': d1 , '결제일시': d2, '취소일시': d3  }
+                    cnt_days['일자별'][d]['영수증별'][r] = { '총거래액': 0, '총할인액': 0, '실거래액': 0, '세금': 0, '판매이익': 0, '주문일시': d1 , '결제일시': d2, '취소일시': d3 ,'테이블명': "" }
                 cnt_days['일자별'][d]['영수증별'][r]['총거래액'] = each.총금액
                 cnt_days['일자별'][d]['영수증별'][r]['총할인액'] = each.총할인
                 cnt_days['일자별'][d]['영수증별'][r]['실거래액'] = each.합계
                 cnt_days['일자별'][d]['영수증별'][r]['세금'] = each.세
                 cnt_days['일자별'][d]['영수증별'][r]['판매이익'] = (each.공급가 + each.면세)
+                cnt_days['일자별'][d]['영수증별'][r]['테이블명'] = each.table_idx+1
+
+                for each2 in cashm:
+                    cnt_days['일자별'][d]['영수증별'][r][each2] = 0
 
                 for each1 in lst3:
                     if each1.판매i == r:
-                        for each2 in cashm:
-                            cnt_days['일자별'][d]['영수증별'][r][each2] = 0
-
                         cash1 = each1.결제수단
-                        cnt_days['일자별'][d]['영수증별'][r][cash1] += each.합계
+                        cnt_days['일자별'][d]['영수증별'][r][cash1] += each1.합계
 
 
 
