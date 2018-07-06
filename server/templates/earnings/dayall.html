@@ -129,7 +129,7 @@
         for( i in _data['일자별'] ) {
             data0.push(_data['일자별'][i]);
         }
-        var n=0;
+        var n=0; var n1=0;
 
         for ( i in data0) {
 
@@ -148,18 +148,18 @@
 
                 n++
             }
-            n=0;
-            for (k in data0[i]['상품별']) {
-                gridList4[n] = {};
-                gridList4[n]['영업일자'] = data0[i]['영업일자'];
-                gridList4[n]['상품코드'] = k
-                gridList4[n]['상품명'] = _data['상품목록'][k]
-                gridList4[n]['수량'] = data0[i]['상품별'][k]['영수건수']
-                gridList4[n]['실매출'] = data0[i]['상품별'][k]['실거래액']
 
-                n++;
+            for (k in data0[i]['상품별']) {
+                gridList4[n1] = {};
+                gridList4[n1]['영업일자'] = data0[i]['영업일자'];
+                gridList4[n1]['상품코드'] = k
+                gridList4[n1]['상품명'] = _data['상품목록'][k]
+                gridList4[n1]['수량'] = data0[i]['상품별'][k]['영수건수']
+                gridList4[n1]['실매출'] = data0[i]['상품별'][k]['실거래액']
+
+                n1++;
             }
-            n=0;
+
         }
 
     }).done(function () {
@@ -224,11 +224,12 @@
             });
 
 
-            $('#load').click(function () { first() })
+            $('#load').click(function () { load() })
 
 
-            function first() {
+            function load() {
                 var dates = $('input[id=dates]').val();
+
 
                 var result1 = []; var result2 = []; var result3 = []; var result4 = [];
 
@@ -251,14 +252,21 @@
 
                 }
 
+
+
                 Grid1.setData(result1);
                 Grid2.setData(result2);
                 Grid3.setData(result3);
                 Grid4.setData(result4);
 
+                if( result1.length == 0 ) {
+                    alert("조회된 매출 데이터가 없습니다.");
+                    return 0;
+                }
+
             }
 
-            first()
+            load()
 
 
      });

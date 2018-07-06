@@ -192,6 +192,7 @@ $.getJSON("{{ url_for('_earnings_day' ) }}/"+"{{ store_id }}", function (json) {
 
 }).done(function () {
 
+    load()
 });
 function caltime(a,b) {
 
@@ -593,26 +594,18 @@ var Grid2 = new ax5.ui.grid({
             footSum: [ foot2 ]
     });
 
-    if( result1.length == 0 ) {
-        Grid1 = new ax5.ui.grid({
-                    target: $('[data-ax5grid="1-grid"]'),
-                    columns: data1,
-                    footSum: [ foot1 ]
-                    });
 
-        Grid2 = new ax5.ui.grid({
-                    target: $('[data-ax5grid="2-grid"]'),
-                    columns:  data2,
-                    footSum: [ foot2 ]
-                    });
-
-        alert("조회된 매출 데이터가 없습니다.");
-        return 0;
-    }
 
     Grid1.setData(result1);
     Grid2.setData(result2);
+
+    if( result1.length == 0 ) {
+        alert("조회된 매출 데이터가 없습니다.");
+        return 0;
+    }
  }
+
+
 
  $('#load').click(function () {
     load()
