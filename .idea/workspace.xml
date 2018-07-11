@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4899d7bc-a74c-4d6f-b5e2-feea2b709650" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/main_.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/main_.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,7 +93,7 @@
             <entry file="file://$PROJECT_DIR$/server/main_.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="133">
-                  <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
+                  <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -851,7 +852,7 @@
     <entry file="file://$PROJECT_DIR$/server/main_.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
-          <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
         </state>
       </provider>
     </entry>
