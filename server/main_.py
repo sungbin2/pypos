@@ -6,7 +6,7 @@ c = shared_lib
 # create our little application :)
 app = Flask(__name__)
 app.secret_key = 'KBIZPOS'
-code = "13a0a8e64e00c2cdd96ee6181b7bbd8627e97b50519320bb7b8ac81ed15957"
+code = "13a0a8e64e00c2cdd96ee6181b7bbd8627e97b50519320bb7b8ac81ed15957a"
 app.debug = True
 
 orm = c.ORM('postgresql',
