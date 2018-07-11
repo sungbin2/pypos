@@ -128,10 +128,10 @@ def vat_calc(amt, 부가세과세, 부가세포함):
 
 def get_settings(orm, store_id):
     with orm.session_scope() as ss:  # type:c.typeof_Session
-        only = ss.query(orm.settings) \
+        only = ss.query(orm.setting) \
             .filter_by(s=store_id) \
             .filter_by(isdel=X) \
-            .order_by(ss.desc(orm.settings.no)) \
+            .order_by(ss.desc(orm.setting.s)) \
             .first()
         return OBJ_cp(only)
     
@@ -147,9 +147,9 @@ def get_settings1(orm, store_id):
 
 def get_setting_영수증서식(orm, shop_id):
     with orm.session_scope() as ss:  # type:c.typeof_Session
-        only = ss.query(orm.영수증서식) \
+        only = ss.query(orm.setting_영수증서식) \
             .filter_by(s=shop_id) \
             .filter_by(isdel=X) \
-            .order_by(ss.desc(orm.영수증서식.i)) \
+            .order_by(ss.desc(orm.setting_영수증서식.i)) \
             .first()
         return OBJ_cp(only)

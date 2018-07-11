@@ -33,74 +33,94 @@
 
 
 <script type="text/javascript" src="{{ url_for('static',filename='datepicker.js') }} "></script>
+<<script type="text/javascript" src="{{ url_for('static',filename='gridList.js') }} "></script>
+
 <script type="text/javascript">
 
+var _data = [];
+var  gridList = [];
+var  gridList1 = [];
+var result = [];
+var data =[] ; var sum = [];
+load()
 
-    var gridList = window.parent.gridList
-    var _data = window.parent._data
-    load()
+
+function load() {
 
 
-    function load() {
-
-
-        data = [
-                {key: "a", label: "일자", width: 80, align: "center"},
-                {key: "b", label: "요일", width: 35, align: "center"},
-                {key: "c", label: "영업일수", width: 60, align: "center"},
-                {key: "d3", label: "실매출합계" ,width: 80 , formatter: "money",align: "right"},
-                {key: "d6", label: "수량합계" ,width: 60 ,align: "right"},
+    data = [
+            {key: "일자", label: "일자", width: 80, align: "center"},
+            {key: "요일", label: "요일", width: 35, align: "center"},
+            {key: "영업일수", label: "영업일수", width: 60, align: "center"},
+            {key: "실매출", label: "실매출합계" ,width: 80 , formatter: "money",align: "right"},
+            {key: "영수건수", label: "수량합계" ,width: 60 ,align: "right"},
+        ]
+     sum =[
+                {label: "합계", colspan: 2, align: "center"},
+                {key: "영업일수", collector: "sum", formatter: "money", align: "center"},
+                {key: "실매출", collector: "sum", formatter: "money", align: "right"},
+                {key: "영수건수", collector: "sum", formatter: "money", align: "right"},
             ]
-         sum =[
-                    {label: "합계", colspan: 2, align: "center"},
-                    {key: "c", collector: "sum", formatter: "money", align: "center"},
-                    {key: "d3", collector: "sum", formatter: "money", align: "right"},
-                    {key: "d6", collector: "sum", formatter: "money", align: "right"},
-                ]
 
+
+    var firstGrid = new ax5.ui.grid({
+        target: $('[data-ax5grid="first-grid"]'),
+        columns: data ,
+        footSum: [ sum         ]
+    });
+}
+
+
+$('#load').click(function () {
+     gridList = [];
+
+
+    var dates = $('input[id=dates]').val();
+    var datee = $('input[id=datee]').val();
+
+
+    $.getJSON("{{ url_for('_earnings_day' ) }}/"+"{{ store_id }}&"+dates+"&"+datee, function (json) {
+        _data = json;
+
+    }).done(function () {
+
+        load()
 
         for( i in _data['상품분류'] ) {
+
             data.push( {label: _data['상품분류'][i] , columns : [
-                { key : 'pt'+i , label : "실매출" ,width: 80 , formatter: "money",align: "right"} ,
-                { key : 'prc'+i,  label : "영수건수" ,width: 60 ,align: "right"} ]}
+                { key : '실매출'+i , label : "실매출" ,width: 80 , formatter: "money",align: "right"} ,
+                { key : '수량'+i,  label : "수량" ,width: 60 ,align: "right"} ]}
                 )
-            sum.push( { key : 'pt'+i , collector: "sum", formatter: "money", align: "center"},
-                      { key : 'prc'+i, collector: "sum", align: "center"} )
+            sum.push( { key : '실매출'+i , collector: "sum", formatter: "money", align: "center"},
+                      { key : '수량'+i, collector: "sum", align: "center"} )
         }
 
-
-
-
-
-        var firstGrid = new ax5.ui.grid({
+         firstGrid = new ax5.ui.grid({
             target: $('[data-ax5grid="first-grid"]'),
             columns: data ,
             footSum: [ sum
                 ]
+         });
+
+        loaddata();
+
+        firstGrid.setData(gridList);
+
         });
 
-        $('#load').click(function () {
-            var dates = $('input[id=dates]').val();
-            var datee = $('input[id=datee]').val();
 
-            for ( i=1 ; i<10 ; i++){
-                $('input[id=dates]', parent.frames["day"+i].document).val(dates)
-                $('input[id=datee]', parent.frames["day"+i].document).val(datee)
-            }
-            var result = [];
-            var a=0;
 
-            for ( i in gridList ) {
-                if ( dates <= gridList[i].a && datee >= gridList[i].a ) {
-                 result.push(gridList[i])
-                 a++
-                 }
-            }
+        <!--for ( i=1 ; i<10 ; i++){-->
+            <!--$('input[id=dates]', parent.frames["day"+i].document).val(dates)-->
+            <!--$('input[id=datee]', parent.frames["day"+i].document).val(datee)-->
+        <!--}-->
 
-            firstGrid.setData(result);
-        })
 
-    }
+
+})
+
+
 
 
 

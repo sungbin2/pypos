@@ -1,15 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<link rel="stylesheet" href="{{ url_for('static',filename='jui-master/dist/ui.min.css') }}  "/>
-<link rel="stylesheet" href="{{ url_for('static',filename='jui-master/dist/ui-jennifer.min.css') }}" />
-
-<!-- Grid style components -->
-<link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid.min.css') }}  " />
-<link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid-jennifer.min.css') }}  " />
-
-<div class="ui grid container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
-     xmlns="http://www.w3.org/1999/html">
+<div class="ui main grid container" >
     <div class="twelve wide column">
 
         <table width='100%' border='0' cellpadding='0' cellspacing='0'>
@@ -62,12 +54,10 @@
                                 <tr>
                                     <td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>사업자번호</td>
                                     <td bgcolor='#E6EBDE' width='35%' nowrap>
-                                        <input type='text' name='사업자등록번호' value='' size='3' maxlength='3' class='read1c' readonly>
-                                        - <input type='text' name='사업자번호중' value='' size='2' maxlength='2' class='read1c' readonly>
-                                        - <input type='text' name='사업자번호끝' value='' size='5' maxlength='5' class='read1c' readonly>
+                                        <input type='text' name='사업자번호' value='' size='12' class='read1c' readonly>
                                     </td>
                                     <td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>상호명</td>
-                                    <td bgcolor='#E6EBDE' width='35%' nowrap><input type='text' name='상호명' value='' size='30' maxlength='30' class='input1 imeHan'></td>
+                                    <td bgcolor='#E6EBDE' width='35%' nowrap><input type='text' name='' value='' size='30' maxlength='30' class='input1 imeHan'></td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>업태</td>
@@ -78,23 +68,17 @@
                                 <tr>
                                     <td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>전화번호</td>
                                     <td bgcolor='#E6EBDE' width='35%' nowrap>
-                                        <input type='text' name='전화' value='031' class='input1c' size='3' maxlength='3'>
-                                        - <input type='text' name='전화2' value='000' class='input1c' size='4' maxlength='4'>
-                                        - <input type='text' name='전화3' value='0000' class='input1c' size='4' maxlength='4'>
+                                        <input type='text' name='전화' value='031' class='input1c' size='13' >
                                     </td>
                                     <td bgcolor='#EEF1E8' width='15%' align='right' nowrap>핸드폰</td>
                                     <td bgcolor='#E6EBDE' width='35%' nowrap>
-                                        <input type='text' name='휴대폰' value='' class='input1c' size='3' maxlength='3'>
-                                        - <input type='text' name='휴대폰2' value='' class='input1c' size='4' maxlength='4'>
-                                        - <input type='text' name='휴대폰3' value='' class='input1c' size='4' maxlength='4'>
+                                        <input type='text' name='휴대폰' value='' class='input1c' size='13' >
                                     </td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#EEF1E8' width='15%' align='right' nowrap>팩스</td>
                                     <td bgcolor='#E6EBDE' width='35%' nowrap>
-                                        <input type='text' name='팩스' value='' class='input1c' size='3' maxlength='3'>
-                                        - <input type='text' name='팩스2' value='' class='input1c' size='4' maxlength='4'>
-                                        - <input type='text' name='팩스3' value='' class='input1c' size='4' maxlength='4'>
+                                        <input type='text' name='팩스' value='' class='input1c' size='17' >
                                     </td>
                                     <td bgcolor='#EEF1E8' align='right'><font color=red>*</font>날씨지역</td>
                                     <td bgcolor='#E6EBDE'></td>
@@ -105,7 +89,7 @@
                                 </tr>
                                 <tr>
                                     <td bgcolor='#EEF1E8' width='15%' align='right' nowrap>홈페이지</td>
-                                    <td bgcolor='#E6EBDE' width='85%' colspan='3' nowrap>http:// <input type='text' name='홈페이지' value='' size='40' maxlength='50' class='input1 imeEng'></td>
+                                    <td bgcolor='#E6EBDE' width='85%' colspan='3' nowrap>http:// <input type='text' name='' value='' size='40' maxlength='50' class='input1 imeEng'></td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>주소</td>
@@ -116,54 +100,13 @@
                                         상세주소 <input type='text' name='상세주소' value='1' size='30' maxlength='60' class='input1h imeHan'>
                                     </td>
                                 </tr>
-                                <!--<tr style="display:none;">-->
-                                <!--<td bgcolor='#EEF1E8' width='15%' align='right' nowrap>가상계좌</td>-->
-                                <!--<td bgcolor='#E6EBDE' width='85%' colspan='3' nowrap>-->
 
-                                <!--</td>-->
-                                <!--</tr>-->
-                                <!--<tr style='display:none;'>-->
-                                <!--<td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>상태구분</td>-->
-                                <!--<td bgcolor='#E6EBDE' width='35%' nowrap></td>-->
-                                <!--<td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>매장오픈일자</td>-->
-                                <!--<td bgcolor='#E6EBDE' width='35%' nowrap><input type='text' name='date1' value='2017-11-09' size='10' class='read1hc' readonly></td>-->
-                                <!--</tr>-->
-                                <!--<tr height='26' style='display:none;'>-->
-                                <!--<td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>포스오픈일자</td>-->
-                                <!--<td bgcolor='#E6EBDE' width='35%' nowrap><span id='span_sys_open' style='display:none;'><input type='text' name='date2' value='2016-02-24' size='10' class='read1hc' readonly></span></td>-->
-                                <!--<td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>포스폐장일자</td>-->
-                                <!--<td bgcolor='#E6EBDE' width='35%' nowrap><span id='span_sys_close' style='display:none;'><input type='text' name='date3' value='' size='10' class='read1hc' readonly></span></td>-->
-                                <!--</tr>-->
-                                <!--<tr style='display:none;'>-->
-                                <!--<td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>상품분류레벨</td>-->
-                                <!--<td bgcolor='#E6EBDE' width='35%' nowrap></td>-->
-                                <!--<td bgcolor='#EEF1E8' width='15%' align='right' nowrap>&nbsp;</td>-->
-                                <!--<td bgcolor='#E6EBDE' width='35%' nowrap>&nbsp;</td>-->
-                                <!--</tr>-->
-                                <!--</table>-->
-
-                                <!--<table width='100%' height='6' border='0' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>-->
-
-
-                                <!--<table width='100%' border='0' cellpadding='3' cellspacing='1' bgcolor='#CCD6BC'>-->
-                                <!--<tr>-->
-                                <!--<td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>CDP 상단문구</td>-->
-                                <!--<td bgcolor='#E6EBDE' width='85%' colspan='3' nowrap><input type='hidden' name='CDP상단' value=''><input type='text' name='env_155' value='' style='width:100%;' class="input1 imeHan"></td>-->
-                                <!--</tr>-->
-                                <!--<tr>-->
-                                <!--<td bgcolor='#EEF1E8' width='15%' align='right' nowrap><font color=red>*</font>CDP 하단문구</td>-->
-                                <!--<td bgcolor='#E6EBDE' width='85%' colspan='3' nowrap><input type='hidden' name='CDP하단' value=''><input type='text' name='env_156' value='' style='width:100%;' class="input1 imeHan"></td>-->
-                                <!--</tr>-->
-                                <!--</table>-->
                                 </td></tr>
                             </table>
                             </form>
                         </td>
                         </tr>
                     </table>
-
-
-
 
                     <table width='100%' height='6' border='0' cellpadding='0' cellspacing='0'><tr><td></td></tr></table>
 
@@ -355,21 +298,6 @@
 </div>
 
 
-  <!--<div class="ui grid container">-->
-      <!--<div class="twelve wide column">-->
-          <!--{% from 'macro/form.html' import title_block,modal_modify,listing,listing_edit with context %}-->
-          <!--{% call title_block(item['가게명'],'매장상세정보','coffee') %}-->
-              <!--{{ listing() }}-->
-              <!--{% if no==sess['store'] %}-->
-              <!--{{ modal_modify('가게정보 수정: '+item['가게명'], url_for('_info_store', store_id=sess['store'])) }}-->
-          <!--{% endif %}-->
-          <!--{% endcall %}-->
-      <!--</div>-->
-    <!--</div>-->
-
-
-
-
 
  <script>
         var _data;
@@ -382,22 +310,14 @@
              document.getElementsByName('s')[0].value = _data.s
              document.getElementsByName('가게명')[0].value = _data.가게명
              document.getElementsByName('대표자')[0].value = _data.대표자
-             document.getElementsByName('사업자등록번호')[0].value = _data.사업자등록번호
-             document.getElementsByName('사업자번호중')[0].value = _data.사업자번호중
-             document.getElementsByName('사업자번호끝')[0].value = _data.사업자번호끝
-             document.getElementsByName('상호명')[0].value = _data.상호명
+             document.getElementsByName('사업자번호')[0].value = _data.사업자번호
+             <!--document.getElementsByName('상호명')[0].value = _data.상호명-->
              document.getElementsByName('업종')[0].value = _data.업종
              document.getElementsByName('업태')[0].value = _data.업태
-             document.getElementsByName('전화2')[0].value = _data.전화2
-             document.getElementsByName('전화3')[0].value = _data.전화3
              document.getElementsByName('휴대폰')[0].value = _data.휴대폰
-             document.getElementsByName('휴대폰2')[0].value = _data.휴대폰2
-             document.getElementsByName('휴대폰3')[0].value = _data.휴대폰3
              document.getElementsByName('팩스')[0].value = _data.팩스
-             document.getElementsByName('팩스2')[0].value = _data.팩스2
-             document.getElementsByName('팩스3')[0].value = _data.팩스3
              document.getElementsByName('이메일')[0].value = _data.이메일
-             document.getElementsByName('홈페이지')[0].value = _data.홈페이지
+             <!--document.getElementsByName('홈페이지')[0].value = _data.홈페이지-->
              document.getElementsByName('주소')[0].value = _data.주소
              document.getElementsByName('상세주소')[0].value = _data.상세주소
              document.getElementsByName('전화')[0].value = _data.전화

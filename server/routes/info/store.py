@@ -1,32 +1,10 @@
 from server.main_ import app, orm, c
 from dateutil import parser
 
-form_types = [
-    {'tag': None, 'name': '가게명', 'type': 'input', },
-    {'tag': None, 'name': '상호명', 'type': 'input', },
-    {'tag': None, 'name': '대표자', 'type': 'input', },
-    {'tag': '사업자번호', 'name': '사업자등록번호', 'type': 'input', },
-    {'tag': '사업자번호', 'name': '사업자번호중', 'type': 'input', },
-    {'tag': '사업자번호', 'name': '사업자번호끝', 'type': 'input', },
-    {'tag': None, 'name': '우편번호', 'type': 'input', },
-    {'tag': None, 'name': '주소', 'type': 'input', },
-    {'tag': None, 'name': '상세주소', 'type': 'input', },
-    {'tag': None, 'name': '이메일', 'type': 'input', },
-    {'tag': None, 'name': '휴대폰', 'type': 'input', },
-    {'tag': None, 'name': '전화2', 'type': 'input', },
-    {'tag': None, 'name': '팩스', 'type': 'input', },
-    {'tag': None, 'name': '가맹여부', 'type': 'radio', 'l': ['단독점포', '직영점', '가맹점'], },
-    {'tag': None, 'name': '업종', 'type': 'input', },
-    {'tag': None, 'name': '업태', 'type': 'input', },
-    {'tag': None, 'name': '개점일', 'type': 'date', },
-    {'tag': None, 'name': '폐점일', 'type': 'date', },
-]
-
-
 def _get_store(store_id):
     with orm.session_scope() as ss:  # type:c.typeof_Session
         only = ss.query(orm.정보_가게) \
-            .filter_by(no=store_id) \
+            .filter_by(s=store_id) \
             .one()
 
         return c.OBJ_cp(only)
@@ -43,13 +21,11 @@ def _info_store(store_id):
         if c.is_json():
             return c.jsonify(_get_store(store_id).for_json())
         else:
-            return c.display(item=_get_store(store_id),
-                             form_types=form_types,
-                             no=store_id)
+            return c.display()
     elif c.is_POST() or c.is_PUT():
         with orm.session_scope() as ss:  # type:c.typeof_Session
             only = ss.query(orm.정보_가게) \
-                .filter_by(no=store_id) \
+                .filter_by(s=store_id) \
                 .one()
             for k, v in c.data_POST().items():
                 if getattr(only, k) != v:
@@ -62,6 +38,4 @@ def _info_store(store_id):
                     else:
                         setattr(only, k, v)
             only.issync = None
-        return c.display(item=_get_store(store_id),
-                             form_types=form_types,
-                             no=store_id)
+        return c.display()

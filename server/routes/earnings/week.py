@@ -16,6 +16,7 @@ def _earnings_week():
 def _earnings_week_(_id):
     store_id = c.session['store']
     cnt_weeks = {}
+
     cnt = 0
     if c.is_GET():
         with orm.session_scope() as ss:  # type:c.typeof_Session

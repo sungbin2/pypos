@@ -1,15 +1,15 @@
 {% include 'ax5.html' %}
 
-<table class="box week" >
+<table class="box month" >
     <tr>
         <th >
          <div class="row" >
             <div class="col-md-6">
                 <label style=" margin-top: 8; float:left;">조회일자</label>
                 <div class="input-group" data-ax5picker="basic" style="height:20px;width:300px; float:left;" >
-                    <input id='dates' type="text" class="form-control" placeholder="yyyy/mm/dd" >
+                    <input id='dates' type="text" class="form-control" data-picker-date="month" placeholder="yyyy-mm" >
                     <span class="input-group-addon">~</span>
-                    <input id='datee'type="text" class="form-control" placeholder="yyyy/mm/dd">
+                    <input id='datee'type="text" class="form-control" data-picker-date="month" placeholder="yyyy-mm">
                     <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
                 </div>
                 <button class="btn" id="load" style=" margin-top: 8">조회</button>
@@ -32,14 +32,16 @@
 
 
 
-<script type="text/javascript" src="{{ url_for('static',filename='datepicker.js') }} "></script>
+<script type="text/javascript" src="{{ url_for('static',filename='monthpicker.js') }} "></script>
 
 <script type="text/javascript">
 
 
-    var  gridList = [];
-    var data0 = window.parent.data0
-    var week = window.parent.week
+
+
+
+
+
     load()
 
 
@@ -76,18 +78,20 @@
             var firstGrid = new ax5.ui.grid({
             target: $('[data-ax5grid="first-grid"]'),
             columns: [
-                {key: "요일", label: "요일", width: 35, align: "center" ,formatter: function(){
+                {key: "년월", label: "년-월", width: 80, align: "center" ,formatter: function(){
                     return '<a onClick=modal1(); >' + this.value + '</a>';
                 }},
+                {key: "영업일수", label: "영업일수", width: 60 ,align: "center"},
                 {
                     label: "매출현황", columns: [ // child columns
                         {key: "총매출", label: "총매출" ,width: 80 , formatter: "money",align: "right"},
                         {key: "총할인", label: "총할인" ,width: 80 , formatter: "money",align: "right"},
                         {key: "실매출", label: "실매출" ,width: 80 , formatter: "money",align: "right"},
+                        {key: "영수건수", label: "영수건수" ,width: 60 ,align: "right"},
+                        {key: "영수단가", label: "영수단가" ,width: 80 , formatter: "money",align: "right"},
                         {key: "가액", label: "가액" ,width: 80 , formatter: "money",align: "right"},
                         {key: "부가세", label: "부가세" ,width: 80 , formatter: "money",align: "right"},
-                        {key: "영수건수", label: "영수건수" ,width: 60 ,align: "right"},
-                        {key: "영수단가", label: "영수단가" ,width: 80 , formatter: "money",align: "right"}
+
                     ]
                 },
                 {key: "봉사료", label: "봉사료", width: 80 ,align: "right"},
@@ -112,22 +116,46 @@
                 {
                     label: "포장/배달현황", columns: [ // child columns
                         {key: "일반", label: "일반" ,align: "right"},
+                        {key: "점유율1", label: "점유율(%)"},
                         {key: "포장", label: "포장" ,align: "right"},
+                        {key: "점유율2", label: "점유율(%)"},
                         {key: "배달", label: "배달" ,align: "right"},
+                        {key: "점유율3", label: "점유율(%)"}
 
                     ]
                 },
+                {
+                    label: "할인내역", columns: [ // child columns
+                        {key: "일반", label: "일반" ,align: "right"},
+                        {key: "서비스", label: "서비스" ,align: "right"},
+                        {key: "제휴", label: "제휴" ,align: "right"},
+                        {key: "쿠폰", label: "쿠폰" ,align: "right"},
+                        {key: "회원", label: "회원" ,align: "right"},
+                        {key: "식권", label: "식권" ,align: "right"},
+                        {key: "포장", label: "포장" ,align: "right"},
+                        {key: "YAP", label: "YAP" ,align: "right"}
+                    ]
+                },
+                {
+                    label: "Tax Refund", columns: [ // child columns
+                        {key: "사후환급액", label: "사후환급액" ,align: "right"},
+                        {key: "즉시환급액", label: "즉시환급액" ,align: "right"},
+                        {key: "환급수수료", label: "환급수수료" ,align: "right"}
+                    ]
+                }
             ],
             footSum: [
                 [
                     {label: "합계", colspan: 1, align: "center"},
+                    {key: "영업일수", collector: "sum", align: "center"},
                     {key: "총매출", collector: "sum", formatter: "money", align: "center"},
                     {key: "총할인", collector: "sum", formatter: "money", align: "right"},
                     {key: "실매출", collector: "sum", formatter: "money", align: "right"},
-                    {key: "가액", collector: "sum", formatter: "money", align: "right"},
-                    {key: "부가세", collector: "sum", formatter: "money", align: "right"},
                     {key: "영수건수", collector: "sum", formatter: "money", align: "right"},
                     {key: "영수단가", collector: "sum", formatter: "money", align: "right"},
+                    {key: "가액", collector: "sum", formatter: "money", align: "right"},
+                    {key: "부가세", collector: "sum", formatter: "money", align: "right"},
+
                     {key: "d7"},
                     {key: "e1", collector: "sum", formatter: "money", align: "right"},
                     {key: "e2", collector: "sum", formatter: "money", align: "right"},
@@ -150,43 +178,64 @@
 
         $('#load').click(function () {
 
-            gridList = [];
+
+
+
+            var gridList = [];
+            var week = new Array('일', '월', '화', '수', '목', '금', '토');
             var dates = $('input[id=dates]').val();
             var datee = $('input[id=datee]').val();
+            var ys = new Date(dates).getFullYear()
+            var ye = new Date(datee).getFullYear()
+            var result = [];
+            var data0 = [];
 
-            <!--for ( i=1 ; i<10 ; i++){-->
-                <!--$('input[id=dates]', parent.frames["week"+i].document).val(dates)-->
-                <!--$('input[id=datee]', parent.frames["week"+i].document).val(datee)-->
-            <!--}-->
+             $.getJSON("{{ url_for('_earnings_month1' ) }}/"+"{{ store_id }}&"+dates+"-01&"+datee+"-30", function (json) {
+                _data = json;
 
-            for ( i in data0 ) {
-                if ( dates <= data0[i]['영업일자'] && datee >= data0[i]['영업일자'] ) {
-                    d = new Date(data0[i]['영업일자']).getDay()
+            }).done(function () {
 
-                    for ( j in week ) {
-                            if ( j == d ) {
+                for( i in _data['일자별'] ) {
+                    data0.push(_data['일자별'][i]);
+                }
+                for ( i in data0 ) {
+                        y = new Date(data0[i]['영업일자']).getFullYear()
+                        d = new Date(data0[i]['영업일자']).getMonth()+1
 
-                                n = parseInt(data0[i]['총거래액']) / parseInt(data0[i]['영수건수'])
-                                if ( gridList[j] == undefined ) { gridList[j] = {'요일' : week[j] , '총매출' : 0, '총할인' : 0 ,'실매출' : 0, '영수건수' : 0 , '영수단가' : 0 , '가액' :0 , '부가세' : 0} };
-                                gridList[j]['총매출'] = parseInt(gridList[j]['총매출']) + parseInt(data0[i]['총거래액']);
-                                gridList[j]['총할인'] += data0[i]['총할인액'];
-                                gridList[j]['실매출'] += data0[i]['실거래액'];
-                                gridList[j]['영수건수'] += data0[i]['영수건수'];
-                                gridList[j]['영수단가'] += Math.round(n);
-                                gridList[j]['가액'] += data0[i]['판매이익'];
-                                gridList[j]['부가세'] += data0[i]['세금'];
+                        for ( j=1; j<13 ; j++ ) {
+                                if ( j == d ) {
+                                    nj = ("0" + j).slice(-2)
+                                    n = parseInt(data0[i]['총거래액']) / parseInt(data0[i]['영수건수'])
 
-                            }
+                                    if ( gridList[y+"-"+nj] == undefined ) { gridList[y+"-"+nj] = {'년월' : "" , '영업일수' :0 , '총매출' : 0, '총할인' : 0 ,'실매출' : 0, '영수건수' : 0 , '영수단가' : 0 , '가액' :0 , '부가세' : 0} };
 
-                    }
+                                    gridList[y+"-"+nj]['년월'] = y+"-"+nj
+                                    gridList[y+"-"+nj]['영업일수'] += 1
+                                    gridList[y+"-"+nj]['총매출'] += data0[i]['총거래액'];
+                                    gridList[y+"-"+nj]['총할인'] += data0[i]['총할인액'];
+                                    gridList[y+"-"+nj]['실매출'] += data0[i]['실거래액'];
+                                    gridList[y+"-"+nj]['영수건수'] += data0[i]['영수건수'];
+                                    gridList[y+"-"+nj]['영수단가'] += Math.round(n);
+                                    gridList[y+"-"+nj]['가액'] += data0[i]['판매이익'];
+                                    gridList[y+"-"+nj]['부가세'] += data0[i]['세금'];
+
+                                }
+
+                        }
+
+
+                }
+                for ( i in gridList ) {
+                    result.push(gridList[i])
+                }
+                firstGrid.setData(result);
+                })
+
+             });
 
 
 
-                 }
-            }
 
-            firstGrid.setData(gridList);
-        })
 
     }
 

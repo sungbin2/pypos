@@ -34,22 +34,18 @@ def _system_receiptform_(store_id):
     elif c.is_POST():
         if c.is_json():
             with orm.session_scope() as ss:  # type:c.typeof_Session
-                next_one = c.newitem_web(orm.영수증서식, c.session)
+                next_one = c.newitem_web(orm.setting_영수증서식, c.session)
                 _j = c.data_json()
                 for k in _j:
                     _j[k] = [x for x in _j[k].split(c.EOL) if len(x.strip()) > 0]
                     # pp.pprint(_j)
-
                 next_one.j = only.j.copy()
-                print(_j.keys())
                 k=0
+
                 for i in next_one.j:
-                    if i.keys() == _j.keys():
-                        print(i.keys())
-                        print(next_one.j[k])
-                        next_one.j[k] = _j
-                    k = k + 1
-                    print(k)
-                print('/////',next_one.j)
+                    for j in _j.keys():
+                        if i == j:
+                            next_one.j[j] = _j[j]
+                        k = k + 1
                 ss.add(next_one)
                 return 'modified'

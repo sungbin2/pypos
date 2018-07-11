@@ -53,6 +53,7 @@ import server.routes.earnings.day
 import server.routes.earnings.dayall
 
 import server.routes.earnings.week
+import server.routes.earnings.month
 
 
 free_for_all = [

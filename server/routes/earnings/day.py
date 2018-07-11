@@ -42,8 +42,8 @@ def _earnings_dayreceiptdetail():
         return c.display(store_id=store_id)
 
 
-@app.route('/earnings/day/<int:_id>', methods=['GET'])
-def _earnings_day_(_id):
+@app.route('/earnings/day/<int:_id>&<dates>&<datee>', methods=['GET'])
+def _earnings_day_(_id,dates,datee):
     store_id = c.session['store']
     cnt_days = {}
     cnt_days['상품목록'] = {}
@@ -56,6 +56,8 @@ def _earnings_day_(_id):
             lst = ss.query(orm.판매_품목) \
                 .filter_by(s=store_id) \
                 .filter_by(isdel='X') \
+                .filter(orm.판매_품목.d >= dates) \
+                .filter(orm.판매_품목.d <= datee) \
                 .all()
 
             for each in lst:
@@ -113,6 +115,8 @@ def _earnings_day_(_id):
             lst3 = ss.query(orm.결제) \
                 .filter_by(s=store_id) \
                 .filter_by(isdel='X') \
+                .filter(orm.결제.d >= dates) \
+                .filter(orm.결제.d <= datee) \
                 .all()
 
 
@@ -138,6 +142,8 @@ def _earnings_day_(_id):
             lst4 = ss.query(orm.판매) \
                 .filter_by(s=store_id) \
                 .filter_by(isdel='X') \
+                .filter(orm.판매.d >= dates) \
+                .filter(orm.판매.d <= datee) \
                 .all()
             d=0
             d1=0

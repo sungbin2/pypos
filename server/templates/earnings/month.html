@@ -21,14 +21,14 @@
 <table class="box" >
     <tr>
         <th style="color:white; background-color: #347efd;">
-         요일별
+         월별
         </th>
     </tr>
     <tr>
         <td>
 
             <div class="ui top attached tabular menu">
-              <a class="item active" data-tab="first">주간종합</a>
+              <a class="item active" data-tab="first">월별종합</a>
               <a class="item " data-tab="2">할인구분별</a>
               <a class="item " data-tab="3">과면세별</a>
                 <a class="item " data-tab="4">시간대별</a>
@@ -48,7 +48,7 @@
 
 <div class="ui bottom attached tab segment active  " data-tab="first">
 
-    <iframe name="day1" src="{{ url_for('_earnings_week1') }}" frameborder="0" width="100%" height="600" marginwidth="0" marginheight="0">
+    <iframe name="day1" src="{{ url_for('_earnings_month1') }}" frameborder="0" width="100%" height="600" marginwidth="0" marginheight="0">
 </iframe>
 
 </div>
@@ -118,18 +118,6 @@ $(function () {
 
 });
 
-    var  data0 = [];
-    var week = new Array('일', '월', '화', '수', '목', '금', '토');
-
-    $.getJSON("{{ url_for('_earnings_day' ) }}/"+"{{ store_id }}", function (json) {
-        _data = json;
-
-    }).done(function () {
-
-    for( i in _data['일자별'] ) {
-        data0.push(_data['일자별'][i]);
-    }
-
 
 //        for (j in data0[i]['분류별']) {
 //            gridList[i]['pt'+j] = data0[i]['분류별'][j]['실거래액'];
@@ -149,8 +137,6 @@ $(function () {
 //
 //            a++;
 //        }
-
-    });
 
 
 </script>

@@ -14,9 +14,9 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid.min.css') }}  " />
 <link rel="stylesheet" href="{{ url_for('static',filename='jui-grid-master/dist/grid-jennifer.min.css') }}  " />
 <style>
-     #table_3  {width : 220px; height : 550px}
+     #table_3  {width : 280px; height : 550px}
      #table_4  {width : 310px; height : 550px}
-     #table_2  {width : 300px ;height : 550px }
+     #table_2  {width : 320px ;height : 550px }
 
     <!--#td1 { margin :0 }-->
     pre { margin: 0 0 0.5em;
@@ -216,9 +216,7 @@ insertAtCaret: function(myValue){
              };
 
         var EOL = '\n';
-        var defaults = {
-            "영수증": ["[_C]{dA/}영수증{/dA}{재출력}", "[_C]  ", "[_L][가게명] {가게명}", "[_L][대표자] {대표자}", "[_L][사업자번호] {사업자번호}", "[_L][우편번호] {우편번호}", "[_L][주소] {주소}", "[_L][상세주소] {상세주소}", "[_L][이메일] {이메일}", "[_L][휴대폰] {휴대폰}", "[_L][전화] {전화}", "[_L][팩스] {팩스}", "[_HLINE]=", "[_L]  상품명                수량        금액", "[_HLINE]-", "[_LIST]{/상품명수량금액/}", "[_HLINE]=", "[_C]{dW/}감사합니다{/dW}", "[_CNF]" ], "간이영수증": ["[_C]{dA/}영수증{/dA}{재출력}", "[_C]  ", "[_L][가게명] {가게명}", "[_L][대표자] {대표자}", "[_L][사업자번호] {사업자번호}", "[_L][우편번호] {우편번호}", "[_L][주소] {주소}", "[_L][상세주소] {상세주소}", "[_L][이메일] {이메일}", "[_L][휴대폰] {휴대폰}", "[_L][전화] {전화}", "[_L][팩스] {팩스}", "[_HLINE]=", "[_LIST]{/항목명금액_간이영수증/}", "[_HLINE]-", "[_L]{dH/} 받을금액               {금액}{/dH}", "[_L]{dH/} 받은금액               {금액}{/dH}", "[_HLINE]=", "[_C]", "[_C]{dW/}감사합니다{/dW}", "[_CNF]" ], "고객주문서": ["[_C]{dA/}고객주문서{/dA}{재출력}", "[_C]  ", "[_L][주문번호] {dH/}{주문번호}{/dH}  [테이블] {좌석}", "[_L][주문자] {담당자}         [손님수] {객수}", "[_HLINE]=", "[_L]  상품명                  수량      구분", "[_HLINE]-", "[_LIST]{/상품명수량구분/}", "[_HLINE]=", "[_L][POS] {기기명}      [주문일시] {주문일시}", "[_C]", "[_C]{dW/}감사합니다{/dW}", "[_CNF]" ],"주방주문서": ["[_C]{dA/}주방주문서{/dA}{재출력}", "[_C]  ", "[_L][주문번호] {dH/}{주문번호}{/dH}  [테이블] {좌석}", "[_L][주문자] {담당자}         [손님수] {객수}", "[_HLINE]=", "[_L]  상품명                 수량      구분", "[_HLINE]-", "[_LIST]{/상품명수량구분/}", "[_HLINE]=", "[_L][POS] {기기명}       [주문일시] {주문일시}", "[_C]  ", "[_CNF]"  ]
-        };
+        var defaults = {"영수증": ["[_C]{dA/}영수증{/dA}{재출력}", "[_C]  ", "[_L][가게명] {가게명}", "[_L][대표자] {대표자}", "[_L][사업자번호] {사업자번호}", "[_L][우편번호] {우편번호}", "[_L][주소] {주소}", "[_L][상세주소] {상세주소}", "[_L][이메일] {이메일}", "[_L][휴대폰] {휴대폰}", "[_L][전화] {전화}", "[_L][팩스] {팩스}", "[_HLINE]=", "[_L]  상품명                     수량     금액", "[_HLINE]-", "[_LIST]{/상품명수량금액/}", "[_HLINE]-", "[_L]{dH/}받을금액                            {금액}{/dH}", "[_L]{dH/}받은금액                            {금액}{/dH}", "[_HLINE]=", "[_C]{dW/}감사합니다{/dW}", "[_CNF]"], "간이영수증": ["[_C]{dA/}영수증{/dA}{재출력}", "[_C]  ", "[_L][가게명] {가게명}", "[_L][대표자] {대표자}", "[_L][사업자번호] {사업자번호}", "[_L][우편번호] {우편번호}", "[_L][주소] {주소}", "[_L][상세주소] {상세주소}", "[_L][이메일] {이메일}", "[_L][휴대폰] {휴대폰}", "[_L][전화] {전화}", "[_L][팩스] {팩스}", "[_HLINE]=", "[_L]상품명                               금액", "[_HLINE]-", "[_LIST]{/항목명금액_간이영수증/}", "[_HLINE]-", "[_L]{dH/}받을금액                            {금액}{/dH}", "[_L]{dH/}받은금액                            {금액}{/dH}", "[_HLINE]=", "[_C]", "[_C]{dW/}감사합니다{/dW}", "[_CNF]"], "고객주문서": ["[_C]{dA/}고객주문서{/dA}{재출력}", "[_C]  ", "[_L][주문번호] {dH/}{주문번호}{/dH}   [테이블] {좌석}", "[_L][주문자] {담당자}    [손님수] {객수}", "[_HLINE]=", "[_L]  상품명                     수량     구분", "[_HLINE]-", "[_LIST]{/상품명수량구분/}", "[_HLINE]=", "[_L][POS] {기기명}     [주문일시] {주문일시}", "[_C]", "[_C]{dW/}감사합니다{/dW}", "[_CNF]"], "주방주문서": ["[_C]{dA/}주방주문서{/dA}{재출력}", "[_C]  ", "[_L][주문번호] {dH/}{주문번호}{/dH}  [테이블] {좌석}", "[_L][주문자] {담당자}   [손님수] {객수}", "[_HLINE]=", "[_L]상품명                       수량     구분", "[_HLINE]-", "[_LIST]{/상품명수량구분/}", "[_HLINE]=", "[_L][POS] {기기명}     [주문일시] {주문일시}", "[_C]  ", "[_CNF]"]};
 var newcurrents = [];
 var _url = "{{url_for('_system_receiptform')}}";
 var id = {{ store_id }};
@@ -230,7 +228,6 @@ $(function () {
     $('#btn_save').click(function () {
         var parcel = {};
         parcel[$("#rselect option:selected").val()] = $('textarea').val();
-        console.log(parcel[$("#rselect option:selected").val()]);
 
         $.ajax({
             method: "POST",
@@ -241,7 +238,6 @@ $(function () {
             .done(function (msg) {
                 if (msg == 'modified'){
                     load();
-                    console.log('good');
                     }
                 else{
                     alert("alert1:" + msg);}
@@ -273,9 +269,11 @@ function load()
 {
 
     $.getJSON("{{ url_for('_system_receiptform' ) }}/"+"{{ store_id }}", function (json) {
-         newcurrents = json;
+         _data1 = json;
     }).done(function () {
+             newcurrents = [];
 
+             newcurrents.push( _data1 )
 
              rselect = [];
              currents = [];
@@ -321,7 +319,7 @@ function edittext1()
                         _temp = _temp.replace('{/dA}','</font><font size=2em>')
                         _temp = _temp.replace('{dW/}','</font><font size="4rem">')
                         _temp = _temp.replace('{/dW}','</font><font size=2em>')
-                        _temp = _temp.replace('{dH/}','</font><font size="4rem">')
+                        _temp = _temp.replace('{dH/}','</font><font size="2rem">')
                         _temp = _temp.replace('{/dH}','</font><font size=2em>')
                         _temp = _temp.replace('{재출력}',' - 재출력 ')
                         _temp = _temp.replace('{금액}','30,000')
@@ -341,9 +339,9 @@ function edittext1()
 
                         _temp = _temp.replace('[_HLINE]-','</pre><pre align = left>------------------------------------------</pre>')
                         _temp = _temp.replace('[_HLINE]=','</pre><pre align = left>==========================================</pre>')
-                        _temp = _temp.replace('[_LIST]{/상품명수량구분/}','</pre><pre align = left> 스테이크                  1        주문</pre>')
-                        _temp = _temp.replace('[_LIST]{/상품명수량금액/}','</pre><pre align = left> 스테이크                 1        30,000</pre>')
-                        _temp = _temp.replace('[_LIST]{/항목명금액_간이영수증/}','</pre><pre align = left> 단체식대                        30,000</pre>')
+                        _temp = _temp.replace('[_LIST]{/상품명수량구분/}','</pre><pre align = left> 스테이크                      1      주문</pre>')
+                        _temp = _temp.replace('[_LIST]{/상품명수량금액/}','</pre><pre align = left> 스테이크                      1    30,000</pre>')
+                        _temp = _temp.replace('[_LIST]{/항목명금액_간이영수증/}','</pre><pre align = left>단체식대                            30,000</pre>')
                         _temp = _temp.replace('[_CNF]','</pre><pre align = left>-----------------절취선-------------------</pre>')
 
                 }
@@ -408,13 +406,13 @@ function reload()
 
              $('#가게명').text(_data.가게명)
              $('#대표자').text(_data.대표자)
-             $('#사업자번호').text(_data.사업자등록번호+'-'+_data.사업자번호중+'-'+_data.사업자번호끝)
+             $('#사업자번호').text(_data.사업자번호)
              $('#우편번호').text(_data.우편번호)
              $('#주소').text(_data.주소)
              $('#상세주소').text(_data.상세주소)
              $('#이메일').text(_data.이메일)
-             $('#휴대폰').text(_data.휴대폰+'-'+_data.휴대폰2+'-'+_data.휴대폰3)
-             $('#팩스').text(_data.팩스+'-'+_data.팩스2+'-'+_data.팩스3)
+             $('#휴대폰').text(_data.휴대폰)
+             $('#팩스').text(_data.팩스)
              <!--$('#가게명').text(_data.가게명)-->
              <!--$('#가게명').text(_data.가게명)-->
 
